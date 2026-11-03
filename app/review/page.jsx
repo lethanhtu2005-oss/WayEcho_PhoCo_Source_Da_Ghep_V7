@@ -39,6 +39,7 @@ function Stars({ value, onChange, label }) {
 function ReviewContent() {
   const params = useSearchParams();
   const item = getItem(params.get("item"));
+  const bookingId = params.get("booking");
   const { speak } = useA11y();
   const [ratings, setRatings] = useState({ entrance: 0, navigation: 0, staff: 0, toilet: 0, info: 0, audio: 0 });
   const [comment, setComment] = useState("");
@@ -48,7 +49,7 @@ function ReviewContent() {
   async function submit(e) {
     e.preventDefault();
     try {
-      await api.createReview({ itemId: item?.id || "unknown", itemName: item?.name || "", author: author || "Khách ẩn danh", comment, ratings });
+      await api.createReview({ itemId: item?.id || "unknown", itemName: item?.name || "", ...(bookingId ? { bookingId } : {}), author: author || "Khách ẩn danh", comment, ratings });
       setDone(true);
       speak("Cảm ơn bạn đã chia sẻ đánh giá tiếp cận. Đánh giá của bạn giúp những người khiếm thị khác tự tin hơn khi đi.");
     } catch (_) { speak("Gửi đánh giá chưa thành công."); }
@@ -72,7 +73,7 @@ function ReviewContent() {
     <div className="container-page py-10">
       <h1 className="text-4xl sm:text-5xl">Đánh giá tiếp cận</h1>
       <p className="hc-muted mt-3 max-w-2xl text-lg text-ink-soft">
-        {item ? <>Chia sẻ trải nghiệm tiếp cận của bạn tại <strong>{item.name}</strong>.</> : "Chia sẻ trải nghiệm tiếp cận của bạn."} Mỗi tiêu chí chấm 1–5 sao.
+        {item ? <>Chia sẻ trải nghiệm tiếp cận của bạn tại <strong>{item.name}</strong>.</> : "Chia sẻ trải nghiệm tiếp cận của bạn."} {bookingId ? "Đánh giá này sẽ được liên kết với booking bạn đã chọn." : ""} Mỗi tiêu chí chấm 1–5 sao.
       </p>
 
       <form onSubmit={submit} className="mt-8 max-w-2xl">
