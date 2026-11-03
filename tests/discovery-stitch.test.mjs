@@ -19,3 +19,13 @@ test("lọc theo mức độ tiếp cận", () => {
   assert.equal(filterByLevel(items, "A").length, 2);
   assert.equal(filterByLevel(items).length, 3);
 });
+
+import { demoLevelFor, withDisplayLevel, DEMO_LEVELS } from "../data/serviceDiscovery.js";
+test("mức tiếp cận minh họa ổn định và đủ 3 mức để lọc", () => {
+  const items = Array.from({ length: 30 }, (_, i) => ({ id: `x-${i}`, level: "Tiếp cận chưa xác minh" }));
+  const shown = withDisplayLevel(items, true);
+  assert.equal(new Set(shown.map((i) => i.displayLevel)).size, 3);
+  assert.ok(shown.every((i) => DEMO_LEVELS.includes(i.displayLevel) && i.levelIsDemo));
+  assert.equal(demoLevelFor(items[3]), demoLevelFor(items[3]));
+  assert.ok(withDisplayLevel(items, false).every((i) => i.displayLevel === i.level && !i.levelIsDemo));
+});

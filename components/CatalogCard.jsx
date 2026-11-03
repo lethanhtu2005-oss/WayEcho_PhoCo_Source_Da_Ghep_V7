@@ -14,6 +14,7 @@ export default function CatalogCard({ item }) {
   const { speak } = useA11y();
   const [saved, setSaved] = useState(false);
   const [added, setAdded] = useState(false);
+  const shownLevel = item.displayLevel ?? item.level;
   const cfg = SERVICE_CONFIG[item.cat] || SERVICE_CONFIG.destination;
   const detail = item.destinationSlug && item.cat === "destination" ? `/destination?d=${item.destinationSlug}` : `/item?id=${item.id}`;
   async function save() { try { await api.savePlace({ refId: item.id, name: item.name, cat: item.cat, image: item.image }); setSaved(true); speak(`Đã lưu ${item.name}.`); } catch (_) { speak("Không lưu được, thử lại sau."); } }
@@ -30,7 +31,7 @@ export default function CatalogCard({ item }) {
       <div className="flex flex-1 flex-col p-5">
         <p className="flex items-center gap-1 text-sm text-ink-soft hc-muted"><MapPinIcon size={15} /> {item.area}</p>
         <h3 className="mt-1 text-[22px] leading-tight"><Link href={detail} className="hover:text-accent-dark hover:underline">{item.name}</Link></h3>
-        <p className={`mt-3 inline-flex items-center self-start rounded-pill px-3 py-1.5 text-xs font-bold ${levelColor[item.level] || "bg-neutral-200 text-neutral-900"}`}><AccessibleIcon size={13} className="mr-1" />{item.level}</p>
+        <p className={`mt-3 inline-flex items-center self-start rounded-pill px-3 py-1.5 text-xs font-bold ${levelColor[shownLevel] || "bg-neutral-200 text-neutral-900"}`}><AccessibleIcon size={13} className="mr-1" />{shownLevel}{item.levelIsDemo ? " · minh họa" : ""}</p>
         <p className="mt-3 text-ink-soft hc-muted">{item.summary}</p>
         {item.note && <p className="mt-3 rounded-xl bg-[#fff9ed] p-3 text-sm hc-surface">{item.note}</p>}
         <details className="mt-3 rounded-xl border border-[#e7c99c] bg-[#fff9ed] hc-surface hc-border">

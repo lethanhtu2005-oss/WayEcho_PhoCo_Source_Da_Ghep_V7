@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import CatalogCard from "@/components/CatalogCard";
-import { SERVICE_CONFIG, LEVEL_ALL, levelOptions, filterByLevel } from "@/data/serviceDiscovery";
+import { SERVICE_CONFIG, LEVEL_ALL, levelOptions, filterByLevel, withDisplayLevel, DEMO_LEVELS } from "@/data/serviceDiscovery";
 import { CATEGORIES, byCategory, catLabel } from "@/data/catalog";
 import { itemA11y, A11Y_FILTERS } from "@/data/businesses";
 
@@ -18,8 +18,8 @@ function ExploreContent() {
   const cfg = SERVICE_CONFIG[cat];
 
   const active = Object.keys(filters).filter((k) => filters[k]);
-  const catItems = byCategory(cat);
-  const levels = levelOptions(catItems);
+  const catItems = withDisplayLevel(byCategory(cat), dataMode === "demo");
+  const levels = dataMode === "demo" ? DEMO_LEVELS : levelOptions(catItems);
   const items = filterByLevel(catItems, level).filter((it) => {
     if (active.length === 0) return true;
     const a = itemA11y(it, { mode: dataMode });
@@ -60,14 +60,14 @@ function ExploreContent() {
         <p className="font-semibold">Độ tin cậy của dữ liệu trợ năng</p>
         <p className="mt-1 text-sm text-ink-soft">Mặc định chỉ hiện dịch vụ có bằng chứng xác minh theo từng tiêu chí. Chế độ minh họa giúp thử giao diện và không khẳng định khả năng tiếp cận thực tế.</p>
         <div className="mt-3 flex flex-wrap gap-3">
-          <button type="button" aria-pressed={dataMode === "verified"} onClick={() => setDataMode("verified")} className={`min-h-11 rounded-full px-4 font-semibold ${dataMode === "verified" ? "bg-primary" : "border border-line bg-white"}`}>Đã xác minh</button>
-          <button type="button" aria-pressed={dataMode === "demo"} onClick={() => setDataMode("demo")} className={`min-h-11 rounded-full px-4 font-semibold ${dataMode === "demo" ? "bg-primary" : "border border-line bg-white"}`}>Dữ liệu minh họa</button>
+          <button type="button" aria-pressed={dataMode === "verified"} onClick={() => { setDataMode("verified"); setLevel(LEVEL_ALL); }} className={`min-h-11 rounded-full px-4 font-semibold ${dataMode === "verified" ? "bg-primary" : "border border-line bg-white"}`}>Đã xác minh</button>
+          <button type="button" aria-pressed={dataMode === "demo"} onClick={() => { setDataMode("demo"); setLevel(LEVEL_ALL); }} className={`min-h-11 rounded-full px-4 font-semibold ${dataMode === "demo" ? "bg-primary" : "border border-line bg-white"}`}>Dữ liệu minh họa</button>
         </div>
       </div>
       {/* Bộ lọc accessibility */}
       <div className="mt-5 rounded-2xl border border-line bg-white p-4 hc-surface hc-border" role="group" aria-label="Lọc theo khả năng tiếp cận">
         <p className="mb-2 text-sm font-semibold text-ink-soft hc-muted">Lọc theo khả năng tiếp cận</p>
-        {levels.length > 1 && (
+        {levels.length > 0 && (
           <label className="mb-3 flex flex-wrap items-center gap-2 font-semibold">
             <span>Mức độ tiếp cận</span>
             <select value={level} onChange={(e) => setLevel(e.target.value)} className="min-h-[44px] rounded-xl border border-line bg-white px-3 hc-surface hc-border">

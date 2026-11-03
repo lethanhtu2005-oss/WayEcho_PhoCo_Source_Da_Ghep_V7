@@ -42,9 +42,21 @@ export const SERVICE_CONFIG = {
 export const LEVEL_ALL = "all";
 
 export function levelOptions(items) {
-  return [...new Set(items.map((i) => i.level).filter(Boolean))];
+  return [...new Set(items.map((i) => i.displayLevel ?? i.level).filter(Boolean))];
 }
 
 export function filterByLevel(items, level = LEVEL_ALL) {
-  return level === LEVEL_ALL ? items : items.filter((i) => i.level === level);
+  return level === LEVEL_ALL ? items : items.filter((i) => (i.displayLevel ?? i.level) === level);
+}
+
+// Mức tiếp cận MINH HỌA để thử bộ lọc: gán ổn định theo id, KHÔNG phải kết quả khảo sát thật.
+export const DEMO_LEVELS = ["Tiếp cận tốt", "Tiếp cận trung bình", "Cần hỗ trợ"];
+export function demoLevelFor(item) {
+  if (DEMO_LEVELS.includes(item.level)) return item.level;
+  let h = 0;
+  for (const ch of String(item.id)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return DEMO_LEVELS[h % DEMO_LEVELS.length];
+}
+export function withDisplayLevel(items, demo) {
+  return items.map((it) => (demo ? { ...it, displayLevel: demoLevelFor(it), levelIsDemo: !DEMO_LEVELS.includes(it.level) } : { ...it, displayLevel: it.level, levelIsDemo: false }));
 }
