@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import CatalogCard from "@/components/CatalogCard";
-import OldQuarterDiscovery from "@/components/OldQuarterDiscovery";
+import { SERVICE_CONFIG, LEVEL_ALL, levelOptions, filterByLevel } from "@/data/serviceDiscovery";
 import { CATEGORIES, byCategory, catLabel } from "@/data/catalog";
 import { itemA11y, A11Y_FILTERS } from "@/data/businesses";
 
@@ -14,9 +14,13 @@ function ExploreContent() {
   const cat = CATEGORIES.some(c=>c.id === requestedCat) ? requestedCat : "destination";
   const [filters, setFilters] = useState({});
   const [dataMode, setDataMode] = useState("demo");
+  const [level, setLevel] = useState(LEVEL_ALL);
+  const cfg = SERVICE_CONFIG[cat];
 
   const active = Object.keys(filters).filter((k) => filters[k]);
-  const items = byCategory(cat).filter((it) => {
+  const catItems = byCategory(cat);
+  const levels = levelOptions(catItems);
+  const items = filterByLevel(catItems, level).filter((it) => {
     if (active.length === 0) return true;
     const a = itemA11y(it, { mode: dataMode });
     return active.every((k) => a[k]);
@@ -31,12 +35,9 @@ function ExploreContent() {
       <p className="text-sm text-ink-soft hc-muted">
         <Link href="/" className="hover:underline">Trang chủ</Link> · Khám phá
       </p>
-      <h1 className="mt-2 text-4xl sm:text-5xl">Khám phá {catLabel(cat)}</h1>
-      <p className="hc-muted mt-2 max-w-2xl text-lg text-ink-soft">
-        Mỗi mục hiển thị trạng thái dữ liệu tiếp cận. Danh sách tập trung vào Phố cổ Hà Nội. Tên và địa chỉ cơ sở tham khảo từ nguồn công khai; ảnh minh họa không thay thế ảnh cơ sở đã xác minh. Đặt chỗ và dữ liệu trợ năng đang ở chế độ DEMO. Chọn danh mục:
-      </p>
+      <h1 className="mt-2 text-4xl sm:text-5xl">{cfg.title}</h1>
+      <p className="hc-muted mt-2 max-w-2xl text-lg text-ink-soft">{cfg.intro} Thông tin tiếp cận chỉ mang tính tham khảo, chưa thay thế khảo sát tại chỗ.</p>
 
-      <div className="mt-4 flex flex-wrap gap-3"><Link href="/articles" className="btn-ghost hc-border">Cẩm nang</Link><Link href="/services/guide-dogs" className="btn-ghost hc-border">Chó dẫn đường</Link><Link href="/services/guides" className="btn-ghost hc-border">Guide & Assistant — DEMO</Link><Link href="/profile" className="btn-ghost hc-border">Nhu cầu tiếp cận</Link><Link href="/sos" className="btn-ghost hc-border">SOS — DEMO</Link></div>
       {requestedCat !== cat && <p role="status" className="mt-3">Danh mục không tồn tại; đang hiển thị điểm đến.</p>}
       {/* Tabs danh mục */}
       <nav aria-label="Danh mục" className="mt-5 flex flex-wrap gap-2">
@@ -45,6 +46,7 @@ function ExploreContent() {
             key={c.id}
             href={`/explore?cat=${c.id}`}
             aria-current={c.id === cat ? "page" : undefined}
+            onClick={() => setLevel(LEVEL_ALL)}
             className={`inline-flex min-h-[44px] items-center rounded-pill px-4 text-sm font-semibold transition-colors ${
               c.id === cat ? "bg-primary text-ink" : "border border-line bg-white text-ink hover:bg-surface-alt hc-surface hc-border"
             }`}
@@ -53,8 +55,6 @@ function ExploreContent() {
           </Link>
         ))}
       </nav>
-
-      {cat === "destination" && <OldQuarterDiscovery embedded />}
 
       <div className="mt-5 rounded-2xl border border-amber-300 bg-[#fff9ed] p-4">
         <p className="font-semibold">Độ tin cậy của dữ liệu trợ năng</p>
@@ -67,6 +67,15 @@ function ExploreContent() {
       {/* Bộ lọc accessibility */}
       <div className="mt-5 rounded-2xl border border-line bg-white p-4 hc-surface hc-border" role="group" aria-label="Lọc theo khả năng tiếp cận">
         <p className="mb-2 text-sm font-semibold text-ink-soft hc-muted">Lọc theo khả năng tiếp cận</p>
+        {levels.length > 1 && (
+          <label className="mb-3 flex flex-wrap items-center gap-2 font-semibold">
+            <span>Mức độ tiếp cận</span>
+            <select value={level} onChange={(e) => setLevel(e.target.value)} className="min-h-[44px] rounded-xl border border-line bg-white px-3 hc-surface hc-border">
+              <option value={LEVEL_ALL}>Mọi mức độ tiếp cận</option>
+              {levels.map((l) => <option key={l} value={l}>{l}</option>)}
+            </select>
+          </label>
+        )}
         <div className="flex flex-wrap gap-2">
           {A11Y_FILTERS.map((f) => (
             <button
@@ -81,8 +90,8 @@ function ExploreContent() {
               {f.label.replace(" (đã xác minh)", "")}
             </button>
           ))}
-          {active.length > 0 && (
-            <button type="button" onClick={() => setFilters({})} className="inline-flex min-h-[40px] items-center px-3 text-sm font-semibold text-accent-dark hover:underline">
+          {(active.length > 0 || level !== LEVEL_ALL) && (
+            <button type="button" onClick={() => { setFilters({}); setLevel(LEVEL_ALL); }} className="inline-flex min-h-[40px] items-center px-3 text-sm font-semibold text-accent-dark hover:underline">
               Xóa lọc
             </button>
           )}
@@ -93,7 +102,7 @@ function ExploreContent() {
       {items.length === 0 ? (
         <p className="hc-muted mt-4 text-ink-soft">Chưa có dịch vụ nào đáp ứng đồng thời các tiêu chí ở chế độ này. Nếu cần thử giao diện, chuyển sang Dữ liệu minh họa; không coi đây là dữ liệu đã khảo sát.</p>
       ) : (
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it) => <CatalogCard key={it.id} item={it} />)}
         </div>
       )}
