@@ -1,5 +1,6 @@
 "use client";
 import EscrowLedgerView from "@/components/EscrowLedgerView";
+import BookingIncident from "@/components/BookingIncident";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -53,6 +54,8 @@ export default function MyBookingPage() {
                   {b.price && <span className="font-bold text-ink">{b.price}</span>}
                 </p>
                 {req?.note && <p className="mt-1 text-sm">Ghi chú của doanh nghiệp: {req.note}</p>}
+                <div className="mt-2 flex flex-wrap gap-2"><Link href={`/review?item=${encodeURIComponent(b.itemId)}&booking=${encodeURIComponent(b.id)}`} className="btn-ghost hc-border">Đánh giá dịch vụ</Link></div>
+                <BookingIncident booking={b} />
               </div>
               <span className={`chip hc-surface hc-border ${bookingStatus(b.status)[1]}`}>{bookingStatus(b.status)[0]}</span>
               <button
