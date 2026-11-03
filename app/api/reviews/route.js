@@ -27,7 +27,13 @@ export const POST=secured(async(req,user)=>{
  if(body.ratings!==undefined&&(!body.ratings||typeof body.ratings!=="object"||Array.isArray(body.ratings)))fail(400,"Ratings phải là object.");
  const ratings={};for(const key of CRITERIA){const n=body.ratings?.[key]??0;if(typeof n!=="number"||!Number.isInteger(n)||n<0||n>5)fail(400,`Điểm ${key} phải là số nguyên 0–5.`);ratings[key]=n;}
  const r=await transaction(db=>{
+  let booking = null;
+  if (body.bookingId !== undefined) {
+   if (typeof body.bookingId !== "string") fail(400, "Mã booking không hợp lệ.");
+   booking = db.bookings.find(x => x.id === body.bookingId && x.ownerId === user.id);
+   if (!booking || booking.itemId !== item.id) fail(404, "Không tìm thấy booking phù hợp với dịch vụ này.");
+  }
   if(db.reviews.filter(x=>x.ownerId===user.id&&Date.parse(x.createdAt)>Date.now()-3600000).length>=20)fail(429,"Đã đạt giới hạn gửi đánh giá trong giờ này.");
-  return insert(db,"reviews",{ownerId:user.id,itemId:item.id,itemName:item.name,author:body.author?.trim()||"Khách ẩn danh",comment:body.comment?.trim()||"",ratings});
+  return insert(db,"reviews",{ownerId:user.id,itemId:item.id,itemName:item.name,...(booking?{bookingId:booking.id}:{}),author:body.author?.trim()||"Khách ẩn danh",comment:body.comment?.trim()||"",ratings});
  });return json(publicReview(r),201);
 },["traveler"],{guest:true});
