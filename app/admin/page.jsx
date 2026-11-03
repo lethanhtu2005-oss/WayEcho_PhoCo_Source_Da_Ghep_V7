@@ -1,5 +1,6 @@
 "use client";
 import EscrowLedgerView from "@/components/EscrowLedgerView";
+import AdminIncidents from "@/components/AdminIncidents";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -59,6 +60,7 @@ export default function AdminDashboard() {
           <p className="hc-muted mt-1 text-ink-soft">Chưa có sự cố SOS nào (demo).</p>
         </div>
       </div>
+    <AdminIncidents />
     <EscrowLedgerView role="admin" />
       </div>
   );
