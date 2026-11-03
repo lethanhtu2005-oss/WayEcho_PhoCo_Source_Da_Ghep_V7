@@ -1,0 +1,11 @@
+"use client";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
+const topics={safety:"An toàn / vật cản",guide:"Hướng dẫn viên",service:"Chất lượng dịch vụ",accessibility:"Khả năng tiếp cận",other:"Khác"};
+export default function AdminIncidents(){
+ const [rows,setRows]=useState([]),[error,setError]=useState(""),[busy,setBusy]=useState("");
+ async function load(){try{setRows(await api.listIncidents());setError("");}catch(e){setError(e.message||"Không tải được sự cố.");}}
+ useEffect(()=>{load();},[]);
+ async function change(id,status){setBusy(id);try{const updated=await api.updateIncident(id,status);setRows(xs=>xs.map(x=>x.id===id?updated:x));}catch(e){setError(e.message);}finally{setBusy("");}}
+ return <section className="mt-8" aria-labelledby="incidents-title"><h2 id="incidents-title" className="text-2xl font-bold">Sự cố gắn với booking</h2><p className="mt-1 text-sm text-ink-soft">Báo cáo do khách gửi từ đơn đặt chỗ. Escrow demo được đóng băng cùng transaction khi trạng thái cho phép.</p>{error&&<p role="alert" className="mt-3 text-red-800">{error}</p>}{rows.length===0&&!error&&<p className="mt-4 rounded-xl border border-line p-4">Chưa có báo cáo sự cố.</p>}<div className="mt-4 space-y-3">{rows.map(r=><article key={r.id} className="rounded-2xl border border-line bg-white p-5 hc-surface hc-border"><div className="flex flex-wrap items-start justify-between gap-2"><div><h3 className="font-bold">{r.itemName}</h3><p className="mt-1 text-xs text-ink-soft">Booking: {r.bookingId}</p></div><span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold">{r.status==="received"?"Mới tiếp nhận":r.status==="reviewing"?"Đang xử lý":"Đã đóng"}</span></div><p className="mt-3 text-sm font-semibold">{topics[r.topic]||r.topic}</p><p className="mt-1 whitespace-pre-wrap">{r.detail}</p><p className="mt-2 text-xs text-ink-soft">Escrow demo: {r.escrowFrozen?"Đã đóng băng":"Không có Escrow đang hoạt động để đóng băng"}</p>{r.status!=="closed"&&<div className="mt-3 flex flex-wrap gap-2"><button disabled={busy===r.id} onClick={()=>change(r.id,"reviewing")} className="btn-ghost hc-border">Đang xử lý</button><button disabled={busy===r.id} onClick={()=>change(r.id,"closed")} className="btn-primary">Đóng báo cáo</button></div>}</article>)}</div></section>;
+}
