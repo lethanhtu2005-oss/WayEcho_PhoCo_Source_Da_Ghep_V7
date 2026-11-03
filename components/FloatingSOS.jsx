@@ -1,0 +1,3 @@
+"use client";
+import Link from "next/link";
+export default function FloatingSOS(){return <aside className="fixed bottom-[266px] right-4 z-[87] md:bottom-[202px] print:hidden" aria-label="Lối tắt SOS"><Link href="/sos" className="flex h-[66px] w-[70px] flex-col items-center justify-center rounded-full border-4 border-white bg-[#bb2d25] text-white shadow-xl focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#fbbf24]" aria-label="Mở SOS và hỗ trợ khẩn cấp. Đây là chức năng demo, không tự gọi cứu hộ"><span className="text-lg" aria-hidden="true">✚</span><span className="text-xs font-black">SOS</span></Link></aside>}

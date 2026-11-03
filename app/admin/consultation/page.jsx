@@ -1,0 +1,4 @@
+import Link from "next/link";import LogoutButton from "@/components/LogoutButton";
+import AdvisorConsultation from "@/app/staff/consultation/page";
+export const metadata={title:"Trung tâm tư vấn viên"};
+export default function InternalConsultation(){return <div className="bg-[#fff8ee] py-6"><div className="container-page mb-4 rounded-2xl border border-[#f1dec5] bg-white p-4"><p className="text-sm font-bold text-[#cb611e]">WAYECHO INTERNAL · TƯ VẤN VIÊN</p><p className="mt-1 text-sm">Màn hình nhân viên nhận phiên camera, thoại và chat do khách chủ động chia sẻ. Kết nối video hiện là mô phỏng, phụ thuộc HTTPS/WebRTC.</p></div><div className="container-page mb-3 flex items-center gap-3"><LogoutButton/><Link href="/internal/login" className="btn-ghost">Đổi tài khoản</Link></div><AdvisorConsultation/></div>}
