@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import CatalogCard from "@/components/CatalogCard";
+import OldQuarterDiscovery from "@/components/OldQuarterDiscovery";
 import { CATEGORIES, byCategory, catLabel } from "@/data/catalog";
 import { itemA11y, A11Y_FILTERS } from "@/data/businesses";
 
@@ -52,6 +53,8 @@ function ExploreContent() {
           </Link>
         ))}
       </nav>
+
+      {cat === "destination" && <OldQuarterDiscovery embedded />}
 
       <div className="mt-5 rounded-2xl border border-amber-300 bg-[#fff9ed] p-4">
         <p className="font-semibold">Độ tin cậy của dữ liệu trợ năng</p>

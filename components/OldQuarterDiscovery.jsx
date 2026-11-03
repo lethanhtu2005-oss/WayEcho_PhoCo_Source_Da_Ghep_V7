@@ -7,7 +7,7 @@ import { discoveryPlaces, discoveryCategories, accessLevels, filterDiscovery } f
 
 const BADGE = { good: "bg-[#dff5ea] text-[#0b5a3a]", medium: "bg-[#fff1bf] text-[#7a4d00]", assist: "bg-[#ffe1d6] text-[#8a2c0c]" };
 
-export default function OldQuarterDiscovery() {
+export default function OldQuarterDiscovery({ embedded = false }) {
   const [category, setCategory] = useState("Tất cả");
   const [level, setLevel] = useState("all");
   const [speaking, setSpeaking] = useState("");
@@ -30,9 +30,9 @@ export default function OldQuarterDiscovery() {
   }
 
   return (
-    <section className="py-12" aria-labelledby="discovery-heading">
-      <div className="container-page">
-        <h2 id="discovery-heading" className="text-4xl">Khám phá theo mức độ tiếp cận</h2>
+    <section id="kham-pha-tiep-can" className={embedded ? "mt-10 scroll-mt-24" : "py-12"} aria-labelledby="discovery-heading">
+      <div className={embedded ? "" : "container-page"}>
+        <h2 id="discovery-heading" className="text-3xl sm:text-4xl">Khám phá theo mức độ tiếp cận</h2>
         <p className="mt-1 text-ink-soft hc-muted">Lọc điểm đến Phố cổ theo loại hình và mức độ tiếp cận. Thông tin mang tính tham khảo (DEMO), chưa xác minh tại chỗ; ảnh là ảnh minh họa.</p>
 
         <div className="mt-5 flex flex-wrap items-center gap-3" role="group" aria-label="Bộ lọc điểm đến">
@@ -71,6 +71,10 @@ export default function OldQuarterDiscovery() {
                 <div className="mt-2 grid grid-cols-2 gap-2">
                   <Link href="/navigation" className="btn-ghost hc-border min-h-[44px]">Chỉ đường</Link>
                   <Link href="/my-trip" className="btn-ghost hc-border min-h-[44px]">Thêm vào chuyến đi</Link>
+                </div>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  <Link href="/services/guides" className="btn-ghost hc-border min-h-[44px]">Tìm Guide đồng hành</Link>
+                  <Link href="/services/ride-booking" className="btn-ghost hc-border min-h-[44px]">Đặt xe di chuyển</Link>
                 </div>
               </div>
             </article>

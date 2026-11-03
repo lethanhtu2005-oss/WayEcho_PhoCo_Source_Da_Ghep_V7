@@ -2,7 +2,6 @@ import {pageMetadata,siteOrigin,jsonLd} from "@/lib/seo";
 import Link from "next/link";
 import DestinationGallery from "@/components/DestinationGallery";
 import HomeOldQuarterCards from "@/components/HomeOldQuarterCards";
-import OldQuarterDiscovery from "@/components/OldQuarterDiscovery";
 import SoundWalkBar from "@/components/SoundWalkBar";
 import { destinations } from "@/data/destinations";
 import VerifiedImage from "@/components/VerifiedImage";
@@ -229,7 +228,6 @@ export default function HomePage() {
       </section>
 
       <HomeOldQuarterCards />
-      <OldQuarterDiscovery />
       <SoundWalkBar />
 
       <section className="container-page py-12" aria-labelledby="help-heading">

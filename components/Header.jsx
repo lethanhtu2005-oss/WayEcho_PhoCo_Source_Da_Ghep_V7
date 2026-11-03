@@ -10,7 +10,7 @@ import {AccessibleIcon, ContrastIcon, TextSizeIcon, SpeakerIcon, UserIcon, MenuI
 
 const NAV = [
   {label:"Điểm đến",href:"/destination",links:[["Khám phá điểm đến","/destination"],["Tìm kiếm điểm đến","/search"],["Bản đồ du lịch","/navigation"]]},
-  {label:"Dịch vụ",href:"/explore",links:[["Lưu trú","/explore?cat=accommodation"],["Ẩm thực","/explore?cat=restaurant"],["Di chuyển","/services/ride-booking"],["Guide đồng hành","/services/guides"],["Vé tham quan","/explore?cat=ticket"],["Tour & Trải nghiệm","/explore?cat=activity"],["Đặt dịch vụ","/booking"]]},
+  {label:"Dịch vụ",href:"/explore",links:[["Khám phá theo mức độ tiếp cận","/explore#kham-pha-tiep-can"],["Lưu trú","/explore?cat=accommodation"],["Ẩm thực","/explore?cat=restaurant"],["Di chuyển","/services/ride-booking"],["Guide đồng hành","/services/guides"],["Vé tham quan","/explore?cat=ticket"],["Tour & Trải nghiệm","/explore?cat=activity"],["Đặt dịch vụ","/booking"]]},
   {label:"Blog & Trải nghiệm",href:"/articles",links:[["Cẩm nang du lịch","/articles"],["Du lịch tiếp cận","/articles"],["Gợi ý hành trình","/articles"],["Câu chuyện trải nghiệm","/articles"],["Mẹo du lịch","/articles"]]},
   {label:"Hỗ trợ",href:"/help",links:[["Hồ sơ tiếp cận","/profile"],["Hướng dẫn tương tác","/onboarding"],["Hướng dẫn sử dụng","/help"],["Liên hệ hỗ trợ","/help#contact"],["SOS – hỗ trợ khẩn cấp","/sos"]]},
   {label:"Đối tác",href:"/partner",links:[["Cổng Partner","/partner"],["Đăng nhập đối tác","/partner/login"],["Dành cho doanh nghiệp","/partners/business"],["Trở thành Guide","/partners/guide"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
