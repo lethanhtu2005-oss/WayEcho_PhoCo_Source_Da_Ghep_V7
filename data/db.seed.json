@@ -4,5 +4,13 @@
   "trip": [],
   "reviews": [],
   "requests": [],
-  "notifications": []
+  "notifications": [],
+  "users": [],
+  "loginAttempts": [],
+  "inquiries": [],
+  "reports": [],
+  "escrow": [],
+  "rides": [],
+  "consultations": [],
+  "incidents": []
 }
