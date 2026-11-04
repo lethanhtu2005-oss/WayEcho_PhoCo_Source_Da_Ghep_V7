@@ -12,7 +12,7 @@ test('20 original SEO posts are individually present',()=>{
 test('Existing article flow lists and serves 20 new posts',()=>{
  const list=fs.readFileSync(path.join(root,'app/articles/page.jsx'),'utf8');
  const detail=fs.readFileSync(path.join(root,'app/articles/[slug]/page.jsx'),'utf8');
- assert.match(list,/seoOldQuarterPosts\.map/);
+ assert.match(list,/seoOldQuarterPosts/);assert.match(list,/postsInSection/);
  assert.match(detail,/getSeoOldQuarterPost\(slug\)/);
  assert.match(detail,/imageSource/);
 });
