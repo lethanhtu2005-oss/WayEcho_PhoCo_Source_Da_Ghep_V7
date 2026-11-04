@@ -7,7 +7,7 @@ import { useA11y } from "@/components/A11yProvider";
 const initialRequests = [
   {
     id: "req-1",
-    touristName: "Bác Nguyễn Văn Thành",
+    touristName: "Khách A (minh họa)",
     disabilityType: "Khiếm thị hoàn toàn (B1)",
     time: "Ngay bây giờ (Cần gấp)",
     pickup: "28 Hàng Buồm (Đền Quan Đế)",
@@ -15,11 +15,11 @@ const initialRequests = [
     distance: "250m • Đi bộ khoảng 5 phút",
     notes: "Có mang gậy trắng. Cần 1 tình nguyện viên đi cạnh hỗ trợ qua ngã tư Hàng Buồm - Tạ Hiện và bước qua bậc cửa gỗ cao 18cm tại 87 Mã Mây.",
     status: "pending",
-    phone: "0912 xxx 889"
+    phone: "Số điện thoại ẩn"
   },
   {
     id: "req-2",
-    touristName: "Bạn Lê Thu Trang",
+    touristName: "Khách B (minh họa)",
     disabilityType: "Nhìn kém (Thị lực < 1/10)",
     time: "15 phút nữa (14:30)",
     pickup: "42 Hàng Bạc (Đình Kim Ngân)",
@@ -28,11 +28,11 @@ const initialRequests = [
     notes: "Cần hỗ trợ định hướng qua khu vực Hàng Bạc đông xe máy và tìm lối vào sảnh chính có ánh sáng tốt.",
     status: "in_progress",
     assignedTo: "TNV Vũ Minh Đức (Đang di chuyển)",
-    phone: "0983 xxx 445"
+    phone: "Số điện thoại ẩn"
   },
   {
     id: "req-3",
-    touristName: "David Miller & Phiên dịch",
+    touristName: "Khách C quốc tế (minh họa)",
     disabilityType: "Du khách khiếm thị quốc tế",
     time: "15:15 chiều nay",
     pickup: "Ô Quan Chưởng",
@@ -40,7 +40,7 @@ const initialRequests = [
     distance: "400m",
     notes: "Cần bạn giao tiếp tiếng Anh cơ bản, hướng dẫn trải nghiệm khứu giác khu gia vị Chợ Đồng Xuân.",
     status: "pending",
-    phone: "0904 xxx 112"
+    phone: "Số điện thoại ẩn"
   }
 ];
 
@@ -133,7 +133,7 @@ export default function VolunteerPortalPage() {
   return (
     <div className="container-page max-w-7xl mx-auto px-4 py-8 sm:py-10">
       <p role="note" className="mb-4 rounded-2xl border-2 border-[#825500] bg-[#fff4d6] px-4 py-3 text-sm font-bold text-[#4a3000]">
-        DEMO: tên, số điện thoại, ca trực và chỉ số trên trang này là dữ liệu minh họa, không phải người hay yêu cầu thật. Thao tác "Nhận ca" chỉ đổi trạng thái trên trình duyệt này và không được lưu hay gửi tới ai.
+        DEMO: tên, số điện thoại, ca trực và chỉ số trên trang này là dữ liệu minh họa, không phải người hay yêu cầu thật. Thao tác &ldquo;Nhận ca&rdquo; chỉ đổi trạng thái trên trình duyệt này và không được lưu hay gửi tới ai.
       </p>
       {/* Station Overview & Status Bar */}
       <section aria-label="Trạng thái ca trực" className="rounded-3xl border border-[#ebd9c5] bg-white p-6 sm:p-8 shadow-sm">
@@ -145,12 +145,12 @@ export default function VolunteerPortalPage() {
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-[#f0fdfa] border border-[#99f6e4] px-3 py-0.5 text-xs font-bold text-[#0f766e]">
-                  TNV THẺ CAM WBU
+                  TNV (thẻ minh họa)
                 </span>
-                <span className="text-xs text-[#665b50]">Mã: TNV-HN09</span>
+                <span className="text-xs text-[#665b50]">Mã: demo</span>
               </div>
               <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#352016]">
-                Trần Mai Anh · Trạm Trực 28 Hàng Buồm
+                Tình nguyện viên mẫu · Trạm Trực 28 Hàng Buồm
               </h2>
               <p className="mt-1 text-sm text-[#554336]">
                 Ca trực chiều: <strong>13:30 – 17:30</strong> • Khu vực phụ trách: Hàng Buồm, Mã Mây, Hàng Bạc, Đào Duy Từ
@@ -303,12 +303,15 @@ export default function VolunteerPortalPage() {
                         </button>
                       )}
 
-                      <a
-                        href={`tel:${req.phone.replace(/[^0-9]/g, "")}`}
-                        className="rounded-xl border border-[#ebd9c5] bg-white px-3 py-2 text-xs font-semibold text-[#554336] hover:bg-[#f0e7dd]"
+                      <button
+                        type="button"
+                        disabled
+                        aria-disabled="true"
+                        title="Chức năng gọi điện chưa có trong bản DEMO"
+                        className="rounded-xl border border-[#ebd9c5] bg-white px-3 py-2 text-xs font-semibold text-[#554336] opacity-60"
                       >
-                        Gọi điện
-                      </a>
+                        Gọi điện (chưa có trong DEMO)
+                      </button>
                     </div>
                   </div>
                 </article>

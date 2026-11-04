@@ -5,10 +5,10 @@ import { businessIdForItem } from "@/data/businesses";
 import { getItem } from "@/data/catalog";
 import { readJson, cleanText, intInRange, canTransitionBooking, MAX_GUESTS, validBookingDate, isPastBookingDate } from "@/lib/validate";
 import { secured, fail, json, digest } from "@/lib/auth";
-import { filterBusiness, findVisible } from "@/lib/permissions";
+import { filterBusiness, findVisible, forViewer } from "@/lib/permissions";
 export const dynamic = "force-dynamic";
 
-export const GET = secured(async (req, user) => json(filterBusiness(user, await list("bookings"), new URL(req.url).searchParams.get("business"))), undefined, { guest: true });
+export const GET = secured(async (req, user) => json(forViewer(user, filterBusiness(user, await list("bookings"), new URL(req.url).searchParams.get("business")))), undefined, { guest: true });
 export const POST = secured(async (req, user) => {
   const body = await readJson(req);
   if (!body) fail(400,"Dữ liệu gửi lên không hợp lệ.");
@@ -61,5 +61,5 @@ export const PATCH = secured(async (req,user)=>{
     insert(db,"notifications",{ownerId:record.ownerId,role:"traveler",type:"booking_status",message:`Booking DEMO "${record.itemName}": ${body.status === "confirmed" ? "đã xác nhận trong hệ thống demo" : body.status === "rejected" ? "đã từ chối" : "đã hủy"}.`});
     return record;
   });
-  return json(result);
+  return json(forViewer(user, result));
 },["traveler","business","admin"]);

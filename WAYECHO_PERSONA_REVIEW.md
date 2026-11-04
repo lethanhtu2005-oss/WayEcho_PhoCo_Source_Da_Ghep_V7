@@ -52,12 +52,19 @@ Nhánh: `imninh`. Phạm vi: đóng vai Traveler (người khiếm thị), Busin
 | `components/Header.jsx` | Viết lại điều kiện hiển thị "Vào bảng điều khiển" (không còn chuỗi `role!=="admin"`) nhưng hành vi giữ nguyên, sửa test Header đang hỏng. |
 | `tests/access-status.test.mjs` (mới) | Test cho `honestAccessStatus`. |
 
+## 3b. Đợt sửa bổ sung
+
+| File | Sửa đổi |
+|---|---|
+| `lib/permissions.js`, `app/api/bookings/route.js`, `app/api/requests/route.js` | Thêm `forViewer`: Business và Guide không còn nhận `ownerId` (mã khách) trong phản hồi. Traveler và Admin giữ nguyên. Có test. |
+| `app/volunteer/page.jsx` | Ẩn tên và số điện thoại mẫu ("Khách A/B/C (minh họa)", "Số điện thoại ẩn"), bỏ mã thẻ và tên người thật-giống. Nút "Gọi điện" tạo link `tel:` rỗng nên đổi thành nút vô hiệu hóa ghi rõ chưa có trong DEMO. |
+
+Kiểm tra lại sau đợt này: `npm test` 119/119, `npm run build` đạt, `scripts/http-smoke.mjs` 241/241 (gồm kiểm tra phân quyền các vai và khởi động lại server), lint 0 lỗi.
+
 ## 4. Chưa làm / đề xuất tiếp
 
-1. Volunteer: nên đặt sau đăng nhập và lưu ca thật qua API, hoặc ẩn thông tin người khách.
-2. Hợp nhất ảnh hero với `VerifiedImage` có màu nền giữ chỗ để tránh nhảy bố cục.
-3. Bỏ `ownerId` khỏi phản hồi `/api/bookings` cho Business/Guide.
-4. Kiểm tra bằng screen reader thật, kiểm tra responsive và nhóm 15 ảnh điểm đến theo `WAYECHO V7.docx`.
-5. Chưa chạy `scripts/http-smoke.mjs`; chưa kiểm thử luồng Traveler → Guide / Volunteer và các trang Admin.
-6. Chưa rà toàn bộ yêu cầu Phần III–IX của master prompt (Header đã có đúng 5 nhóm; Footer/Admin còn cần đối chiếu).
-7. 8 cảnh báo lint `window.location.assign` còn tồn.
+1. Volunteer: vẫn nên đặt sau đăng nhập và lưu ca thật qua API; hiện chỉ là bản minh họa đã ẩn dữ liệu cá nhân.
+2. Thay 15 ảnh trang Điểm đến theo `WAYECHO V7.docx` (cần nguồn ảnh có quyền sử dụng rõ ràng; chưa làm vì không có ảnh đã xác minh bản quyền).
+3. Chưa kiểm bằng screen reader thật, chưa kiểm responsive trên thiết bị thật.
+4. 8 cảnh báo lint `window.location.assign` còn nguyên: chủ ý tải lại trang đầy đủ sau đăng nhập/đăng xuất để làm mới phiên, đổi sang `router.push` cần kiểm lại luồng phiên.
+5. Rà soát toàn bộ Phần III–IX của master prompt mới ở mức quét; Header có đúng 5 nhóm, Admin chỉ ở Footer (đã có test).
