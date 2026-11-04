@@ -152,9 +152,9 @@ export default function ExploreTransitGuide() {
           {/* Transit Image Preview */}
           <div className="relative rounded-2xl overflow-hidden border border-line shadow-sm group">
             <VerifiedImage
-              src="/assets/images/we-ai-pho-co-ha-noi-cho-dong-xuan.jpg"
+              src="/assets/images/we-ai-xe-dien-du-lich.jpg"
               fallback="/assets/images/location-image-unavailable.svg"
-              alt="Tuyến xe điện du lịch sàn thấp hỗ trợ tiếp cận trên đường phố cổ Hà Nội"
+              alt="Ảnh AI minh họa dịch vụ xe điện du lịch sàn thấp; không phải ảnh chụp thực tế."
               className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5">

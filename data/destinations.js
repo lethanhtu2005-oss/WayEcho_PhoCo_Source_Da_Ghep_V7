@@ -2,7 +2,9 @@
 // Khảo sát & chuẩn hóa thông tin tiếp cận cho người mù và người nhìn kém
 // Tất cả thông tin tiếp cận, nguồn đối chiếu, giờ mở cửa và giá vé đều được ghi rõ.
 
-export const destinations = [
+import destinationPhotos from "./destinationPhotos.js";
+
+const baseDestinations = [
   // 1. Nhà cổ 87 Mã Mây
   {
     slug: "nha-co-87-ma-may",
@@ -958,6 +960,35 @@ export const destinations = [
     sources: []
   }
 ];
+
+// Ảnh thật tải về từ Wikimedia Commons (data/destinationPhotos.js do scripts/fetch-commons-photos.mjs sinh ra).
+// Chỉ ghi đè khi có ảnh đã kiểm tra giấy phép; ảnh lỗi thì rơi về placeholder trung tính, không dùng ảnh địa điểm khác.
+export const destinations = baseDestinations.map((d) => {
+  const p = destinationPhotos[d.slug];
+  if (!p) {
+    // Chưa có ảnh thật đã kiểm tra: không dùng ảnh chung hay ảnh AI gắn tên địa điểm cụ thể.
+    const generic = /old-quarter-street|-ai\.webp|we-ai-/.test(d.image || "");
+    if (!generic) return d;
+    return {
+      ...d,
+      image: "/assets/images/location-image-unavailable.svg",
+      imageSrcSet: undefined,
+      imageFallback: "/assets/images/location-image-unavailable.svg",
+      alt: `Chưa có ảnh chụp thực tế đã xác minh cho ${d.name}.`,
+      imageCredit: "Chưa có ảnh đã xác minh nguồn và giấy phép",
+      imageSource: null,
+    };
+  }
+  return {
+    ...d,
+    image: p.image,
+    imageSrcSet: p.imageSrcSet,
+    imageFallback: "/assets/images/location-image-unavailable.svg",
+    alt: p.alt,
+    imageCredit: p.imageCredit,
+    imageSource: p.imageSource,
+  };
+});
 
 export function getDestination(slug) {
   return destinations.find((d) => d.slug === slug) || null;
