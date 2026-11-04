@@ -6,12 +6,13 @@ const ROLE_INFO = {
   traveler: { label: "Khách hàng", icon: "👤", home: "/profile" },
   guide: { label: "Hướng dẫn viên", icon: "🧭", home: "/guide" },
   business: { label: "Doanh nghiệp", icon: "🏨", home: "/business" },
+  volunteer: { label: "Tình nguyện viên", icon: "🤝", home: "/volunteer" },
   admin: { label: "Quản trị viên", icon: "⚙️", home: "/admin" },
   advisor: { label: "Tư vấn viên", icon: "🎧", home: "/admin/consultation" },
 };
 
 export default function LoginForm({ portal = "all" }) {
-  const roles = portal === "traveler" ? ["traveler"] : portal === "partner" ? ["guide","business"] : portal === "internal" ? ["admin","advisor"] : ["traveler", "guide", "business", "admin", "advisor"];
+  const roles = portal === "traveler" ? ["traveler"] : portal === "partner" ? ["business","guide","volunteer"] : portal === "internal" ? ["admin","advisor"] : ["traveler", "guide", "business", "admin", "advisor"];
   const [role, setRole] = useState(roles[0]);
   const [name, setName] = useState("");
   const [error, setError] = useState("");
