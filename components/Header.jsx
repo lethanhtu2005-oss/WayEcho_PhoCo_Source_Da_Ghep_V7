@@ -13,11 +13,10 @@ const NAV = [
   {label:"Dịch vụ",href:"/explore",links:[["Lưu trú","/explore?cat=accommodation"],["Ẩm thực","/explore?cat=restaurant"],["Di chuyển","/services/ride-booking"],["Guide đồng hành","/services/guides"],["Vé tham quan","/explore?cat=ticket"],["Tour & Trải nghiệm","/explore?cat=activity"],["Đặt dịch vụ","/booking"]]},
   {label:"Blog & Trải nghiệm",href:"/articles",links:[["Cẩm nang du lịch","/articles"],["Du lịch tiếp cận","/articles"],["Gợi ý hành trình","/articles"],["Câu chuyện trải nghiệm","/articles"],["Mẹo du lịch","/articles"]]},
   {label:"Hỗ trợ",href:"/help",links:[["Hồ sơ tiếp cận","/profile"],["Hướng dẫn tương tác","/onboarding"],["Hướng dẫn sử dụng","/help"],["Liên hệ hỗ trợ","/help#contact"],["SOS – hỗ trợ khẩn cấp","/sos"]]},
-  {label:"Đối tác",href:"/partner",links:[["Cổng đối tác chung","/partner"],["Hướng dẫn viên (Guide)","/guide"],["Tình nguyện viên (Trạm 28 Hàng Buồm)","/volunteer"],["Doanh nghiệp tiếp cận","/business"],["Đăng nhập đối tác","/partner/login"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
+  {label:"Đối tác",href:"/partner",links:[["Cổng Đối tác","/partner"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
 ];
 
-const ROLE_LABELS = {traveler:"Khách hàng",guide:"Hướng dẫn viên",business:"Đối tác doanh nghiệp",admin:"Quản trị viên",advisor:"Tư vấn viên"};
-const ROLE_HOME = {traveler:"/profile",guide:"/guide",business:"/business",admin:"/admin",advisor:"/admin/consultation"};
+const isCustomerSession = session => Boolean(session && !session.guest && session.role === "traveler");
 const menuLink = "flex min-h-11 items-center rounded-xl px-3 py-2.5 text-sm font-semibold text-[#452a1d] transition-colors hover:bg-[#fff0df] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a94c1c]";
 
 function Chevron() {
@@ -73,7 +72,7 @@ export default function Header() {
 
   if (isInternalPortalPath(pathname)) return null;
   const close = () => {setMenu(null);setMobile(false);setAccess(false);setAccount(false);};
-  const authenticated = Boolean(session && !session.guest);
+  const authenticated = isCustomerSession(session);
 
   async function logoutAccount() {
     setLogoutBusy(true);setAccountError("");
@@ -129,18 +128,19 @@ export default function Header() {
           </button>
           {account && <div id="we-account-dropdown" aria-label="Tùy chọn tài khoản" className="glass-liquid-warm we-dropdown absolute right-0 top-full z-50 mt-2 w-[min(300px,calc(100vw-24px))] rounded-[22px] border border-[#ead7c7] p-2.5 shadow-[0_18px_48px_rgba(65,33,17,.16)] hc-surface hc-border">
             <div className="mb-1 rounded-xl bg-[#fff3e7] px-3 py-3 text-[#492c1e] border border-[#f0dfd0]">
-              <p className="text-sm font-bold">{sessionLoading?"Đang kiểm tra tài khoản…":authenticated?`Tài khoản ${ROLE_LABELS[session.role]||"WayEcho"}`:"Xin chào bạn!"}</p>
-              <p className="mt-1 text-xs text-[#70564a]">{authenticated?"Bạn đang đăng nhập vào WayEcho.":"Đăng nhập để quản lý chuyến đi và đặt chỗ của bạn."}</p>
+              <p className="text-sm font-bold">{sessionLoading?"Đang kiểm tra tài khoản…":authenticated?"Tài khoản khách hàng":session && !session.guest?"Phiên đăng nhập nhân sự":"Xin chào bạn!"}</p>
+              <p className="mt-1 text-xs text-[#70564a]">{authenticated?"Bạn đang đăng nhập vào WayEcho.":session && !session.guest?"Khu vực nhân sự được truy cập riêng qua Cổng Admin hoặc Cổng Đối tác.":"Đăng nhập để quản lý chuyến đi và đặt chỗ của bạn."}</p>
             </div>
             {sessionLoading ? <p role="status" className="px-3 py-3 text-sm">Đang tải thông tin tài khoản…</p> : authenticated ? <>
-              <Link href={ROLE_HOME[session.role] || "/profile"} onClick={close} className={menuLink}>{session.role==="traveler"?"Hồ sơ của tôi":"Vào bảng điều khiển"}</Link>
-              {session.role==="traveler" && <>
+              <Link href="/profile" onClick={close} className={menuLink}>Hồ sơ của tôi</Link>
+              {authenticated && <>
                 <Link href="/my-booking" onClick={close} className={menuLink}>Đặt chỗ của tôi</Link>
                 <Link href="/my-trip" onClick={close} className={menuLink}>Chuyến đi của tôi</Link>
               </>}
               <div className="my-1 border-t border-[#f0dfd0]"/>
               <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} w-full text-left text-[#a13d1c] disabled:opacity-60`}>{logoutBusy?"Đang đăng xuất…":"Đăng xuất / Chuyển tài khoản"}</button>
             </> : <>
+              {session && !session.guest && <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} w-full text-left text-[#a13d1c] disabled:opacity-60`}>Đăng xuất phiên nhân sự</button>}
               <Link href="/login" onClick={close} className={`${menuLink} bg-[#fff0df]`}>Đăng nhập khách hàng</Link>
               <div className="my-1 border-t border-[#f0dfd0]"/>
               <Link href="/profile" onClick={close} className={menuLink}>Hồ sơ tiếp cận trên thiết bị</Link>
