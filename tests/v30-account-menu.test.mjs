@@ -23,7 +23,7 @@ test('V30 user dropdown is for customers only; Partner and internal login are se
   assert.match(header, /guest/);
   assert.match(header, /Đăng nhập khách hàng/);
   const navSection = header.match(/\{label:"Đối tác"[^\n]+/);
-  assert.ok(navSection && navSection[0].includes('"/partner/login"'));
+  assert.ok(navSection && navSection[0].includes('"/partner"'));
   const loginForm=await readFile(new URL('../components/LoginForm.jsx', import.meta.url),'utf8');
   const customerLogin=await readFile(new URL('../app/login/page.jsx', import.meta.url),'utf8');
   assert.match(customerLogin, /portal="traveler"/);

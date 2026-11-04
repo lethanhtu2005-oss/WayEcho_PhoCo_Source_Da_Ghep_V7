@@ -9,7 +9,7 @@ const footerLink = "inline-flex min-h-11 items-center rounded-md text-sm text-[#
 const sections = [
   {label:"Khám phá", links:[["Điểm đến Phố cổ","/destination"],["Dịch vụ du lịch","/explore"],["Blog & Trải nghiệm","/articles"],["Bản đồ & vị trí","/navigation"],["Đặt xe (mô phỏng)","/services/ride-booking"]]},
   {label:"Hỗ trợ", links:[["Trung tâm trợ giúp","/help"],["Hướng dẫn tương tác","/onboarding"],["Tuyên bố tiếp cận","/accessibility"],["Liên hệ WayEcho","/contact"],["SOS (mô phỏng)","/sos"]]},
-  {label:"Dành cho đối tác", links:[["Đăng ký hợp tác","/partners/cooperate"],["Cổng Partner","/partner"],["Đăng nhập Partner","/partner/login"],["Hướng dẫn viên & TNV","/partners/guide"],["Doanh nghiệp","/partners/business"]]},
+  {label:"Dành cho đối tác", links:[["Đăng ký hợp tác","/partners/cooperate"],["Cổng Đối Tác Liên Thông","/partner"],["Hướng dẫn viên & TNV","/partners/guide"],["Doanh nghiệp","/partners/business"]]},
   {label:"Về WayEcho", links:[["Giới thiệu","/help"],["Quyền riêng tư","/privacy"],["Điều khoản sử dụng","/terms"],["Nguồn ảnh & giấy phép","/photo-credits"]]},
 ];
 

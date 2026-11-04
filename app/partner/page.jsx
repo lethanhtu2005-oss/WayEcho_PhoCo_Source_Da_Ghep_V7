@@ -1,14 +1,15 @@
 import Link from "next/link";
+import PartnerEnter from "@/components/PartnerEnter";
 
 export const metadata = {
-  title: "Cổng Chung Dành Cho Đối Tác · WayEcho Phố Cổ Hà Nội",
+  title: "Cổng Đối Tác Liên Thông · WayEcho Phố Cổ Hà Nội",
   description:
     "Không gian hợp tác liên thông dành cho Hướng dẫn viên, Tình nguyện viên cộng đồng và Doanh nghiệp tiếp cận tại Phố cổ Hà Nội."
 };
 
 const partnerRoles = [
   {
-    id: "guide",
+    id: "guide", role: "guide",
     title: "Hướng Dẫn Viên & Sighted Guide",
     badge: "Chuyên môn 1-1",
     icon: "🧭",
@@ -21,17 +22,15 @@ const partnerRoles = [
       "Bản đồ cảnh báo rào cản vỉa hè theo thời gian thực"
     ],
     primaryAction: {
-      label: "Mở Dashboard Hướng Dẫn Viên →",
+      label: "Vào cổng Hướng dẫn viên →",
       href: "/guide"
     },
     secondaryActions: [
       { label: "Xem lịch ca sắp tới", href: "/guide/schedule" },
-      { label: "Đăng nhập Guide", href: "/partner/login" },
-      { label: "Đăng ký gia nhập mạng lưới", href: "/partners/guide" }
     ]
   },
   {
-    id: "volunteer",
+    id: "volunteer", role: "guide",
     title: "Tình Nguyện Viên Phố Cổ",
     badge: "Cộng đồng hỗ trợ",
     icon: "🤝",
@@ -44,17 +43,16 @@ const partnerRoles = [
       "Túi sơ cấp cứu & mượn thiết bị trợ thị (Gậy, tai nghe)"
     ],
     primaryAction: {
-      label: "Vào Trạm Tình Nguyện Viên →",
+      label: "Vào cổng Tình nguyện viên →",
       href: "/volunteer"
     },
     secondaryActions: [
       { label: "Quy chuẩn đồng hành WBU", href: "/volunteer#wbu-guidelines" },
       { label: "Bảng tin khảo sát rào cản", href: "/volunteer#audit-feed" },
-      { label: "Đăng ký ca trực mới", href: "/partners/cooperate" }
     ]
   },
   {
-    id: "business",
+    id: "business", role: "business",
     title: "Doanh Nghiệp & Điểm Đến Di Sản",
     badge: "Cơ sở tiếp cận",
     icon: "🏛️",
@@ -67,13 +65,11 @@ const partnerRoles = [
       "Gắn nhãn Đối tác Tiếp cận có kiểm định tại thực địa"
     ],
     primaryAction: {
-      label: "Mở Portal Doanh Nghiệp →",
+      label: "Vào cổng Doanh nghiệp →",
       href: "/business"
     },
     secondaryActions: [
       { label: "Quản lý dịch vụ & tiếp cận", href: "/business/services" },
-      { label: "Đăng nhập Doanh nghiệp", href: "/partner/login" },
-      { label: "Đề xuất hợp tác cơ sở", href: "/partners/business" }
     ]
   }
 ];
@@ -98,7 +94,7 @@ export default function PartnerGateway() {
           </div>
 
           <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#352016] sm:text-5xl">
-            Cổng Chung Dành Cho Đối Tác
+            Cổng Đối Tác Liên Thông
           </h1>
 
           <p className="mt-3 max-w-3xl text-lg text-[#554336] leading-relaxed">
@@ -133,7 +129,7 @@ export default function PartnerGateway() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-[#352016]">Chọn Cổng Làm Việc Của Bạn</h2>
-              <p className="text-sm text-[#665b50]">Nhấp vào nhóm đối tác tương ứng để vào không gian làm việc hoặc đăng nhập phân quyền</p>
+              <p className="text-sm text-[#665b50]">Một cổng duy nhất: bấm vào nhóm của bạn để vào thẳng không gian làm việc. Đăng nhập chỉ mang tính minh họa, không cần tài khoản hay mật khẩu.</p>
             </div>
           </div>
 
@@ -179,12 +175,7 @@ export default function PartnerGateway() {
                 </div>
 
                 <div className="mt-6 pt-5 border-t border-[#f0e7dd]">
-                  <Link
-                    href={role.primaryAction.href}
-                    className="flex w-full items-center justify-center rounded-xl bg-[#f8ae38] hover:bg-[#e09f2f] text-[#212529] px-4 py-3 text-sm font-bold shadow-sm transition-all text-center focus:ring-4 focus:ring-amber-200"
-                  >
-                    {role.primaryAction.label}
-                  </Link>
+                  <PartnerEnter role={role.role} href={role.primaryAction.href} label={role.primaryAction.label} color={role.color} />
 
                   <div className="mt-3 flex flex-col gap-1.5">
                     {role.secondaryActions.map((sec, sIdx) => (
@@ -223,10 +214,10 @@ export default function PartnerGateway() {
 
             <div className="flex flex-wrap gap-3 shrink-0">
               <Link
-                href="/partner/login"
+                href="/partners/cooperate"
                 className="rounded-xl border border-[#d66217] bg-white px-4 py-2.5 text-sm font-bold text-[#d66217] hover:bg-[#ffedd5] transition-colors"
               >
-                🔑 Đăng nhập tài khoản đối tác
+                📝 Đăng ký hợp tác
               </Link>
               <Link
                 href="/sos"

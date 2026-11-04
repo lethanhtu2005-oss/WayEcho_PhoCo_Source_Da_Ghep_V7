@@ -13,7 +13,7 @@ const NAV = [
   {label:"Dịch vụ",href:"/explore",links:[["Lưu trú","/explore?cat=accommodation"],["Ẩm thực","/explore?cat=restaurant"],["Di chuyển","/services/ride-booking"],["Guide đồng hành","/services/guides"],["Vé tham quan","/explore?cat=ticket"],["Tour & Trải nghiệm","/explore?cat=activity"],["Đặt dịch vụ","/booking"]]},
   {label:"Blog & Trải nghiệm",href:"/articles",links:[["Cẩm nang du lịch","/articles"],["Du lịch tiếp cận","/articles"],["Gợi ý hành trình","/articles"],["Câu chuyện trải nghiệm","/articles"],["Mẹo du lịch","/articles"]]},
   {label:"Hỗ trợ",href:"/help",links:[["Hồ sơ tiếp cận","/profile"],["Hướng dẫn tương tác","/onboarding"],["Hướng dẫn sử dụng","/help"],["Liên hệ hỗ trợ","/help#contact"],["SOS – hỗ trợ khẩn cấp","/sos"]]},
-  {label:"Đối tác",href:"/partner",links:[["Cổng đối tác chung","/partner"],["Hướng dẫn viên (Guide)","/guide"],["Tình nguyện viên (Trạm 28 Hàng Buồm)","/volunteer"],["Doanh nghiệp tiếp cận","/business"],["Đăng nhập đối tác","/partner/login"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
+  {label:"Đối tác",href:"/partner",links:[["Cổng Đối Tác Liên Thông","/partner"],["Hướng dẫn viên (Guide)","/guide"],["Tình nguyện viên (Trạm 28 Hàng Buồm)","/volunteer"],["Doanh nghiệp tiếp cận","/business"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
 ];
 
 const ROLE_LABELS = {traveler:"Khách hàng",guide:"Hướng dẫn viên",business:"Đối tác doanh nghiệp",admin:"Quản trị viên",advisor:"Tư vấn viên"};

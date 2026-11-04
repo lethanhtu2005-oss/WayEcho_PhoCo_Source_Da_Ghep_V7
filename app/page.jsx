@@ -352,7 +352,7 @@ export default function HomePage() {
             <div className="grid gap-3 sm:grid-cols-3">
               <Link href="/help" className="flex gap-3 rounded-2xl border border-line p-4 hover:bg-surface-alt hc-border"><RoundIcon className="bg-[#dceaff] text-[#3d73bc]"><span aria-hidden="true" className="text-xl">▤</span></RoundIcon><div><h3 className="text-base">Xem hướng dẫn sử dụng</h3><p className="hc-muted mt-1 text-xs text-ink-soft">Tìm hiểu cách sử dụng WayEcho dễ dàng và nhanh chóng.</p></div></Link>
               <Link href="/help#contact" className="flex gap-3 rounded-2xl border border-line p-4 hover:bg-surface-alt hc-border"><RoundIcon className="bg-[#dff4e5] text-[#238a4d]"><HeadphonesIcon size={21} /></RoundIcon><div><h3 className="text-base">Liên hệ hỗ trợ</h3><p className="hc-muted mt-1 text-xs text-ink-soft">Đặt câu hỏi hoặc nhận hỗ trợ từ đội ngũ của chúng tôi.</p></div></Link>
-              <Link href="/guide/login" className="flex gap-3 rounded-2xl border border-line p-4 hover:bg-surface-alt hc-border"><RoundIcon className="bg-[#ffe9ca] text-[#d57d0a]"><UserIcon size={21} /></RoundIcon><div><h3 className="text-base">Tìm Guide & Assistant</h3><p className="hc-muted mt-1 text-xs text-ink-soft">Kết nối với hướng dẫn viên và trợ lý phù hợp.</p></div></Link>
+              <Link href="/partner" className="flex gap-3 rounded-2xl border border-line p-4 hover:bg-surface-alt hc-border"><RoundIcon className="bg-[#ffe9ca] text-[#d57d0a]"><UserIcon size={21} /></RoundIcon><div><h3 className="text-base">Tìm Guide & Assistant</h3><p className="hc-muted mt-1 text-xs text-ink-soft">Kết nối với hướng dẫn viên và trợ lý phù hợp.</p></div></Link>
             </div>
           </div>
         </div>
