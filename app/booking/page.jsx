@@ -108,7 +108,7 @@ function BookingContent() {
 
   return (
     <div className="container-page py-10">
-      <p className="font-semibold text-accent-dark">Booking + Accessibility Request</p><h1 className="mt-1 text-4xl sm:text-5xl">Đặt dịch vụ</h1><p className="hc-muted mt-3 max-w-3xl text-lg text-ink-soft">Luồng này tách Accessibility Profile khỏi Accessibility Request: hồ sơ chỉ gợi ý các nhu cầu thường dùng; bạn quyết định yêu cầu nào sẽ chia sẻ trong booking cụ thể.</p>
+      <p className="font-semibold text-accent-dark">Đặt chỗ + Yêu cầu hỗ trợ tiếp cận</p><h1 className="mt-1 text-4xl sm:text-5xl">Đặt dịch vụ</h1><p className="hc-muted mt-3 max-w-3xl text-lg text-ink-soft">Luồng này tách Accessibility Profile khỏi Accessibility Request: hồ sơ chỉ gợi ý các nhu cầu thường dùng; bạn quyết định yêu cầu nào sẽ chia sẻ trong booking cụ thể.</p>
       <div className="mt-5 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950"><strong>Demo:</strong> chưa có inventory/payment/provider thật. Không có giao dịch tài chính được thực hiện.</div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.35fr_.65fr]">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useA11y } from "./A11yProvider";
 import VerifiedImage from "./VerifiedImage";
+import { honestAccessStatus } from "@/lib/accessStatus";
 import { MapPinIcon, SpeakerIcon, AccessibleIcon } from "./Icons";
 
 const levelColor = {
@@ -40,7 +41,7 @@ export default function DestinationCard({ d, priority = false }) {
         </p>
         <h3 className="mt-1 text-2xl">{d.name}</h3>
         <p className="mt-2 flex-1 text-ink-soft hc-muted">{d.summary}</p>
-        <p className="mt-3 text-sm font-semibold text-ink">Accessibility: {d.access.status}</p>
+        <p className="mt-3 text-sm font-semibold text-ink">Tiếp cận: {honestAccessStatus(d.access.status)}</p>
 
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Link href={`/destination?d=${d.slug}`} className="btn-primary !min-h-[44px] !py-2 text-sm">

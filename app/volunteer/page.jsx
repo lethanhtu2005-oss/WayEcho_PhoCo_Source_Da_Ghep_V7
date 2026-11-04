@@ -132,6 +132,9 @@ export default function VolunteerPortalPage() {
 
   return (
     <div className="container-page max-w-7xl mx-auto px-4 py-8 sm:py-10">
+      <p role="note" className="mb-4 rounded-2xl border-2 border-[#825500] bg-[#fff4d6] px-4 py-3 text-sm font-bold text-[#4a3000]">
+        DEMO: tên, số điện thoại, ca trực và chỉ số trên trang này là dữ liệu minh họa, không phải người hay yêu cầu thật. Thao tác "Nhận ca" chỉ đổi trạng thái trên trình duyệt này và không được lưu hay gửi tới ai.
+      </p>
       {/* Station Overview & Status Bar */}
       <section aria-label="Trạng thái ca trực" className="rounded-3xl border border-[#ebd9c5] bg-white p-6 sm:p-8 shadow-sm">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -194,7 +197,7 @@ export default function VolunteerPortalPage() {
             <p className="mt-1 text-2xl font-black text-[#352016]">15 điểm</p>
           </div>
           <div className="rounded-2xl bg-[#faf9f3] p-4 border border-[#f0e7dd]">
-            <p className="text-xs font-medium text-[#665b50]">Chỉ số an toàn & Thấu cảm</p>
+            <p className="text-xs font-medium text-[#665b50]">Chỉ số an toàn & Thấu cảm (số liệu minh họa)</p>
             <p className="mt-1 text-2xl font-black text-[#16a34a]">100% ★</p>
           </div>
         </div>

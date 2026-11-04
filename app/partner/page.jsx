@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PartnerEnter from "@/components/PartnerEnter";
+import { destinations } from "@/data/destinations";
 
 export const metadata = {
   title: "Cổng Đối Tác Liên Thông · WayEcho Phố Cổ Hà Nội",
@@ -106,20 +107,20 @@ export default function PartnerGateway() {
           {/* Quick stats / trust banner */}
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <div className="rounded-2xl border border-[#ebd9c5] bg-white p-4 shadow-sm">
-              <span className="text-2xl font-black text-[#c75c13]">100%</span>
-              <p className="mt-1 text-xs font-medium text-[#665b50]">Chuẩn đồng hành WBU</p>
+              <span className="text-2xl font-black text-[#c75c13]">DEMO</span>
+              <p className="mt-1 text-xs font-medium text-[#665b50]">Cổng minh họa, chưa có đối tác thật được xác minh</p>
             </div>
             <div className="rounded-2xl border border-[#ebd9c5] bg-white p-4 shadow-sm">
               <span className="text-2xl font-black text-[#0d9488]">2 Trạm</span>
-              <p className="mt-1 text-xs font-medium text-[#665b50]">Trực tại 28 Hàng Buồm & 87 Mã Mây</p>
+              <p className="mt-1 text-xs font-medium text-[#665b50]">Dự kiến: 28 Hàng Buồm & 87 Mã Mây (minh họa)</p>
             </div>
             <div className="rounded-2xl border border-[#ebd9c5] bg-white p-4 shadow-sm">
-              <span className="text-2xl font-black text-[#825500]">36+</span>
-              <p className="mt-1 text-xs font-medium text-[#665b50]">Điểm di sản có dữ liệu tiếp cận</p>
+              <span className="text-2xl font-black text-[#825500]">{destinations.length}</span>
+              <p className="mt-1 text-xs font-medium text-[#665b50]">Điểm đến trong danh mục (thông tin tiếp cận chưa xác minh hết)</p>
             </div>
             <div className="rounded-2xl border border-[#ebd9c5] bg-white p-4 shadow-sm">
               <span className="text-2xl font-black text-[#c75c13]">Escrow</span>
-              <p className="mt-1 text-xs font-medium text-[#665b50]">Bảo vệ quyền lợi 100% minh bạch</p>
+              <p className="mt-1 text-xs font-medium text-[#665b50]">Ký quỹ mô phỏng, chưa có thanh toán thật</p>
             </div>
           </div>
         </div>

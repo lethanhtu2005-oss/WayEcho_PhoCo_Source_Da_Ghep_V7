@@ -140,7 +140,7 @@ export default function Header() {
             </div>
             {sessionLoading ? <p role="status" className="px-3 py-3 text-sm">Đang tải thông tin tài khoản…</p> : <>
               {!authenticated && <><Link href="/login" onClick={close} className={`${menuLink} bg-[#fff0df]`}>Đăng nhập khách hàng</Link><div className="my-1 border-t border-[#f0dfd0]"/></>}
-              {authenticated && session.role!=="traveler" && session.role!=="admin" && <Link href={ROLE_HOME[session.role] || "/profile"} onClick={close} className={menuLink}>Vào bảng điều khiển</Link>}
+              {authenticated && session.role!=="traveler" && ROLE_HOME[session.role] && <Link href={ROLE_HOME[session.role]} onClick={close} className={menuLink}>Vào bảng điều khiển</Link>}
               {ACCOUNT_LINKS.map(([label,href,desc]) => <Link key={href} href={href} onClick={close} className={`${menuLink} !block`}><span className="block font-semibold">{label}</span><span className="block text-xs font-normal text-[#70564a]">{desc}</span></Link>)}
               {authenticated && <><div className="my-1 border-t border-[#f0dfd0]"/>
               <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} !block w-full text-left text-[#a13d1c] disabled:opacity-60`}><span className="block font-semibold">{logoutBusy?"Đang đăng xuất…":"Đăng xuất"}</span><span className="block text-xs font-normal">Kết thúc phiên đăng nhập</span></button></>}

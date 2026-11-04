@@ -189,16 +189,16 @@ export default function HomePage() {
               <span className="absolute inset-x-4 bottom-4 rounded-2xl bg-black/60 px-4 py-3 text-white backdrop-blur-sm"><span className="flex items-center gap-2 font-bold"><MapPinIcon size={18} /> Phố cổ Hà Nội</span><span className="block pl-6 text-xs text-white/85">Không gian phố xưa giữa lòng thủ đô</span></span>
             </Link>
             <Link href="/destination?d=pho-co" className="group relative overflow-hidden rounded-[24px] shadow-card">
-              <VerifiedImage src={HOME_IMAGES.oldQuarterLife.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterLife.alt} className="h-full min-h-[205px] w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+              <VerifiedImage src={HOME_IMAGES.oldQuarterLife.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterLife.alt} loading="eager" className="h-full min-h-[205px] w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
               <span className="absolute inset-x-3 bottom-3 rounded-2xl bg-black/60 px-3 py-2.5 text-white backdrop-blur-sm"><span className="flex items-center gap-2 font-bold"><MapPinIcon size={17} /> Nhịp sống phố cổ</span><span className="block pl-6 text-[11px] text-white/85">Con phố nhỏ, xe đạp và đời sống thường ngày</span></span>
             </Link>
             <div className="grid grid-cols-2 gap-3">
               <figure className="relative overflow-hidden rounded-[22px] shadow-card">
-                <VerifiedImage src={HOME_IMAGES.oldQuarterCafe.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterCafe.alt} className="h-full min-h-[205px] w-full object-cover" />
+                <VerifiedImage src={HOME_IMAGES.oldQuarterCafe.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterCafe.alt} loading="eager" className="h-full min-h-[205px] w-full object-cover" />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-xl bg-black/60 px-2.5 py-2 text-white backdrop-blur-sm"><span className="font-bold">Cà phê phố cổ</span><span className="block text-[10px] text-white/85">Một khoảng dừng chân ấm áp</span></figcaption>
               </figure>
               <figure className="relative overflow-hidden rounded-[22px] shadow-card">
-                <VerifiedImage src={HOME_IMAGES.oldQuarterFood.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterFood.alt} className="h-full min-h-[205px] w-full object-cover" />
+                <VerifiedImage src={HOME_IMAGES.oldQuarterFood.src} fallback={FALLBACK} alt={HOME_IMAGES.oldQuarterFood.alt} loading="eager" className="h-full min-h-[205px] w-full object-cover" />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-xl bg-black/60 px-2.5 py-2 text-white backdrop-blur-sm"><span className="font-bold">Hàng quán phố cổ</span><span className="block text-[10px] text-white/85">Không khí nhộn nhịp về đêm</span></figcaption>
               </figure>
             </div>

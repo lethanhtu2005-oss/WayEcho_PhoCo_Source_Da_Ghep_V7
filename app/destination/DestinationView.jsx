@@ -3,6 +3,7 @@
 import DestinationActions from "@/components/DestinationActions";
 import ReportIssue from "@/components/ReportIssue";
 import { articles } from "@/data/articles";
+import { honestAccessStatus } from "@/lib/accessStatus";
 import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -123,7 +124,7 @@ function DestinationContent() {
 
           <div className="mt-6 rounded-2xl border border-line bg-[#fffaf3] p-4">
             <p className="font-semibold">Ghi chú thêm</p>
-            <p className="mt-2 text-sm leading-6 text-ink-soft">{d.access.status}</p>
+            <p className="mt-2 text-sm leading-6 text-ink-soft">{honestAccessStatus(d.access.status)}</p>
           </div>
         </div>
 
