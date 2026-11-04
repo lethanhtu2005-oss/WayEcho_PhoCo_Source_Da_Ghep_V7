@@ -965,7 +965,20 @@ const baseDestinations = [
 // Chỉ ghi đè khi có ảnh đã kiểm tra giấy phép; ảnh lỗi thì rơi về placeholder trung tính, không dùng ảnh địa điểm khác.
 export const destinations = baseDestinations.map((d) => {
   const p = destinationPhotos[d.slug];
-  if (!p) return d;
+  if (!p) {
+    // Chưa có ảnh thật đã kiểm tra: không dùng ảnh chung hay ảnh AI gắn tên địa điểm cụ thể.
+    const generic = /old-quarter-street|-ai\.webp|we-ai-/.test(d.image || "");
+    if (!generic) return d;
+    return {
+      ...d,
+      image: "/assets/images/location-image-unavailable.svg",
+      imageSrcSet: undefined,
+      imageFallback: "/assets/images/location-image-unavailable.svg",
+      alt: `Chưa có ảnh chụp thực tế đã xác minh cho ${d.name}.`,
+      imageCredit: "Chưa có ảnh đã xác minh nguồn và giấy phép",
+      imageSource: null,
+    };
+  }
   return {
     ...d,
     image: p.image,
