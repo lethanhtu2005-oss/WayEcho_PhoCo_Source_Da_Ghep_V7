@@ -17,6 +17,12 @@ const NAV = [
 ];
 
 const ROLE_LABELS = {traveler:"Khách hàng",guide:"Hướng dẫn viên",business:"Đối tác doanh nghiệp",admin:"Quản trị viên",advisor:"Tư vấn viên"};
+const ACCOUNT_LINKS = [
+  ["Hồ sơ cá nhân","/profile","Thông tin tài khoản, thông tin liên hệ"],
+  ["Đặt chỗ của tôi","/my-booking","Các đơn đặt tour, vé, lưu trú, xe, hướng dẫn viên"],
+  ["Chuyến đi của tôi","/my-trip","Lịch trình đã tạo, địa điểm đã lưu, các điểm dừng"],
+  ["Cài đặt tài khoản","/settings","Thông tin đăng nhập và tùy chọn cá nhân"],
+];
 const ROLE_HOME = {traveler:"/profile",guide:"/guide",business:"/business",admin:"/admin",advisor:"/admin/consultation"};
 const menuLink = "flex min-h-11 items-center rounded-xl px-3 py-2.5 text-sm font-semibold text-[#452a1d] transition-colors hover:bg-[#fff0df] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a94c1c]";
 
@@ -132,20 +138,12 @@ export default function Header() {
               <p className="text-sm font-bold">{sessionLoading?"Đang kiểm tra tài khoản…":authenticated?`Tài khoản ${ROLE_LABELS[session.role]||"WayEcho"}`:"Xin chào bạn!"}</p>
               <p className="mt-1 text-xs text-[#70564a]">{authenticated?"Bạn đang đăng nhập vào WayEcho.":"Đăng nhập để quản lý chuyến đi và đặt chỗ của bạn."}</p>
             </div>
-            {sessionLoading ? <p role="status" className="px-3 py-3 text-sm">Đang tải thông tin tài khoản…</p> : authenticated ? <>
-              <Link href={ROLE_HOME[session.role] || "/profile"} onClick={close} className={menuLink}>{session.role==="traveler"?"Hồ sơ của tôi":"Vào bảng điều khiển"}</Link>
-              {session.role==="traveler" && <>
-                <Link href="/my-booking" onClick={close} className={menuLink}>Đặt chỗ của tôi</Link>
-                <Link href="/my-trip" onClick={close} className={menuLink}>Chuyến đi của tôi</Link>
-              </>}
-              <div className="my-1 border-t border-[#f0dfd0]"/>
-              <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} w-full text-left text-[#a13d1c] disabled:opacity-60`}>{logoutBusy?"Đang đăng xuất…":"Đăng xuất / Chuyển tài khoản"}</button>
-            </> : <>
-              <Link href="/login" onClick={close} className={`${menuLink} bg-[#fff0df]`}>Đăng nhập khách hàng</Link>
-              <div className="my-1 border-t border-[#f0dfd0]"/>
-              <Link href="/profile" onClick={close} className={menuLink}>Hồ sơ tiếp cận trên thiết bị</Link>
-              <Link href="/my-booking" onClick={close} className={menuLink}>Đặt chỗ của tôi</Link>
-              <Link href="/my-trip" onClick={close} className={menuLink}>Chuyến đi của tôi</Link>
+            {sessionLoading ? <p role="status" className="px-3 py-3 text-sm">Đang tải thông tin tài khoản…</p> : <>
+              {!authenticated && <><Link href="/login" onClick={close} className={`${menuLink} bg-[#fff0df]`}>Đăng nhập khách hàng</Link><div className="my-1 border-t border-[#f0dfd0]"/></>}
+              {authenticated && session.role!=="traveler" && <Link href={ROLE_HOME[session.role] || "/profile"} onClick={close} className={menuLink}>Vào bảng điều khiển</Link>}
+              {ACCOUNT_LINKS.map(([label,href,desc]) => <Link key={href} href={href} onClick={close} className={`${menuLink} !block`}><span className="block font-semibold">{label}</span><span className="block text-xs font-normal text-[#70564a]">{desc}</span></Link>)}
+              {authenticated && <><div className="my-1 border-t border-[#f0dfd0]"/>
+              <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} !block w-full text-left text-[#a13d1c] disabled:opacity-60`}><span className="block font-semibold">{logoutBusy?"Đang đăng xuất…":"Đăng xuất"}</span><span className="block text-xs font-normal">Kết thúc phiên đăng nhập</span></button></>}
             </>}
             {accountError && <p role="alert" className="m-2 rounded-lg bg-red-50 p-2 text-sm text-red-800">{accountError}</p>}
           </div>}

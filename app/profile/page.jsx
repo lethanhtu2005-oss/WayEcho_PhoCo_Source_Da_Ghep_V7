@@ -20,6 +20,8 @@ export default function ProfilePage() {
   const [prefs, setPrefs] = useState(DEFAULT_PREFS);
   const [shareWithBusiness, setShareWithBusiness] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [contact, setContact] = useState({ name: "", phone: "", email: "", address: "" });
+  const setField = (k, v) => { setContact((c) => ({ ...c, [k]: v })); setSaved(false); };
 
   useEffect(() => {
     try {
@@ -28,6 +30,7 @@ export default function ProfilePage() {
       const savedPrefs = JSON.parse(localStorage.getItem("we-access-prefs") || "null");
       if (savedPrefs) setPrefs(savedPrefs);
       setShareWithBusiness(localStorage.getItem("we-share-business") === "1");
+      const c = JSON.parse(localStorage.getItem("we-contact") || "null"); if (c && typeof c === "object") setContact((x) => ({ ...x, ...c }));
     } catch (_) {}
   }, []);
 
@@ -35,6 +38,7 @@ export default function ProfilePage() {
   function save() {
     try {
       localStorage.setItem("we-usertype", userType);
+      localStorage.setItem("we-contact", JSON.stringify(contact));
       localStorage.setItem("we-emergency", emergency);
       localStorage.setItem("we-access-prefs", JSON.stringify(prefs));
       localStorage.setItem("we-share-business", shareWithBusiness ? "1" : "0");
@@ -49,11 +53,19 @@ export default function ProfilePage() {
     <div className="container-page py-10">
       <div className="flex items-center gap-4">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-ink"><UserIcon size={34} /></span>
-        <div><h1 className="text-4xl">Hồ sơ tiếp cận</h1><p className="hc-muted text-ink-soft">Lưu điều bạn thường cần; mỗi booking vẫn cho phép chọn lại yêu cầu sẽ chia sẻ.</p></div>
+        <div><h1 className="text-4xl">Hồ sơ cá nhân</h1><p className="hc-muted text-ink-soft">Thông tin tài khoản, thông tin liên hệ và hồ sơ tiếp cận. Mỗi booking vẫn cho phép chọn lại yêu cầu sẽ chia sẻ.</p></div>
       </div>
 
+      <section aria-labelledby="contact-info" className="mt-8 rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
+        <h2 id="contact-info" className="text-2xl">Thông tin tài khoản & liên hệ</h2>
+        <p className="hc-muted mt-1 text-sm text-ink-soft">Chỉ lưu trên thiết bị này (DEMO). Không nhập giấy tờ tùy thân hay thông tin thanh toán.</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {[["name","Họ và tên","name","text"],["phone","Số điện thoại","tel","tel"],["email","Email","email","email"],["address","Địa chỉ / nơi lưu trú tại Hà Nội","street-address","text"]].map(([k,label,ac,type]) => <div key={k}><label htmlFor={`c-${k}`} className="block font-semibold">{label}</label><input id={`c-${k}`} type={type} autoComplete={ac} maxLength={120} value={contact[k]} onChange={(e) => setField(k, e.target.value)} className="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-lg hc-surface hc-border" /></div>)}
+        </div>
+      </section>
+
       <section aria-labelledby="user-type" className="mt-8 rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
-        <h2 id="user-type" className="text-2xl">1. Loại hồ sơ</h2>
+        <h2 id="user-type" className="text-2xl">Loại hồ sơ tiếp cận</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-2" role="radiogroup" aria-label="Loại người dùng">
           {[["lowvision", "Low Vision — Người nhìn kém", "Ưu tiên chữ lớn, tương phản, phóng to và giọng đọc."], ["blind", "Blind — Người mù", "Ưu tiên screen reader, voice navigation, audio feedback và bàn phím."]].map(([id, label, desc]) => (
             <label key={id} className={`cursor-pointer rounded-2xl border p-4 hc-border ${userType === id ? "border-primary bg-surface-alt hc-surface" : "border-line"}`}>
@@ -64,7 +76,7 @@ export default function ProfilePage() {
       </section>
 
       <section aria-labelledby="prefs" className="mt-6 rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
-        <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end"><div><h2 id="prefs" className="flex items-center gap-2 text-2xl"><AccessibleIcon size={22} /> 2. My Accessibility Preferences</h2><p className="hc-muted mt-1 text-sm text-ink-soft">Có thể chọn nhiều tùy chọn cùng lúc.</p></div><span className="chip hc-surface hc-border">{Object.values(prefs).filter(Boolean).length} tùy chọn đang bật</span></div>
+        <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end"><div><h2 id="prefs" className="flex items-center gap-2 text-2xl"><AccessibleIcon size={22} /> My Accessibility Preferences</h2><p className="hc-muted mt-1 text-sm text-ink-soft">Có thể chọn nhiều tùy chọn cùng lúc.</p></div><span className="chip hc-surface hc-border">{Object.values(prefs).filter(Boolean).length} tùy chọn đang bật</span></div>
         <div className="mt-5 grid gap-5 lg:grid-cols-2">
           {GROUPS.map((group) => (
             <fieldset key={group.title} className="rounded-2xl border border-line p-4 hc-border">

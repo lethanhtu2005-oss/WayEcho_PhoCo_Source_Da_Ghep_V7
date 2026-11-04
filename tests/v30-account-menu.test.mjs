@@ -13,8 +13,8 @@ test('V30 Header bell appears before user avatar and menu opens from avatar', ()
 });
 
 test('V30 user dropdown is for customers only; Partner and internal login are separate', async () => {
-  for(const p of ['/login','/profile','/my-booking','/my-trip']) {
-    assert.match(header,new RegExp(`href="${p}"`));
+  for(const p of ["/login","/profile","/my-booking","/my-trip","/settings"]) {
+    assert.ok(header.includes(`href="${p}"`) || header.includes(`"${p}"`),p);
   }
   assert.doesNotMatch(header, /href="\/partner\/login"/);
   assert.doesNotMatch(header, /href="\/internal\/login"/);
