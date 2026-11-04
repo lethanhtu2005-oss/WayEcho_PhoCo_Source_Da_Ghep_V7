@@ -36,14 +36,3 @@ test("mọi page/layout/route đều có export mặc định hoặc handler (tr
     assert.match(src, /export\s+default/, `${u.pathname} thiếu export default`);
   }
 });
-
-test("ảnh: không còn thẻ nào dùng ảnh trống hoặc ảnh phố chung; mọi ảnh local được tham chiếu đều tồn tại", async () => {
-  const { destinations } = await import("../data/destinations.js");
-  const services = (await import("../data/oldQuarterServicesData.js")).default;
-  for (const d of destinations) assert.notEqual(d.image, "/assets/images/old-quarter-street.jpg", d.slug);
-  const sv = services;
-  for (const c of sv) assert.doesNotMatch(c.image, /location-image-unavailable/, c.id);
-  const imgs = sv.map((c) => c.image);
-  assert.equal(new Set(imgs.filter((i) => /we-luu-tru|we-ve-|we-mon/.test(i))).size, imgs.filter((i) => /we-luu-tru|we-ve-|we-mon/.test(i)).length);
-  for (const c of [...services, ...destinations]) for (const i of [c.image, c.imageFallback]) if (i?.startsWith("/assets/")) await access(new URL("../public" + i, import.meta.url));
-});

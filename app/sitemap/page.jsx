@@ -17,8 +17,8 @@ const GROUPS = [
     title: "2. Thông tin & nội dung",
     items: [
       ["Chi tiết điểm đến", "/destination?d=ho-guom"], ["Lưu trú demo", "/item?id=demo-hotel"],
-      ["Ăn uống demo", "/item?id=demo-restaurant"], ["Di chuyển demo", "/item?id=pho-co-transport"],
-      ["Chi tiết vé", "/item?id=van-mieu"], ["Guide/Assistant demo", "/item?id=pho-co-guide-tour"],
+      ["Ăn uống demo", "/item?id=demo-restaurant"], ["Di chuyển demo", "/item?id=demo-transport"],
+      ["Chi tiết vé", "/item?id=ve-van-mieu"], ["Guide/Assistant demo", "/item?id=demo-guide-tour"],
       ["Trợ lý tại điểm đến", "/assistant"], ["Tải app", "/app"], ["SOS", "/sos"], ["Giới thiệu", "/help"], ["Cẩm nang", "/articles"], ["Chó dẫn đường", "/services/guide-dogs"],
       ["Cách hoạt động", "/help"], ["Tuyên bố tiếp cận", "/help"],
     ],

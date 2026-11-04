@@ -57,38 +57,38 @@ export const photoCredits = [
   },
   {
     "place": "Gallery – Phố Hàng Đường",
-    "file": "golden-hour-city.jpg",
-    "author": "Ảnh minh họa của WayEcho",
-    "license": "Ảnh dự án WayEcho — cần rà soát quyền trước khi phát hành",
-    "source": "/assets/images/golden-hour-city.jpg"
+    "file": "2024-11-03 Hàng Đường Street, Hanoi.jpg",
+    "author": "Alexkom000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_H%C3%A0ng_%C4%90%C6%B0%E1%BB%9Dng_Street%2C_Hanoi.jpg"
   },
   {
     "place": "Gallery – Phố Ngõ Gạch",
-    "file": "pho-co-train-street.jpg",
-    "author": "Ảnh minh họa của WayEcho",
-    "license": "Ảnh dự án WayEcho — cần rà soát quyền trước khi phát hành",
-    "source": "/assets/images/pho-co-train-street.jpg"
+    "file": "2024-11-03 Ngõ Gạch Street, Hanoi.jpg",
+    "author": "Alexkom000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Ng%C3%B5_G%E1%BA%A1ch_Street%2C_Hanoi.jpg"
   },
   {
     "place": "Gallery – Quán cà phê phố cổ",
-    "file": "cafe-street.jpg",
-    "author": "Ảnh minh họa của WayEcho",
-    "license": "Ảnh dự án WayEcho — cần rà soát quyền trước khi phát hành",
-    "source": "/assets/images/cafe-street.jpg"
+    "file": "2024-11-03 A cafe in Hanoi's Old Quarter.jpg",
+    "author": "Alexkom000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_A_cafe_in_Hanoi%27s_Old_Quarter.jpg"
   },
   {
     "place": "Gallery – Cửa hàng phố cổ",
-    "file": "we-ai-pho-hang-ngang.jpg",
-    "author": "Ảnh minh họa của WayEcho",
-    "license": "Ảnh dự án WayEcho — cần rà soát quyền trước khi phát hành",
-    "source": "/assets/images/we-ai-pho-hang-ngang.jpg"
+    "file": "2024-11-03 Shops in Hanoi's Old Quarter.jpg",
+    "author": "Alexkom000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Shops_in_Hanoi%27s_Old_Quarter.jpg"
   },
   {
     "place": "Gallery – Một con phố Hà Nội",
-    "file": "we-ai-pho-hang-quat.jpg",
-    "author": "Ảnh minh họa của WayEcho",
-    "license": "Ảnh dự án WayEcho — cần rà soát quyền trước khi phát hành",
-    "source": "/assets/images/we-ai-pho-hang-quat.jpg"
+    "file": "2024-11-03 Hanoi's Old Quarter 3.jpg",
+    "author": "Alexkom000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_3.jpg"
   },
   {
     "place": "Gallery – Góc phố Hà Nội",

@@ -184,7 +184,7 @@ export default function GuideDirectory() {
             {/* Actions */}
             <div className="p-6 pt-0 space-y-2">
               <Link
-                href={`/booking?item=pho-co-guide-tour&guide=${g.id}&guideName=${encodeURIComponent(g.name)}`}
+                href={`/booking?item=tour-am-thanh-pho-co&guide=${g.id}&guideName=${encodeURIComponent(g.name)}`}
                 className="btn-primary w-full text-center text-sm font-bold !min-h-[44px] flex items-center justify-center gap-2"
               >
                 <span>📅 Đặt lịch đồng hành cùng {g.name}</span>
