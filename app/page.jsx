@@ -2,7 +2,7 @@ import {pageMetadata,siteOrigin,jsonLd} from "@/lib/seo";
 import Link from "next/link";
 import DestinationGallery from "@/components/DestinationGallery";
 import HomeOldQuarterCards from "@/components/HomeOldQuarterCards";
-import SoundWalkBar from "@/components/SoundWalkBar";
+import { WayEchoAudioPreview, WayEchoTripPreparation } from "@/components/WayEchoHome/WayEchoHomeSections";
 import { destinations } from "@/data/destinations";
 import VerifiedImage from "@/components/VerifiedImage";
 import {
@@ -153,11 +153,23 @@ function RoundIcon({ children, className = "" }) {
 
 export default function HomePage() {
   return (
-    <div className="home-page wayecho-redesign hc-surface">
-      <section className="we-home-hero container-page pb-8 pt-8 lg:pb-12 lg:pt-12">
-        <div className="we-home-hero-inner grid items-center gap-8 lg:grid-cols-[.92fr_1.08fr] lg:gap-12">
+    <div className="home-page wayecho-redesign hc-surface relative overflow-hidden">
+      <section className="we-home-hero container-page pb-8 pt-8 lg:pb-12 lg:pt-12 relative">
+        {/* Decorative 3D Ambient Bubble Elements — Integrated into Hero background */}
+        <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden select-none" aria-hidden="true">
+          {/* Warm Amber Bubble behind headline creating soft golden depth */}
+          <div className="bubble-orb-amber -top-16 -left-12 h-72 w-72 sm:h-96 sm:w-96 opacity-45" />
+          {/* Subtle Ambient Glass Orb floating between headline and mosaic */}
+          <div className="bubble-orb-glass top-1/4 left-[44%] h-48 w-48 opacity-35 hidden md:block" />
+          {/* Glass Bubble highlighting photo mosaic depth */}
+          <div className="bubble-orb-glass -bottom-10 right-4 h-64 w-64 sm:h-80 sm:w-80 opacity-55" />
+          {/* Complementary warm amber accent orb upper right */}
+          <div className="bubble-orb-amber -top-8 right-12 h-52 w-52 opacity-35" />
+        </div>
+
+        <div className="we-home-hero-inner relative z-10 grid items-center gap-8 lg:grid-cols-[.92fr_1.08fr] lg:gap-12">
           <div>
-            <span className="chip hc-surface hc-border"><AccessibleIcon size={16} /> Thiết kế cho người khiếm thị</span>
+            <span className="chip hc-surface hc-border shadow-sm"><AccessibleIcon size={16} /> Thiết kế cho người khiếm thị</span>
             <h1 className="mt-5 max-w-[650px] text-5xl leading-[.98] sm:text-6xl lg:text-[68px]">
               Khám phá Hà Nội,<br /><span className="text-[#eb5d27]">theo cách của bạn</span>
             </h1>
@@ -165,8 +177,8 @@ export default function HomePage() {
               Dành cho người khiếm thị và người nhìn kém. Khám phá Phố cổ qua âm thanh, thông tin tiếp cận và sự đồng hành của con người — với quyền chủ động luôn thuộc về bạn.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/search" className="btn-primary text-base sm:text-lg"><MicIcon size={22} /> Bắt đầu bằng giọng nói</Link>
-              <Link href="/assistant" className="btn-ghost hc-border text-base sm:text-lg"><CameraIcon size={22} /> Mở trợ lý camera</Link>
+              <Link href="/search" className="btn-3d px-6 py-3.5 text-base sm:text-lg flex items-center gap-2"><MicIcon size={22} /> Bắt đầu bằng giọng nói</Link>
+              <Link href="/assistant" className="btn-ghost hc-border text-base sm:text-lg rounded-full bg-white/70 backdrop-blur-md hover:bg-white"><CameraIcon size={22} /> Mở trợ lý camera</Link>
             </div>
             <p className="hc-muted mt-5 flex items-center gap-3 text-sm italic text-ink-soft"><span aria-hidden="true" className="inline-block h-[4px] w-10 rounded-full bg-primary" /> Hà Nội gần hơn, cho mọi người</p>
           </div>
@@ -194,60 +206,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container-page pb-7">
-        <div className="rounded-[22px] border border-line bg-white p-5 shadow-card hc-surface hc-border sm:p-7">
-          <h2 className="text-3xl">Bạn muốn khám phá Hà Nội như thế nào?</h2>
+      <section className="container-page pb-7 relative z-10">
+        <div className="glass-liquid-warm rounded-[24px] p-5 card-3d hc-surface hc-border sm:p-7">
+          <h2 className="text-3xl text-[#352016]">Bạn muốn khám phá Hà Nội như thế nào?</h2>
           <p className="hc-muted mt-1 text-ink-soft">Nhận trợ giúp bằng giọng nói, tìm thông tin, kiểm tra khả năng tiếp cận và đặt dịch vụ phù hợp với nhu cầu của bạn.</p>
           <div className="mt-4 flex items-center gap-2">
-            <Link href="/search" className="flex min-h-[54px] flex-1 items-center gap-3 rounded-2xl border border-line bg-white px-4 text-left text-ink-soft shadow-sm hc-surface hc-border">
+            <Link href="/search" className="glass-liquid flex min-h-[54px] flex-1 items-center gap-3 rounded-2xl border border-[#eedecb] px-4 text-left text-ink-soft shadow-sm hover:border-[#f8ae38] transition-colors hc-surface hc-border">
               <SearchIcon size={21} /> <span>Bạn muốn đi đâu, làm gì ở Phố cổ Hà Nội?</span>
             </Link>
-            <Link href="/search" aria-label="Tìm bằng giọng nói" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary text-ink shadow-card"><MicIcon size={22} /></Link>
-            <Link href="/assistant" aria-label="Mở trợ lý camera" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f4ead7] text-ink shadow-card"><CameraIcon size={22} /></Link>
+            <Link href="/search" aria-label="Tìm bằng giọng nói" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full btn-3d shadow-md"><MicIcon size={22} /></Link>
+            <Link href="/assistant" aria-label="Mở trợ lý camera" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f4ead7] border border-[#eedecb] text-ink shadow-sm hover:bg-[#faedd8] transition-colors"><CameraIcon size={22} /></Link>
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-            <span className="font-semibold">Gợi ý nhanh:</span>
-            {["Phố cổ", "Tạ Hiện", "Hàng Mã", "Đồng Xuân", "Mã Mây", "Cà phê trứng", "Ẩm thực phố cổ"].map((label) => <Link key={label} href={`/search?q=${encodeURIComponent(label)}`} className="rounded-full bg-surface-alt px-4 py-2 font-semibold hover:underline">{label}</Link>)}
+            <span className="font-semibold text-[#352016]">Gợi ý nhanh:</span>
+            {["Phố cổ", "Tạ Hiện", "Hàng Mã", "Đồng Xuân", "Mã Mây", "Cà phê trứng", "Ẩm thực phố cổ"].map((label) => <Link key={label} href={`/search?q=${encodeURIComponent(label)}`} className="rounded-full bg-surface-alt border border-[#eedecb]/60 px-4 py-2 font-semibold hover:border-[#f8ae38] hover:bg-[#fff0df] transition-colors">{label}</Link>)}
           </div>
         </div>
       </section>
 
-      <section className="container-page pb-11" aria-labelledby="need-heading">
+      <section className="container-page pb-11 relative z-10" aria-labelledby="need-heading">
         <div className="mb-4">
-          <h2 id="need-heading" className="text-3xl">Chọn theo nhu cầu</h2>
+          <h2 id="need-heading" className="text-3xl text-[#352016]">Chọn theo nhu cầu</h2>
           <p className="hc-muted mt-1 text-ink-soft">Lựa chọn nhanh các dịch vụ và thông tin phù hợp với hành trình của bạn.</p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
           {needCards.map(({ icon: Icon, label, href, tone }) => (
-            <Link key={label} href={href} className="group flex min-h-[108px] items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover hc-surface hc-border lg:flex-col lg:items-start">
-              <RoundIcon className={tone}><Icon size={23} /></RoundIcon>
-              <span className="whitespace-pre-line font-bold leading-tight">{label}</span><span aria-hidden="true" className="ml-auto text-xl lg:hidden">›</span>
+            <Link key={label} href={href} className="group flex min-h-[108px] items-center gap-3 rounded-2xl glass-liquid p-4 card-3d hc-surface hc-border lg:flex-col lg:items-start">
+              <RoundIcon className={`${tone} shadow-md`}><Icon size={23} /></RoundIcon>
+              <span className="whitespace-pre-line font-bold leading-tight text-ink">{label}</span><span aria-hidden="true" className="ml-auto text-xl lg:hidden text-ink-soft">›</span>
             </Link>
           ))}
         </div>
       </section>
 
       <HomeOldQuarterCards />
-      <SoundWalkBar />
+      <div className="container-page py-6">
+        <WayEchoAudioPreview />
+      </div>
 
-      <section className="container-page py-12" aria-labelledby="help-heading">
-        <h2 id="help-heading" className="text-4xl">WayEcho giúp bạn như thế nào?</h2>
+      <section className="container-page py-12 relative z-10" aria-labelledby="help-heading">
+        <h2 id="help-heading" className="text-4xl text-[#352016]">WayEcho giúp bạn như thế nào?</h2>
         <p className="hc-muted mt-1 text-ink-soft">Những tính năng được thiết kế để hành trình khám phá Hà Nội của bạn dễ dàng và chủ động hơn.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {featureCards.map(({ icon: Icon, title, desc, tone }) => (
-            <article key={title} className="rounded-2xl border border-line bg-white p-5 shadow-card hc-surface hc-border">
-              <RoundIcon className={tone}><Icon size={23} /></RoundIcon>
-              <h3 className="mt-4 text-[22px]">{title}</h3>
+            <article key={title} className="glass-liquid rounded-2xl p-5 card-3d hc-surface hc-border">
+              <RoundIcon className={`${tone} shadow-md`}><Icon size={23} /></RoundIcon>
+              <h3 className="mt-4 text-[22px] text-[#352016]">{title}</h3>
               <p className="hc-muted mt-2 text-sm leading-6 text-ink-soft">{desc}</p>
             </article>
           ))}
         </div>
-
-
       </section>
 
       <DestinationGallery destinations={destinations} />
-      <section className="container-page pb-12" aria-labelledby="read-more-heading"><h2 id="read-more-heading" className="text-3xl">Chuẩn bị trước khi đi</h2><p className="mt-3 max-w-3xl">Tìm hiểu cách đọc dữ liệu tiếp cận, chọn thông tin muốn chia sẻ và chuẩn bị câu hỏi cho điểm đến.</p><div className="mt-4 flex flex-wrap gap-3"><Link className="btn-primary" href="/articles">Đọc cẩm nang</Link><Link className="btn-ghost" href="/services/guide-dogs">Tìm hiểu chó dẫn đường</Link></div></section>
+      <div className="container-page pb-12">
+        <WayEchoTripPreparation />
+      </div>
 
       <section className="border-y border-line bg-[#fffdf8] py-12 hc-surface hc-border" aria-labelledby="assistant-heading">
         <div className="container-page">

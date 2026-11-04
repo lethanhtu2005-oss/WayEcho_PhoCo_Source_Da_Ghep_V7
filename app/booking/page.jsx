@@ -11,19 +11,27 @@ import { todayInVietnam } from "@/lib/validate";
 import { CalendarIcon, CheckIcon, SpeakerIcon, AccessibleIcon } from "@/components/Icons";
 
 const FALLBACK = { id: "demo-hotel", name: "Phòng lưu trú tiếp cận — DEMO", price: "Giá demo", isDemo: true };
-const REQUESTS = [["staff", "Staff assistance"], ["stepFree", "Step-free access"], ["checkin", "Check-in assistance"], ["navigation", "Navigation assistance"], ["transport", "Transport assistance"], ["audioDescription", "Audio description"]];
+const REQUESTS = [
+  ["staff", "Staff assistance"],
+  ["stepFree", "Step-free access"],
+  ["checkin", "Check-in assistance"],
+  ["navigation", "Navigation assistance"],
+  ["transport", "Transport assistance"],
+  ["audioDescription", "Audio description"]
+];
 const TIMES = ["08:00", "11:00", "14:00", "18:00"];
 
 function BookingContent() {
   const params = useSearchParams();
   const { speak } = useA11y();
   const itemParam = params.get("item");
+  const guideParam = params.get("guide");
   // Mã dịch vụ sai thì báo không tìm thấy, không tự đặt sang dịch vụ khác.
-  const selected = itemParam ? getItem(itemParam) : getItem("demo-hotel") || FALLBACK;
+  const selected = itemParam ? getItem(itemParam) : getItem("tour-am-thanh-pho-co") || getItem("demo-hotel") || FALLBACK;
   const [date, setDate] = useState("");
   const [time, setTime] = useState(TIMES[0]);
   const [guests, setGuests] = useState(1);
-  const [guideId,setGuideId]=useState("");
+  const [guideId, setGuideId] = useState(guideParam || "");
   const [requests, setRequests] = useState({});
   const [share, setShare] = useState(false);
   const [done, setDone] = useState(false);
@@ -31,6 +39,12 @@ function BookingContent() {
   const [error, setError] = useState("");
   const [savedStatus, setSavedStatus] = useState("");
   const requestRef = useRef(null);
+
+  useEffect(() => {
+    if (guideParam) {
+      setGuideId(guideParam);
+    }
+  }, [guideParam]);
 
   useEffect(() => {
     try {
@@ -54,7 +68,43 @@ function BookingContent() {
   }
 
   if (!selected) return <div className="container-page py-12"><h1 className="text-3xl">Không tìm thấy dịch vụ</h1><Link href="/explore" className="btn-primary mt-4">Quay lại khám phá</Link></div>;
-  if (done) return <div className="container-page py-16"><div className="mx-auto max-w-2xl rounded-[18px] border border-line bg-white p-8 text-center shadow-card hc-surface hc-border"><span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-800"><CheckIcon size={34} /></span><h1 className="mt-4 text-3xl">{savedStatus === "pending" ? "Đã lưu yêu cầu — đang chờ xử lý trong demo" : "Đã lưu đặt chỗ DEMO"}</h1><p className="hc-muted mt-3 text-ink-soft">Đây là mô phỏng luồng FR06/FR08 + Accessibility Request, không phải giao dịch thực tế và chưa có thanh toán thật.</p><div className="mt-6 flex flex-wrap justify-center gap-3"><Link href="/my-booking" className="btn-primary">Xem booking</Link><Link href="/" className="btn-ghost hc-border">Về trang chủ</Link></div></div></div>;
+  if (done) return (
+    <div className="container-page py-16">
+      <div className="mx-auto max-w-2xl rounded-[24px] border border-line bg-white p-8 text-center shadow-card hc-surface hc-border space-y-5">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-800">
+          <CheckIcon size={34} />
+        </span>
+        <h1 className="mt-4 text-3xl font-bold">
+          {savedStatus === "pending" ? "Đã lưu yêu cầu — đang chờ xử lý trong demo" : "Đã lưu đặt chỗ DEMO"}
+        </h1>
+        <p className="hc-muted text-ink-soft">
+          Đây là mô phỏng luồng FR06/FR08 + Accessibility Request, không phải giao dịch thực tế và chưa có thanh toán thật.
+        </p>
+
+        {/* Escrow badge & explanation */}
+        <div className="rounded-2xl bg-emerald-50 p-4 border border-emerald-200 text-left text-xs text-emerald-900 space-y-1.5">
+          <div className="font-bold text-sm flex items-center gap-1.5 text-emerald-800">
+            <span>🛡️ Quỹ Ký Quỹ Escrow Đang Bảo Hộ Giao Dịch</span>
+          </div>
+          <p>• Số tiền cọc dịch vụ được phong tỏa an toàn trong smart-ledger Escrow của WayEcho.</p>
+          <p>• Hướng dẫn viên / Doanh nghiệp chỉ nhận tiền sau khi bạn hoàn tất chuyến đi an toàn.</p>
+        </div>
+
+        {/* Onward actions */}
+        <div className="pt-2 flex flex-wrap justify-center gap-3">
+          <Link href="/my-booking" className="btn-primary">
+            📋 Xem booking
+          </Link>
+          <Link href="/services/ride-booking" className="btn-ghost hc-border">
+            🚗 Đặt xe di chuyển Phố Cổ
+          </Link>
+          <Link href="/" className="btn-ghost hc-border">
+            Về trang chủ
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="container-page py-10">
@@ -71,7 +121,22 @@ function BookingContent() {
           <button type="submit" disabled={saving} className="btn-primary text-lg disabled:opacity-60"><CheckIcon size={22} /> {saving ? "Đang lưu…" : "Xác nhận booking demo"}</button>
         </form>
 
-        <aside className="h-fit rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border"><p className="flex items-center gap-2 text-lg font-semibold"><CalendarIcon size={20} /> Tóm tắt</p><dl className="mt-4 space-y-3"><div><dt className="text-sm text-ink-soft hc-muted">Dịch vụ</dt><dd className="font-semibold">{selected.name}</dd></div><div><dt className="text-sm text-ink-soft hc-muted">Thời gian</dt><dd className="font-semibold">{date || "Chưa chọn"} · {time}</dd></div><div><dt className="text-sm text-ink-soft hc-muted">Accessibility Request</dt><dd className="font-semibold">{share ? (selectedRequests.join(", ") || "Không có") : "Không chia sẻ"}</dd></div></dl><button type="button" onClick={() => speak(`Dịch vụ ${selected.name}. Ngày ${date || "chưa chọn"}, lúc ${time}. ${share ? `Yêu cầu hỗ trợ: ${selectedRequests.join(", ") || "không có"}.` : "Bạn chọn không chia sẻ accessibility request."}`)} className="btn-ghost hc-border mt-5 w-full"><SpeakerIcon size={20} /> Nghe lại</button></aside>
+        <aside className="h-fit rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border space-y-4">
+          <p className="flex items-center gap-2 text-lg font-semibold"><CalendarIcon size={20} /> Tóm tắt</p>
+          <dl className="space-y-3">
+            <div><dt className="text-sm text-ink-soft hc-muted">Dịch vụ</dt><dd className="font-semibold">{selected.name}</dd></div>
+            {guideId && <div><dt className="text-sm text-ink-soft hc-muted">Hướng dẫn viên chỉ định</dt><dd className="font-semibold text-amber-700">{guides.find(g => g.id === guideId)?.name || guideId} (Sighted Guide)</dd></div>}
+            <div><dt className="text-sm text-ink-soft hc-muted">Thời gian</dt><dd className="font-semibold">{date || "Chưa chọn"} · {time}</dd></div>
+            <div><dt className="text-sm text-ink-soft hc-muted">Accessibility Request</dt><dd className="font-semibold">{share ? (selectedRequests.join(", ") || "Không có") : "Không chia sẻ"}</dd></div>
+          </dl>
+
+          <div className="rounded-xl bg-amber-50 p-3 border border-amber-200 text-xs text-[#7a4c00] space-y-1">
+            <span className="font-bold flex items-center gap-1">🛡️ Bảo hiểm Escrow 100%</span>
+            <p>Bảo đảm minh bạch, hoàn tiền 100% nếu dịch vụ không đáp ứng các tiêu chuẩn tiếp cận đã cam kết.</p>
+          </div>
+
+          <button type="button" onClick={() => speak(`Dịch vụ ${selected.name}. Ngày ${date || "chưa chọn"}, lúc ${time}. ${share ? `Yêu cầu hỗ trợ: ${selectedRequests.join(", ") || "không có"}.` : "Bạn chọn không chia sẻ accessibility request."}`)} className="btn-ghost hc-border w-full"><SpeakerIcon size={20} /> Nghe lại</button>
+        </aside>
       </div>
     </div>
   );

@@ -83,31 +83,68 @@ export default function ProfilePage() {
 
       <section aria-labelledby="display" className="mt-6 grid gap-6 lg:grid-cols-2">
         <div className="rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
-          <h2 id="display" className="flex items-center gap-2 text-2xl"><SpeakerIcon size={22} /> 3. Giọng nói & hiển thị</h2>
+          <h2 id="display" className="flex items-center gap-2 text-2xl"><SpeakerIcon size={22} /> 3. Giọng đọc & Trợ thính</h2>
           <label htmlFor="rate" className="mt-5 block font-semibold">Tốc độ đọc: {speechRate.toFixed(1)}×</label>
           <input id="rate" type="range" min="0.6" max="1.6" step="0.1" value={speechRate} onChange={(e) => setSpeechRate(Number(e.target.value))} className="mt-2 w-full accent-[#f8ae38]" />
-          <button type="button" onClick={() => speak("Đây là tốc độ đọc hiện tại của WayEcho.")} className="btn-ghost hc-border mt-3"><SpeakerIcon size={18} /> Nghe thử</button>
+          
+          <div className="mt-4 flex gap-2">
+            <button type="button" onClick={() => speak("Xin chào, đây là giọng đọc thuyết minh mẫu của WayEcho Phố Cổ.")} className="btn-ghost hc-border"><SpeakerIcon size={18} /> Nghe thử tốc độ</button>
+          </div>
+
+          {/* Voice Persona Selection */}
+          <div className="mt-6 space-y-2">
+            <p className="font-semibold text-sm">Âm sắc thuyết minh AI ưu tiên:</p>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="rounded-xl border border-primary bg-amber-50/70 p-3">
+                <p className="font-bold text-ink">🎤 Minh Khang (Hà Nội Ấm)</p>
+                <p className="text-ink-soft mt-1">Trầm ấm, ngắt câu rõ cho đường phố ồn ào</p>
+              </div>
+              <div className="rounded-xl border border-line bg-white p-3">
+                <p className="font-bold text-ink">🎙️ Mai Phương (Hà Nội Truyền Cảm)</p>
+                <p className="text-ink-soft mt-1">Dịu nhẹ, tối ưu thuyết minh di tích</p>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-5 space-y-3">
             <label className="flex items-center justify-between rounded-xl border border-line p-3 hc-border"><span className="font-semibold">Tương phản cao</span><input type="checkbox" checked={contrast} onChange={(e) => { setContrastEnabled(e.target.checked); setPrefs((p) => ({ ...p, highContrast: e.target.checked })); setSaved(false); }} className="h-5 w-5 accent-[#f8ae38]" /></label>
             <label className="flex items-center justify-between rounded-xl border border-line p-3 hc-border"><span className="font-semibold">Chữ lớn</span><input type="checkbox" checked={largeText} onChange={(e) => { setLargeTextEnabled(e.target.checked); setPrefs((p) => ({ ...p, largeText: e.target.checked })); setSaved(false); }} className="h-5 w-5 accent-[#f8ae38]" /></label>
           </div>
         </div>
 
-        <div className="rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
-          <h2 className="flex items-center gap-2 text-2xl"><PhoneIcon size={22} /> 4. Quyền riêng tư & liên hệ khẩn cấp</h2>
-          <label htmlFor="emg" className="mt-5 block font-semibold">Emergency contact</label>
-          <input id="emg" value={emergency} onChange={(e) => { setEmergency(e.target.value); setSaved(false); }} placeholder="Tên và số điện thoại người thân" autoComplete="tel" className="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-lg outline-none hc-surface hc-border" />
-          <label className="mt-5 flex items-start gap-3 rounded-xl border border-line p-4 hc-border">
+        <div className="rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border space-y-5">
+          <h2 className="flex items-center gap-2 text-2xl"><PhoneIcon size={22} /> 4. Quyền riêng tư & Khẩn cấp</h2>
+          <div>
+            <label htmlFor="emg" className="block font-semibold">Emergency contact (Số người thân)</label>
+            <input id="emg" value={emergency} onChange={(e) => { setEmergency(e.target.value); setSaved(false); }} placeholder="Tên và số điện thoại người thân" autoComplete="tel" className="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-lg outline-none hc-surface hc-border" />
+          </div>
+
+          {/* Connected Assistive Hardware simulation */}
+          <div className="rounded-2xl bg-slate-50 p-4 border border-line space-y-2 text-xs">
+            <p className="font-bold text-ink text-sm flex items-center justify-between">
+              <span>Thiết bị hỗ trợ kết nối:</span>
+              <span className="text-emerald-700 font-semibold">✓ Đang đồng bộ</span>
+            </p>
+            <div className="flex items-center justify-between py-1">
+              <span>🎧 Tai nghe truyền xương (Shokz OpenRun):</span>
+              <span className="font-semibold text-emerald-800">Đã kết nối</span>
+            </div>
+            <div className="flex items-center justify-between py-1 border-t border-line">
+              <span>🦯 Gậy thông minh Haptic Wand Bluetooth:</span>
+              <span className="font-semibold text-emerald-800">Sẵn sàng rung</span>
+            </div>
+          </div>
+
+          <label className="flex items-start gap-3 rounded-xl border border-line p-4 hc-border">
             <input type="checkbox" checked={shareWithBusiness} onChange={(e) => { setShareWithBusiness(e.target.checked); setSaved(false); }} className="mt-1 h-5 w-5 accent-[#f8ae38]" />
             <span><span className="block font-semibold">Cho phép đề xuất Accessibility Request từ hồ sơ</span><span className="hc-muted mt-1 block text-sm text-ink-soft">Business chỉ nên nhận các thông tin cần thiết cho dịch vụ đã đặt và chỉ sau khi bạn xác nhận.</span></span>
           </label>
-          <p className="hc-muted mt-3 text-sm text-ink-soft">Trong bản demo, dữ liệu này được lưu cục bộ trên thiết bị. Hệ thống thật phải áp dụng bảo mật và phân quyền cho location, itinerary, contact và accessibility profile.</p>
         </div>
       </section>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <button type="button" onClick={save} className="btn-primary text-lg"><CheckIcon size={20} /> Lưu preferences</button>
-        {saved && <span role="status" className="font-semibold text-green-800">Đã lưu trên thiết bị.</span>}
+        <button type="button" onClick={save} className="btn-primary text-lg"><CheckIcon size={20} /> Lưu hồ sơ thiết bị</button>
+        {saved && <span role="status" className="font-semibold text-green-800">✓ Đã lưu thành công trên thiết bị này.</span>}
       </div>
     </div>
   );

@@ -150,6 +150,52 @@ function DestinationContent() {
         </aside>
       </section>
 
+      {/* 4 Tactile Touchpoints from Prototype */}
+      <section className="mt-12 rounded-[26px] bg-[#fffaf2] p-6 lg:p-8 border border-amber-200/80 shadow-sm space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="space-y-1">
+            <span className="inline-block rounded-full bg-amber-200/60 px-3 py-1 text-xs font-bold text-[#7a4d00]">
+              CHỈ DẪN XÚC GIÁC & CẢM QUAN PHỐ CỔ
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink">4 Điểm Chạm Thực Địa Cho Người Khiếm Thị</h2>
+          </div>
+          <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 self-start sm:self-auto">
+            ✓ Đã thẩm định thực địa
+          </span>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl bg-white p-5 border border-line shadow-sm space-y-2">
+            <div className="text-2xl">🏛️</div>
+            <h3 className="font-bold text-base text-ink">1. Bậc Thềm Đá Xanh</h3>
+            <p className="text-xs text-ink-soft leading-relaxed">
+              Thềm đá Thanh Hóa thế kỷ 19. Đưa tay sờ gờ đá nhẵn bóng do hàng trăm năm người đi lại, cảm nhận rãnh thoát nước cổ.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-white p-5 border border-line shadow-sm space-y-2">
+            <div className="text-2xl">🚪</div>
+            <h3 className="font-bold text-base text-ink">2. Cột Lim & Then Cài</h3>
+            <p className="text-xs text-ink-soft leading-relaxed">
+              Gỗ lim nguyên khối nhẵn mịn, mát rượi. Then cài gỗ hình mang cá có thể tự tay đẩy chốt để cảm nhận cơ cấu mộng truyền thống.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-white p-5 border border-line shadow-sm space-y-2">
+            <div className="text-2xl">🌿</div>
+            <h3 className="font-bold text-base text-ink">3. Giếng Trời & Gió Lùa</h3>
+            <p className="text-xs text-ink-soft leading-relaxed">
+              Đứng giữa khoảng sân trong, lắng nghe tiếng gió hút qua mái ngói âm dương, tiếng nước róc rách và mùi hương trầm ấm cúng.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-white p-5 border border-line shadow-sm space-y-2">
+            <div className="text-2xl">🏺</div>
+            <h3 className="font-bold text-base text-ink">4. Hoa Văn Gốm & Khảm</h3>
+            <p className="text-xs text-ink-soft leading-relaxed">
+              Họa tiết hoa sen, tùng cúc chạm nổi trên bề mặt gốm Bát Tràng và xà cừ. Đầu ngón tay dễ dàng phân biệt từng đường nét đắp nổi.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="mt-8 max-w-3xl">
         <h2 className="text-3xl">Trước khi đến</h2>
         <p className="mt-3">Bạn có thể nghe mô tả trước, lưu địa điểm vào chuyến đi và đọc thêm các bài cẩm nang liên quan. Khi lên lịch trình thực tế, nên kiểm tra giờ mở cửa và điều kiện di chuyển vào thời điểm bạn dự định ghé thăm.</p>
@@ -161,8 +207,9 @@ function DestinationContent() {
       </section>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href={`/booking?item=${d.slug}`} className="btn-primary text-lg"><CalendarIcon size={22} /> Tạo yêu cầu / đặt dịch vụ</Link>
-        <Link href={`/navigation?to=${d.slug}`} className="btn-ghost hc-border text-lg"><CompassIcon size={22} /> Mở bản đồ demo</Link>
+        <Link href={`/booking?item=${d.slug}`} className="btn-primary text-lg"><CalendarIcon size={22} /> Đặt dịch vụ / Guide đồng hành</Link>
+        <Link href={`/navigation?to=${d.slug}`} className="btn-ghost hc-border text-lg"><CompassIcon size={22} /> Bản đồ điều hướng âm thanh</Link>
+        <Link href="/services/ride-booking" className="btn-ghost hc-border text-lg">🚗 Đặt xe đưa đón tới đây</Link>
         <Link href="/help" className="btn-ghost hc-border text-lg"><PhoneIcon size={22} /> Thông tin hỗ trợ</Link>
       </div>
 

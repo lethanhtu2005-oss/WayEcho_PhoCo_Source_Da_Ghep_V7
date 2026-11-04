@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/components/WayEchoHome/WayEchoHomeSections.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import {THEME_BOOTSTRAP} from "@/lib/theme";
 import {siteOrigin} from "@/lib/seo";

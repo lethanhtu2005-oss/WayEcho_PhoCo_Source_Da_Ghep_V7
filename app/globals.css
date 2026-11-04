@@ -286,3 +286,102 @@ html[data-reduce="reduce"] .we-onboard *{animation:none!important;transition:non
 /* Partner/Admin have their own shells. Traveler bottom navigation needs body
    padding only on traveler routes; clear it on internal portals. */
 body.we-internal-portal { padding-bottom: 0 !important; }
+
+/* ==========================================================================
+   WAYECHO MODERN PREMIUM 3D UI & LIQUID GLASS LAYER
+   Harmonized with authentic WayEcho brand palette:
+   Primary: #f8ae38 | Accent: #d86927 | Surface: #fffaf3 | Brand brown: #352016
+   ========================================================================== */
+.glass-liquid {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 32px -4px rgba(53, 32, 22, 0.06), 0 2px 8px -2px rgba(248, 174, 56, 0.08);
+}
+
+.glass-liquid-warm {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 248, 238, 0.84) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 226, 202, 0.85);
+  box-shadow: 0 14px 36px -6px rgba(53, 32, 22, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.card-3d {
+  background: #ffffff;
+  border: 1px solid #eedecb;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px -8px rgba(53, 32, 22, 0.07), 0 2px 6px -1px rgba(248, 174, 56, 0.04);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+.card-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px -10px rgba(53, 32, 22, 0.12), 0 6px 16px -2px rgba(248, 174, 56, 0.1);
+  border-color: #f8ae38;
+}
+
+.floating-3d {
+  box-shadow: 0 18px 42px -10px rgba(53, 32, 22, 0.1), 0 0 0 1px rgba(238, 222, 203, 0.7);
+}
+
+.btn-3d {
+  background: linear-gradient(180deg, #fbb84d 0%, #f8ae38 55%, #ee9e20 100%);
+  color: #212529;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(248, 174, 56, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 0 rgba(183, 79, 32, 0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-3d:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 7px 20px rgba(248, 174, 56, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -2px 0 rgba(183, 79, 32, 0.26);
+}
+.btn-3d:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(248, 174, 56, 0.3);
+}
+
+.bubble-orb-amber {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 240, 205, 0.85) 0%, rgba(248, 174, 56, 0.38) 48%, rgba(216, 105, 39, 0.18) 80%, transparent 100%);
+  box-shadow: inset -6px -6px 18px rgba(216, 105, 39, 0.2), 0 14px 34px rgba(248, 174, 56, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble-orb-glass {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 250, 243, 0.22) 60%, rgba(238, 222, 203, 0.35) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: inset -4px -4px 12px rgba(53, 32, 22, 0.04), 0 16px 36px rgba(53, 32, 22, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+html[data-contrast="high"] :is(.glass-liquid, .glass-liquid-warm, .card-3d) {
+  background: #000000 !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+}
+html[data-contrast="high"] :is(.bubble-orb-amber, .bubble-orb-glass) {
+  display: none !important;
+}
+html[data-theme="dark"]:not([data-contrast="high"]) :is(.glass-liquid, .glass-liquid-warm) {
+  background-color: #172233 !important;
+  background-image: none !important;
+  border-color: #63748b !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4) !important;
+}
+html[data-theme="dark"]:not([data-contrast="high"]) .card-3d {
+  background-color: #172233 !important;
+  border-color: #63748b !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35) !important;
+}
+html[data-theme="dark"]:not([data-contrast="high"]) :is(.bubble-orb-amber, .bubble-orb-glass) {
+  opacity: 0.22;
+}

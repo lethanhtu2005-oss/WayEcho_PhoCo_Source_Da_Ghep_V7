@@ -23,14 +23,20 @@ export default function GuideLoginPage() {
 
   async function submit(event) {
     event.preventDefault();
-    if (!email.trim() || !password.trim()) {
-      setError("Vui lòng nhập đầy đủ tài khoản và mật khẩu.");
-      return;
-    }
-    try { await startGuideSession(email, password); } catch (e) { setError(e.message); return; }
+    const targetEmail = email.trim() || "guide1@demo.vn";
+    const targetPassword = password.trim() || "demo123";
+    try { await startGuideSession(targetEmail, targetPassword); } catch (e) { setError(e.message); return; }
     const next = new URLSearchParams(window.location.search).get("next");
     router.refresh();
     router.push(next && next.startsWith("/guide/") && !next.startsWith("//") ? next : "/guide");
+  }
+
+  async function quickDemoLogin() {
+    setEmail("guide1@demo.vn");
+    setPassword("demo123");
+    try { await startGuideSession("guide1@demo.vn", "demo123"); } catch (e) { setError(e.message); return; }
+    router.refresh();
+    router.push("/guide");
   }
 
   return (
@@ -82,9 +88,14 @@ export default function GuideLoginPage() {
               <span>Chưa có khôi phục mật khẩu tự động.</span>
             </div>
 
-            {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{error}</p>}
+            <div className="mb-4 rounded-xl bg-amber-50 p-3 text-xs text-[#7a4c00] border border-amber-200">
+              <span className="font-bold">Mô phỏng (Demo):</span> Nhập bất kỳ tài khoản/mật khẩu nào, hoặc bấm nút dưới:
+              <button type="button" onClick={quickDemoLogin} className="mt-2 block w-full rounded-lg bg-white py-1.5 font-bold text-xs text-[#8c5700] border border-amber-300 hover:bg-amber-100 shadow-sm">
+                🧭 Đăng nhập nhanh Guide Demo (1-chạm)
+              </button>
+            </div>
 
-            <button type="submit" className="btn-primary mt-6 w-full">Đăng nhập →</button>
+            <button type="submit" className="btn-primary mt-2 w-full">Đăng nhập →</button>
             <div className="my-5 flex items-center gap-3 text-sm text-ink-soft"><span className="h-px flex-1 bg-line"/><span>hoặc</span><span className="h-px flex-1 bg-line"/></div>
             <Link href="/guide/register" className="btn-ghost hc-border w-full"><UserIcon size={19}/> Trở thành Guide WayEcho</Link>
           </form>

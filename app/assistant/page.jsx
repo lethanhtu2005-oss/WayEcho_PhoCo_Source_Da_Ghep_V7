@@ -23,31 +23,55 @@ export default function AssistantPage() {
   function nextScene() { setScene((scene + 1) % SCENES.length); setDescribed(false); }
 
   return (
-    <div className="container-page py-10">
-      <p className="font-semibold text-accent-dark">AI Camera / Vision Assistant</p>
-      <h1 className="mt-1 text-4xl sm:text-5xl">Trợ lý mô tả hình ảnh</h1>
+    <div className="container-page py-10 relative overflow-hidden">
+      {/* 3D Ambient Orbs */}
+      <div className="bubble-orb-amber -top-20 -right-20 w-80 h-80 opacity-40 pointer-events-none" aria-hidden="true" />
+
+      <p className="font-bold text-[#d86927] uppercase tracking-wider text-xs">AI Camera / Vision Assistant</p>
+      <h1 className="mt-1 text-4xl sm:text-5xl font-bold text-[#352016]">Trợ lý mô tả hình ảnh</h1>
       <p className="hc-muted mt-3 max-w-3xl text-lg text-ink-soft">Tính năng này mô phỏng FR-12: zoom/OCR/mô tả cho người nhìn kém và người mù. AI là công cụ hỗ trợ, không phải hệ thống bảo đảm an toàn.</p>
 
-      <p role="note" className="mt-4 rounded-xl border border-amber-400 p-4">Bạn có thể mở camera hoặc chọn ảnh để xem trước trên thiết bị. Chưa có nhận diện hình ảnh hay OCR thật, và ảnh của bạn không được gửi ra ngoài. Phần ví dụ bên dưới dùng ảnh mẫu với mô tả viết sẵn.</p>
+      <div role="note" className="mt-5 rounded-2xl glass-liquid-warm border border-[#eedecb] p-5 shadow-sm text-sm">
+        <p className="font-semibold text-[#8b4d1b]">Lưu ý quyền riêng tư & phạm vi thử nghiệm:</p>
+        <p className="mt-1 text-[#452a1d]">Bạn có thể mở camera hoặc chọn ảnh để xem trước trên thiết bị. Chưa có nhận diện hình ảnh hay OCR thật, và ảnh của bạn không được gửi ra ngoài. Phần ví dụ bên dưới dùng ảnh mẫu với mô tả viết sẵn.</p>
+      </div>
+
       <CameraCapture />
-      <h2 className="mt-10 text-2xl">Ví dụ mô tả với ảnh mẫu</h2>
-      <div className="mt-4 grid gap-8 lg:grid-cols-2">
+
+      <h2 className="mt-12 text-2xl font-bold text-[#352016]">Ví dụ mô tả với ảnh mẫu</h2>
+      <div className="mt-5 grid gap-8 lg:grid-cols-2">
         <div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] border border-line bg-surface-alt shadow-card hc-border">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] border border-[#eedecb] bg-surface-alt card-3d hc-border">
             <VerifiedImage src={current.img} fallback={current.fallback} alt={current.alt} className={`h-full w-full object-cover transition ${scanning ? "blur-[2px] brightness-75" : ""}`} />
-            <div className="pointer-events-none absolute inset-6 rounded-2xl border-2 border-white/80" aria-hidden="true" />
-            {scanning && <div className="absolute inset-0 flex items-center justify-center bg-black/35 text-white"><span className="flex items-center gap-2 rounded-pill bg-black/75 px-4 py-2 font-semibold"><WaveIcon size={20} /> Đang mở mô tả mẫu…</span></div>}
+            <div className="pointer-events-none absolute inset-6 rounded-2xl border-2 border-white/80 shadow-inner" aria-hidden="true" />
+            {scanning && <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm text-white"><span className="flex items-center gap-2 rounded-full bg-black/80 border border-white/20 px-5 py-2.5 font-semibold shadow-lg"><WaveIcon size={20} className="animate-pulse text-[#f8ae38]" /> Đang mở mô tả mẫu…</span></div>}
           </div>
-          <div className="mt-4 flex flex-wrap gap-3"><button onClick={scan} className="btn-primary text-lg"><CameraIcon size={22} /> Mô tả ảnh demo</button><button onClick={nextScene} className="btn-ghost hc-border text-lg">Đổi cảnh</button></div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button onClick={scan} className="btn-3d text-lg px-6 py-3 flex items-center gap-2"><CameraIcon size={22} /> Mô tả ảnh demo</button>
+            <button onClick={nextScene} className="btn-ghost hc-border text-lg rounded-full bg-white/80 backdrop-blur-md hover:bg-white">Đổi cảnh</button>
+          </div>
         </div>
 
         <div>
-          <div className="rounded-[18px] border border-line bg-white p-6 shadow-card hc-surface hc-border">
-            <p className="flex items-center gap-2 text-sm font-semibold text-accent-dark"><SpeakerIcon size={18} /> Kết quả mô tả</p>
-            <p className="mt-2 min-h-[6rem] text-xl leading-relaxed" aria-live="polite">{described ? current.desc : "Nhấn “Mô tả ảnh demo” để xem cách hệ thống phản hồi."}</p>
-            {described && <><p className="mt-3 rounded-xl bg-amber-50 p-3 text-sm font-semibold text-amber-950">Nhãn minh họa, không do mô hình tính: {current.confidence}</p><button onClick={() => speak(`${current.desc} Nhãn minh họa viết sẵn: ${current.confidence}.`)} className="btn-ghost hc-border mt-3"><SpeakerIcon size={18} /> Nghe lại</button></>}
+          <div className="rounded-[22px] border border-[#eedecb] glass-liquid p-6 card-3d hc-surface hc-border">
+            <p className="flex items-center gap-2 text-sm font-bold text-[#d86927] uppercase tracking-wider"><SpeakerIcon size={18} /> Kết quả mô tả âm thanh</p>
+            <p className="mt-3 min-h-[6rem] text-xl leading-relaxed text-[#212529]" aria-live="polite">{described ? current.desc : "Nhấn “Mô tả ảnh demo” để xem cách hệ thống phản hồi."}</p>
+            {described && (
+              <>
+                <p className="mt-4 rounded-xl bg-[#fff2dc] border border-[#f0d8b6] p-3.5 text-sm font-semibold text-[#7a4c00]">
+                  Nhãn minh họa, không do mô hình tính: {current.confidence}
+                </p>
+                <button onClick={() => speak(`${current.desc} Nhãn minh họa viết sẵn: ${current.confidence}.`)} className="btn-ghost hc-border mt-3 rounded-xl flex items-center gap-2 text-sm">
+                  <SpeakerIcon size={18} /> Nghe lại
+                </button>
+              </>
+            )}
           </div>
-          <div className="mt-5 rounded-[18px] bg-black p-6 text-white"><h2 className="text-2xl">AI không chắc? Chuyển sang người thật.</h2><p className="mt-2 text-neutral-300">Trong sản phẩm thật, Human Support có thể nhận request và chỉ nhận location/thông tin khi Traveler cấp quyền.</p><a href="/help" className="btn-primary mt-4 w-full text-lg"><PhoneIcon size={22} /> Mở kênh hỗ trợ</a></div>
+          <div className="mt-5 rounded-[22px] bg-[#352016] text-[#fff2e7] p-6 shadow-xl border border-[#4f3223]">
+            <h2 className="text-2xl font-bold text-white">AI không chắc? Chuyển sang người thật.</h2>
+            <p className="mt-2 text-[#e5d2c3] text-sm leading-relaxed">Trong sản phẩm thật, Human Support có thể nhận request và chỉ nhận location/thông tin khi Traveler cấp quyền.</p>
+            <a href="/help" className="btn-3d mt-5 w-full text-lg flex items-center justify-center gap-2"><PhoneIcon size={22} /> Mở kênh hỗ trợ</a>
+          </div>
         </div>
       </div>
     </div>
