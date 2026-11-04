@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useA11y } from "@/components/A11yProvider";
 import { bookingStatus, requestStatus } from "@/lib/bookingStatus";
 import { api } from "@/lib/api";
+import { todayInVietnam } from "@/lib/validate";
 import { CalendarIcon, SpeakerIcon } from "@/components/Icons";
 
 export default function MyBookingPage() {
@@ -23,6 +24,22 @@ export default function MyBookingPage() {
       .then(([list, reqs]) => { setBookings(list); setRequests(reqs); })
       .catch(() => setError("Không tải được đặt chỗ. Hãy kiểm tra kết nối rồi thử lại.")).finally(() => setLoading(false));
   }, [attempt]);
+  const [busyId, setBusyId] = useState("");
+  const [notice, setNotice] = useState("");
+  async function cancel(b) {
+    if (!window.confirm(`Hủy đặt chỗ "${b.itemName}"? Đây là bản demo, không có tiền thật.`)) return;
+    setBusyId(b.id); setError(""); setNotice("");
+    try { await api.updateBooking(b.id, "cancelled"); setBookings((xs) => xs.map((x) => (x.id === b.id ? { ...x, status: "cancelled" } : x))); setNotice("Đã hủy đặt chỗ."); speak("Đã hủy đặt chỗ."); }
+    catch (e) { setNotice(""); setError(e.message || "Chưa hủy được đặt chỗ."); } finally { setBusyId(""); }
+  }
+  // Hành trình của khách: Đã gửi → Cơ sở xác nhận → Đến trải nghiệm → Đánh giá.
+  const today = todayInVietnam();
+  function stage(b) {
+    if (["rejected", "cancelled"].includes(b.status)) return -1;
+    if (b.status === "pending") return 0;
+    return b.date && b.date <= today ? 2 : 1;
+  }
+  const STEPS = ["Đã gửi đặt chỗ", "Cơ sở xác nhận", "Đến trải nghiệm", "Chia sẻ đánh giá"];
   function retry() { setLoading(true); setError(""); setAttempt((n) => n + 1); }
 
   return (
@@ -32,6 +49,7 @@ export default function MyBookingPage() {
         Các bản ghi đặt chỗ của bạn. Chưa có nhà cung cấp, tồn chỗ hoặc thanh toán thật; xác nhận trong demo không bảo đảm dịch vụ thực tế. Nếu chưa đăng nhập, đặt chỗ gắn với trình duyệt này; xóa cookie hoặc đổi thiết bị sẽ không xem lại được.
       </p>
 
+      {notice && <p role="status" className="mt-4 rounded-xl border border-green-300 bg-green-50 p-3 font-semibold text-green-900">{notice}</p>}
       {loading ? (
         <p className="mt-8 text-ink-soft">Đang tải…</p>
       ) : error ? (<div className="mt-8" role="alert"><p className="text-red-800">{error}</p><button type="button" onClick={retry} className="btn-ghost hc-border mt-3">Thử lại</button></div>) : bookings.length === 0 ? (
@@ -42,7 +60,8 @@ export default function MyBookingPage() {
       ) : (
         <ul className="mt-8 space-y-4">
           {bookings.map((b) => { const req = requests?.find((r) => r.bookingId === b.id); const reqText = b.assist ? (req ? requestStatus(req.status) : requests ? "Có yêu cầu hỗ trợ" : "Có yêu cầu hỗ trợ (chưa tải được trạng thái)") : ""; return (
-            <li key={b.id} className="card hc-surface hc-border flex flex-col gap-3 p-5 sm:flex-row sm:items-center">
+            <li key={b.id} className="card hc-surface hc-border p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-alt text-ink"><CalendarIcon size={24} /></span>
               <div className="flex-1">
                 <p className="text-xl font-semibold">{b.itemName}</p>
@@ -59,6 +78,18 @@ export default function MyBookingPage() {
                 onClick={() => speak(`${b.itemName}, ${b.time || ""} ${b.date || ""}, ${b.guests} khách. ${bookingStatus(b.status)[0]}. ${reqText}${req?.note ? `. Ghi chú: ${req.note}` : ""}.`)}
                 className="btn-ghost hc-border !min-h-[40px] !p-2" aria-label={`Nghe lại đơn ${b.itemName}`}
               ><SpeakerIcon size={18} /></button>
+              </div>
+              {(() => { const at = stage(b); return <>
+                {at >= 0 && <ol className="mt-4 grid grid-cols-2 gap-2 text-xs font-semibold sm:grid-cols-4" aria-label="Tiến trình đặt chỗ">{STEPS.map((t, i) => <li key={t} aria-current={i === at ? "step" : undefined} className={`rounded-full px-3 py-2 text-center ${i < at ? "bg-green-100 text-green-900" : i === at ? "bg-[#ffb332] text-[#171b20]" : "bg-[#f3efe7] text-[#6b6358]"}`}>{i < at ? "✓ " : ""}{t}</li>)}</ol>}
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Link href={`/item?id=${b.itemId}`} className="btn-ghost hc-border !min-h-[44px] !py-2 text-sm">Xem dịch vụ</Link>
+                  {["pending", "confirmed"].includes(b.status) && <button type="button" disabled={busyId === b.id} onClick={() => cancel(b)} className="btn-ghost hc-border !min-h-[44px] !py-2 text-sm disabled:opacity-60">Hủy đặt chỗ</button>}
+                  {at === 2 && <Link href={`/review?item=${b.itemId}`} className="btn-primary !min-h-[44px] !py-2 text-sm">Viết đánh giá tiếp cận</Link>}
+                  {at >= 1 && <Link href="/report" className="btn-ghost hc-border !min-h-[44px] !py-2 text-sm">Báo sự cố đang gặp</Link>}
+                  {at === -1 && <Link href={`/booking?item=${b.itemId}`} className="btn-primary !min-h-[44px] !py-2 text-sm">Đặt lại dịch vụ này</Link>}
+                </div>
+                {at === 1 && <p className="mt-2 text-xs text-ink-soft hc-muted">Nút đánh giá sẽ mở từ ngày {b.date || "bạn đến trải nghiệm"}.</p>}
+              </>; })()}
             </li>
           ); })}
         </ul>

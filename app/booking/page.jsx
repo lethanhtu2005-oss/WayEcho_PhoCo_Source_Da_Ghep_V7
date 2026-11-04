@@ -82,18 +82,18 @@ function BookingContent() {
         </p>
 
         {/* Escrow badge & explanation */}
-        <div className="rounded-2xl bg-emerald-50 p-4 border border-emerald-200 text-left text-xs text-emerald-900 space-y-1.5">
+        {(selected.cat==="activity"&&guideId) ? <div className="rounded-2xl bg-emerald-50 p-4 border border-emerald-200 text-left text-xs text-emerald-900 space-y-1.5">
           <div className="font-bold text-sm flex items-center gap-1.5 text-emerald-800">
             <span>🛡️ Quỹ Ký Quỹ Escrow Đang Bảo Hộ Giao Dịch</span>
           </div>
           <p>• Số tiền cọc dịch vụ được phong tỏa an toàn trong smart-ledger Escrow của WayEcho.</p>
-          <p>• Hướng dẫn viên / Doanh nghiệp chỉ nhận tiền sau khi bạn hoàn tất chuyến đi an toàn.</p>
-        </div>
+          <p>• Hướng dẫn viên chỉ nhận tiền sau khi bạn xác nhận hoàn thành. Thanh toán mô phỏng thực hiện ở “Đặt chỗ của tôi”.</p>
+        </div> : <div className="rounded-2xl bg-[#fff8ec] p-4 border border-[#f1e8db] text-left text-xs text-[#5c4a2e]"><p className="font-bold text-sm">Bước tiếp theo</p><p className="mt-1">Cơ sở sẽ xác nhận đặt chỗ. Bạn theo dõi trạng thái, hủy hoặc đánh giá sau chuyến đi tại “Đặt chỗ của tôi”.</p></div>}
 
         {/* Onward actions */}
         <div className="pt-2 flex flex-wrap justify-center gap-3">
           <Link href="/my-booking" className="btn-primary">
-            📋 Xem booking
+            📋 Theo dõi đặt chỗ của tôi
           </Link>
           <Link href="/services/ride-booking" className="btn-ghost hc-border">
             🚗 Đặt xe di chuyển Phố Cổ
@@ -131,8 +131,8 @@ function BookingContent() {
           </dl>
 
           <div className="rounded-xl bg-amber-50 p-3 border border-amber-200 text-xs text-[#7a4c00] space-y-1">
-            <span className="font-bold flex items-center gap-1">🛡️ Bảo hiểm Escrow 100%</span>
-            <p>Bảo đảm minh bạch, hoàn tiền 100% nếu dịch vụ không đáp ứng các tiêu chuẩn tiếp cận đã cam kết.</p>
+            <span className="font-bold flex items-center gap-1">🛡️ Escrow mô phỏng</span>
+            <p>{(selected.cat==="activity"&&guideId) ? "Đặt có hướng dẫn viên sẽ có bước thanh toán và xác nhận hoàn thành mô phỏng. Không có tiền thật." : "Chỉ đặt hướng dẫn viên mới có ký quỹ mô phỏng. Không có tiền thật."}</p>
           </div>
 
           <button type="button" onClick={() => speak(`Dịch vụ ${selected.name}. Ngày ${date || "chưa chọn"}, lúc ${time}. ${share ? `Yêu cầu hỗ trợ: ${selectedRequests.join(", ") || "không có"}.` : "Bạn chọn không chia sẻ accessibility request."}`)} className="btn-ghost hc-border w-full"><SpeakerIcon size={20} /> Nghe lại</button>

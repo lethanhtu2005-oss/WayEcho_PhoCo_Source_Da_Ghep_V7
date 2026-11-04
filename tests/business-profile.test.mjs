@@ -26,3 +26,9 @@ test("làm sạch thẻ HTML, từ chối tên rỗng và SĐT sai", () => {
 test("chỉ nhận bài tập huấn hợp lệ", () => {
   assert.deepEqual(cleanProfile({ training: ["greet", "bogus"] }, base).value.training, ["greet"]);
 });
+
+import { readFileSync } from "node:fs";
+test("Đặt chỗ của tôi: khách có hủy, đánh giá, đặt lại và theo dõi tiến trình", () => {
+  const s = readFileSync(new URL("../app/my-booking/page.jsx", import.meta.url), "utf8");
+  for (const t of ["Hủy đặt chỗ", "Viết đánh giá tiếp cận", "Đặt lại dịch vụ này", "Tiến trình đặt chỗ"]) assert.ok(s.includes(t), t);
+});
