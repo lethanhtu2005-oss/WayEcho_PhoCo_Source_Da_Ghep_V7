@@ -67,7 +67,7 @@ function toCandidate(page) {
     thumb: ii.thumburl || ii.url,
     license,
     licenseRank: licenseRank(license),
-    author: stripHtml(meta.Artist?.value) || "Không rõ tác giả",
+    author: (stripHtml(meta.Artist?.value) || "Không rõ tác giả").slice(0, 120),
     categories: (page.categories || []).map((c) => c.title),
   };
 }
@@ -83,8 +83,13 @@ async function bySearch(q) {
   return (data.query?.pages || []).map(toCandidate).filter(Boolean);
 }
 
+function titleMatches(c, tokens) {
+  const raw = c.title.toLowerCase().normalize("NFC");
+  const plain = norm(c.title);
+  return tokens.some((m) => (m.startsWith("=") ? raw.includes(m.slice(1).normalize("NFC")) : plain.includes(norm(m))));
+}
+
 function pickBest(cands, cfg, exclude, context, used) {
-  const must = cfg.must.map(norm);
   const scored = [];
   for (const c of cands) {
     if (c.licenseRank == null || c.licenseRank === 0) continue; // ảnh tìm theo từ khóa: bỏ CC0/PD vì thường là tư liệu cũ
@@ -93,16 +98,11 @@ function pickBest(cands, cfg, exclude, context, used) {
     if (exclude.test(norm(c.title))) continue;
     const ratio = c.width / c.height;
     if (c.width < 1000 || ratio < 1.1 || ratio > 2.4) continue;
-    const t = norm(c.title);
-    const cats = c.categories.map(norm).join(" | ");
-    let score = 0;
-    if (must.some((m) => t.includes(m))) score = 3;
-    else if (must.some((m) => cats.includes(m))) score = 2;
-    if (score < 2) continue; // chỉ khớp mô tả thì không đủ tin cậy
-    if (!context.test(`${t} | ${cats}`)) continue; // phải thuộc Hà Nội, tránh trùng tên phố ở thành phố khác
-    scored.push({ c, score, ratioDist: Math.abs(ratio - 1.5) });
+    if (!titleMatches(c, cfg.must)) continue; // chỉ nhận khi TÊN FILE chứa tên địa điểm; danh mục chung không đủ tin cậy
+    if (cfg.needContext && !context.test(`${norm(c.title)} | ${c.categories.map(norm).join(" | ")}`)) continue;
+    scored.push({ c, ratioDist: Math.abs(ratio - 1.5) });
   }
-  scored.sort((a, b) => b.score - a.score || a.c.licenseRank - b.c.licenseRank || Math.min(b.c.width, 3000) - Math.min(a.c.width, 3000) || a.ratioDist - b.ratioDist);
+  scored.sort((a, b) => a.c.licenseRank - b.c.licenseRank || Math.min(b.c.width, 3000) - Math.min(a.c.width, 3000) || a.ratioDist - b.ratioDist);
   return { best: scored[0]?.c || null, considered: scored.length };
 }
 

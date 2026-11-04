@@ -1,5 +1,5 @@
 {
-  "_ghi_chu": "Bản đồ slug điểm đến -> cách tìm ảnh thật trên Wikimedia Commons. 'pinned' là file đã được repo này gắn với địa điểm (data/photoCredits.js, data/verifiedPhotoManifest.json, data/destinations.js). Mục còn lại tìm theo 'queries' và chỉ nhận ảnh có TÊN FILE hoặc DANH MỤC chứa một trong 'must' (không dấu, không phân biệt hoa thường). Không khớp thì bỏ trống, không thay bằng ảnh gần giống.",
+  "_ghi_chu": "Bản đồ slug điểm đến -> cách tìm ảnh thật trên Wikimedia Commons. 'pinned' là file đã được repo này gắn với địa điểm (data/photoCredits.js, data/verifiedPhotoManifest.json, data/destinations.js). Mục còn lại tìm theo 'queries' và chỉ nhận ảnh có TÊN FILE hoặc DANH MỤC chứa một trong 'must' (không dấu, không phân biệt hoa thường). Không khớp thì bỏ trống, không thay bằng ảnh gần giống. 'must' bắt đầu bằng '=' được so khớp CÓ DẤU với tên file. 'needContext' yêu cầu thêm tên file/danh mục thuộc Hà Nội. Chỉ khớp qua danh mục thì KHÔNG đủ.",
   "places": {
     "nha-co-87-ma-may": {
       "name": "Nhà cổ 87 Mã Mây",
@@ -64,8 +64,11 @@
         "Dong Lac communal house Hanoi"
       ],
       "must": [
-        "dong lac"
-      ]
+        "=đình đồng lạc",
+        "dong lac communal",
+        "dinh dong lac"
+      ],
+      "needContext": true
     },
     "dinh-thanh-ha": {
       "name": "Đình Thanh Hà",
@@ -74,8 +77,12 @@
         "Thanh Ha communal house Hanoi"
       ],
       "must": [
-        "thanh ha"
-      ]
+        "=đình thanh hà",
+        "thanh ha communal",
+        "thanh ha temple",
+        "dinh thanh ha"
+      ],
+      "needContext": true
     },
     "den-quan-de": {
       "name": "Đền Quan Đế",
@@ -128,7 +135,8 @@
       ],
       "must": [
         "hang dao"
-      ]
+      ],
+      "needContext": true
     },
     "pho-hang-ngang": {
       "name": "Phố Hàng Ngang",
@@ -139,7 +147,8 @@
       ],
       "must": [
         "hang ngang"
-      ]
+      ],
+      "needContext": true
     },
     "pho-hang-thiec": {
       "name": "Phố Hàng Thiếc",
@@ -150,7 +159,8 @@
       ],
       "must": [
         "hang thiec"
-      ]
+      ],
+      "needContext": true
     },
     "pho-hang-quat": {
       "name": "Phố Hàng Quạt",
@@ -160,7 +170,8 @@
       ],
       "must": [
         "hang quat"
-      ]
+      ],
+      "needContext": true
     },
     "pho-lan-ong": {
       "name": "Phố Lãn Ông",
@@ -171,7 +182,8 @@
       ],
       "must": [
         "lan ong"
-      ]
+      ],
+      "needContext": true
     },
     "pho-ma-may": {
       "name": "Phố Mã Mây",
@@ -181,7 +193,8 @@
       ],
       "must": [
         "ma may"
-      ]
+      ],
+      "needContext": true
     },
     "pho-ta-hien": {
       "name": "Tuyến phố Tạ Hiện",
