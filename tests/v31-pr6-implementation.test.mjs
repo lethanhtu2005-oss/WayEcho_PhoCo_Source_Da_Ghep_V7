@@ -9,6 +9,8 @@ test('V31: Admin portal is absent from every public Header navigation surface', 
   assert.doesNotMatch(header, /href=["']\/admin(?:["'?#]|$)/);
   assert.doesNotMatch(header, /Quản trị Admin|Admin Portal|Admin Demo/);
   assert.doesNotMatch(header, /requiredRole:\s*["']admin["']/);
+  assert.doesNotMatch(header, /admin:\s*["']\/admin/);
+  assert.doesNotMatch(header, /session\.role!==["']admin["']/);
   assert.match(header, /const nav =/);
   assert.match(header, /id="we-mobile-nav"/);
   assert.match(header, /aria-controls="we-mobile-nav"/);
