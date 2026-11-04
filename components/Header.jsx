@@ -13,7 +13,7 @@ const NAV = [
   {label:"Dịch vụ",href:"/explore",links:[["Lưu trú","/explore?cat=accommodation"],["Ẩm thực","/explore?cat=restaurant"],["Di chuyển","/services/ride-booking"],["Guide đồng hành","/services/guides"],["Vé tham quan","/explore?cat=ticket"],["Tour & Trải nghiệm","/explore?cat=activity"],["Đặt dịch vụ","/booking"]]},
   {label:"Blog & Trải nghiệm",href:"/articles",links:[["Cẩm nang du lịch","/articles?muc=cam-nang"],["Du lịch tiếp cận","/articles?muc=du-lich-tiep-can"],["Gợi ý hành trình","/articles?muc=goi-y-hanh-trinh"],["Câu chuyện trải nghiệm","/articles?muc=cau-chuyen"],["Mẹo du lịch","/articles?muc=meo-du-lich"]]},
   {label:"Hỗ trợ",href:"/help",links:[["Hồ sơ tiếp cận","/profile"],["Hướng dẫn tương tác","/onboarding"],["Hướng dẫn sử dụng","/help"],["Liên hệ hỗ trợ","/help#contact"],["SOS – hỗ trợ khẩn cấp","/sos"]]},
-  {label:"Đối tác",href:"/partner",links:[["Cổng Đối Tác Liên Thông","/partner"],["Cổng Quản trị Admin","/admin"],["Hướng dẫn viên (Guide)","/guide"],["Tình nguyện viên (Trạm 28 Hàng Buồm)","/volunteer"],["Doanh nghiệp tiếp cận","/business"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
+  {label:"Đối tác",href:"/partner",links:[["Cổng Đối Tác Liên Thông","/partner"],["Hướng dẫn viên (Guide)","/guide"],["Tình nguyện viên (Trạm 28 Hàng Buồm)","/volunteer"],["Doanh nghiệp tiếp cận","/business"],["Hợp tác cùng WayEcho","/partners/cooperate"]]},
 ];
 
 const ROLE_LABELS = {traveler:"Khách hàng",guide:"Hướng dẫn viên",business:"Đối tác doanh nghiệp",admin:"Quản trị viên",advisor:"Tư vấn viên"};
@@ -22,7 +22,6 @@ const ACCOUNT_LINKS = [
   ["Đặt chỗ của tôi","/my-booking","Các đơn đặt tour, vé, lưu trú, xe, hướng dẫn viên"],
   ["Chuyến đi của tôi","/my-trip","Lịch trình đã tạo, địa điểm đã lưu, các điểm dừng"],
   ["Cài đặt tài khoản","/settings","Thông tin đăng nhập và tùy chọn cá nhân"],
-  ["Cổng Quản trị Admin","/admin","Quản trị hệ thống tiếp cận & điều phối"],
 ];
 const ROLE_HOME = {traveler:"/profile",guide:"/guide",business:"/business",admin:"/admin",advisor:"/admin/consultation"};
 const menuLink = "flex min-h-11 items-center rounded-xl px-3 py-2.5 text-sm font-semibold text-[#452a1d] transition-colors hover:bg-[#fff0df] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a94c1c]";
@@ -91,24 +90,6 @@ export default function Header() {
     } catch (error) {setAccountError(error.message || "Đăng xuất không thành công.");setLogoutBusy(false);}
   }
 
-  async function enterAdmin(e) {
-    if (e) e.preventDefault();
-    close();
-    try {
-      await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: "Admin Demo",
-          password: "",
-          requiredRole: "admin",
-          allowedRoles: ["admin"],
-        }),
-      });
-    } catch {}
-    window.location.assign("/admin");
-  }
-
   const nav = <ul className="flex flex-col gap-1 xl:flex-row xl:items-center">
     {NAV.map((item,i) => <li key={item.label} className="relative">
       <button type="button" aria-expanded={menu===i} aria-controls={`we-menu-${i}`}
@@ -118,19 +99,9 @@ export default function Header() {
       </button>
       {menu===i && <div id={`we-menu-${i}`} className="we-dropdown relative z-50 mt-1 min-w-[245px] rounded-2xl border border-[#e8dfd3] bg-white p-2 shadow-xl xl:absolute xl:left-0 xl:top-full xl:mt-2">
         <Link href={item.href} onClick={close} className="block rounded-xl px-4 py-3 font-bold hover:bg-[#fff3e3]">{item.label==="Blog & Trải nghiệm"?"Xem Blog & Trải nghiệm":item.label==="Dịch vụ"?"Xem các dịch vụ":"Xem tất cả"}</Link>
-        {item.links.map(([name,href]) => <Link key={name} href={href} onClick={href === "/admin" ? enterAdmin : close} className="block rounded-xl px-4 py-3 text-sm hover:bg-[#fff3e3] focus-visible:outline-2 focus-visible:outline-orange-500">{name}</Link>)}
+        {item.links.map(([name,href]) => <Link key={name} href={href} onClick={close} className="block rounded-xl px-4 py-3 text-sm hover:bg-[#fff3e3] focus-visible:outline-2 focus-visible:outline-orange-500">{name}</Link>)}
       </div>}
     </li>)}
-    <li className="relative">
-      <Link
-        href="/admin"
-        onClick={enterAdmin}
-        className="we-nav-trigger flex min-h-11 items-center gap-1.5 rounded-xl px-3 font-semibold text-[#8a3814] hover:bg-[#fff1e1] hover:text-[#d97706] transition-colors"
-      >
-        <span>Quản trị Admin</span>
-        <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-      </Link>
-    </li>
   </ul>;
 
   return <header ref={root} className="sticky top-0 z-40 border-b border-[#eedecb]/80 bg-white/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(53,32,22,0.04)] hc-surface hc-border">
@@ -170,7 +141,7 @@ export default function Header() {
             {sessionLoading ? <p role="status" className="px-3 py-3 text-sm">Đang tải thông tin tài khoản…</p> : <>
               {!authenticated && <><Link href="/login" onClick={close} className={`${menuLink} bg-[#fff0df]`}>Đăng nhập khách hàng</Link><div className="my-1 border-t border-[#f0dfd0]"/></>}
               {authenticated && session.role!=="traveler" && <Link href={ROLE_HOME[session.role] || "/profile"} onClick={close} className={menuLink}>Vào bảng điều khiển</Link>}
-              {ACCOUNT_LINKS.map(([label,href,desc]) => <Link key={href} href={href} onClick={href === "/admin" ? enterAdmin : close} className={`${menuLink} !block`}><span className="block font-semibold">{label}</span><span className="block text-xs font-normal text-[#70564a]">{desc}</span></Link>)}
+              {ACCOUNT_LINKS.map(([label,href,desc]) => <Link key={href} href={href} onClick={close} className={`${menuLink} !block`}><span className="block font-semibold">{label}</span><span className="block text-xs font-normal text-[#70564a]">{desc}</span></Link>)}
               {authenticated && <><div className="my-1 border-t border-[#f0dfd0]"/>
               <button type="button" disabled={logoutBusy} onClick={logoutAccount} className={`${menuLink} !block w-full text-left text-[#a13d1c] disabled:opacity-60`}><span className="block font-semibold">{logoutBusy?"Đang đăng xuất…":"Đăng xuất"}</span><span className="block text-xs font-normal">Kết thúc phiên đăng nhập</span></button></>}
             </>}

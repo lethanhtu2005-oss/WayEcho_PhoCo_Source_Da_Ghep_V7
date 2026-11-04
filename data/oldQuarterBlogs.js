@@ -43,7 +43,7 @@ export const oldQuarterBlogs = [
     "bridge": "Từ câu chuyện về nơi ở và buôn bán của một gia đình, hành trình có thể mở rộng ra hoạt động thương mại của cả khu phố tại Chợ Đồng Xuân.",
     "next": "dong-xuan",
     "slug": "nha-co-87-ma-may",
-    "image": "/assets/images/nha-co-87-ma-may-ai.png",
+    "image": "/assets/images/nha-co-87-ma-may-ai.webp",
     "relatedSlugs": [
       "cho-dong-xuan",
       "o-quan-chuong",
@@ -100,7 +100,7 @@ export const oldQuarterBlogs = [
     "bridge": "Khi đã nghe câu chuyện thương mại của Phố cổ, bạn có thể tìm hiểu một dấu tích của những cửa ngõ ra vào Hà Nội xưa tại Ô Quan Chưởng.",
     "next": "o-quan-chuong",
     "slug": "cho-dong-xuan",
-    "image": "/assets/images/cho-dong-xuan-ai.png",
+    "image": "/assets/images/cho-dong-xuan-ai.webp",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "o-quan-chuong",
@@ -156,7 +156,7 @@ export const oldQuarterBlogs = [
     "bridge": "Từ dấu tích lịch sử của Phố cổ, câu chuyện tiếp theo đưa bạn đến Phố Hàng Mã — nơi các hoạt động mua bán gắn với mùa lễ hội.",
     "next": "hang-ma",
     "slug": "o-quan-chuong",
-    "image": "/assets/images/o-quan-chuong-ai.png",
+    "image": "/assets/images/o-quan-chuong-ai.webp",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "cho-dong-xuan",
@@ -212,7 +212,7 @@ export const oldQuarterBlogs = [
     "bridge": "Muốn hiểu sâu hơn cách cư dân Phố cổ vừa sống vừa kinh doanh, bạn có thể quay lại câu chuyện Nhà cổ 87 Mã Mây.",
     "next": "ma-may",
     "slug": "pho-hang-ma",
-    "image": "/assets/images/pho-hang-ma-ai.png",
+    "image": "/assets/images/pho-hang-ma-ai.webp",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "cho-dong-xuan",
