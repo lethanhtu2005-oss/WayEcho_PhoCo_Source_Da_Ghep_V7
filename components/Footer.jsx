@@ -9,7 +9,7 @@ const footerLink = "inline-flex min-h-11 items-center rounded-md text-sm text-[#
 const sections = [
   {label:"Khám phá", links:[["Điểm đến Phố cổ","/destination"],["Dịch vụ du lịch","/explore"],["Blog & Trải nghiệm","/articles"],["Bản đồ & vị trí","/navigation"],["Đặt xe (mô phỏng)","/services/ride-booking"]]},
   {label:"Hỗ trợ", links:[["Trung tâm trợ giúp","/help"],["Hướng dẫn tương tác","/onboarding"],["Tuyên bố tiếp cận","/accessibility"],["Liên hệ WayEcho","/contact"],["SOS (mô phỏng)","/sos"]]},
-  {label:"Dành cho đối tác", links:[["Đăng ký hợp tác","/partners/cooperate"],["Cổng Partner","/partner"],["Đăng nhập Partner","/partner/login"],["Hướng dẫn viên & TNV","/partners/guide"],["Doanh nghiệp","/partners/business"]]},
+  {label:"Dành cho đối tác", links:[["Đăng ký hợp tác","/partners/cooperate"],["Cổng Đối tác","/partner"],["Cổng Admin · Điều phối đối tác","/admin"]]},
   {label:"Về WayEcho", links:[["Giới thiệu","/help"],["Quyền riêng tư","/privacy"],["Điều khoản sử dụng","/terms"],["Nguồn ảnh & giấy phép","/photo-credits"]]},
 ];
 
@@ -27,7 +27,7 @@ export default function Footer() {
         </section>
         {sections.map(s=><nav key={s.label} aria-label={s.label}>
           <h2 className="mb-2 text-base font-bold text-white">{s.label}</h2>
-          <ul className="space-y-0">{s.links.map(([label,href])=><li key={href+label}>{href==="/partner"?<Link className={footerLink} href="/partner">{label}</Link>:<Link className={footerLink} href={href}>{label}</Link>}</li>)}</ul>
+          <ul className="space-y-0">{s.links.map(([label,href])=><li key={href+label}><Link className={footerLink} href={href}>{label}</Link></li>)}</ul>
         </nav>)}
       </div>
       <div className="mt-9 border-t border-[#80604f] pt-6">
