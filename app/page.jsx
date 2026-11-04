@@ -44,16 +44,16 @@ const HOME_IMAGES = {
     alt: "Một khu hàng quán trong phố cổ Hà Nội đông người, ánh đèn ấm và không khí buôn bán nhộn nhịp.",
   },
   navigation: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/4/43/Smartphone_with_navigation_map_app.jpg",
-    alt: "Một bàn tay cầm điện thoại thông minh đang mở ứng dụng bản đồ điều hướng; ảnh minh họa cho chức năng chỉ đường.",
+    src: "/assets/images/we-minh-hoa-dieu-huong-ban-do.jpg",
+    alt: "Hình thiết kế minh họa điện thoại có bản đồ và đường đi, không phải giao diện bản đồ thực tế của WayEcho.",
   },
   camera: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/1/16/A_man_using_a_cell_phone_to_take_a_photo.jpg",
-    alt: "Một người đang dùng điện thoại để chụp ảnh; ảnh minh họa cho chức năng trợ lý camera của WayEcho.",
+    src: "/assets/images/we-minh-hoa-tro-ly-camera.jpg",
+    alt: "Hình thiết kế minh họa một điện thoại với vùng camera chụp phố cổ, không phải camera đang hoạt động.",
   },
   humanSupport: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/dc/O%26M_instructor.jpg",
-    alt: "Một buổi hướng dẫn định hướng và di chuyển, trong đó người hướng dẫn đứng cạnh người đang thực hành sử dụng gậy trắng; ảnh minh họa cho hỗ trợ con người.",
+    src: "/assets/images/we-ai-ho-tro-tinh-nguyen-vien.jpg",
+    alt: "Ảnh AI minh họa các tình nguyện viên hỗ trợ khách tham quan, không đại diện cho tình nguyện viên thật của WayEcho.",
   },
 };
 

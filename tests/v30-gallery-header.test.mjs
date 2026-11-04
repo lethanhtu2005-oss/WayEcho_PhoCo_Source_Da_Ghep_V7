@@ -6,7 +6,7 @@ import { oldQuarterCards } from "../data/oldQuarterHome.js";
 import { destinations } from "../data/destinations.js";
 import { photoCredits } from "../data/photoCredits.js";
 const source = name => readFile(new URL(name, import.meta.url), "utf8");
-const fileName = url => decodeURIComponent(new URL(url).pathname.split("/").pop());
+const fileName = url => decodeURIComponent(new URL(url, "https://site.invalid").pathname.split("/").pop());
 
 test("V30 gallery có 15 tệp ảnh riêng, không lặp với bốn thẻ và trang chi tiết", () => {
  assert.equal(oldQuarterGallery.length,15);
@@ -27,8 +27,8 @@ test("V30 Gallery tự loại ảnh lỗi, lightbox không in nguồn và có b�
  const footer=await source("../components/Footer.jsx");
  assert.match(footer,/Nguồn ảnh & giấy phép/);
  assert.match(footer,/\/photo-credits/);
- assert.equal(photoCredits.length,29);
- assert.equal(new Set(photoCredits.map(x=>x.file)).size,29);
+ assert.ok(photoCredits.length>=29);
+ assert.equal(new Set(photoCredits.map(x=>x.file)).size,photoCredits.length);
  for(const img of oldQuarterGallery) assert.ok(photoCredits.some(c=>c.source===img.source));
 });
 test("V30 Header thay SOS bằng chuông thật, footer vẫn có SOS",async()=>{

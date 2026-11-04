@@ -1,5 +1,4 @@
 export const photoCredits = [
-
   {
     "place": "Gallery – Phố Tạ Hiện",
     "file": "Phố Tạ Hiện - NKS.jpg",
@@ -202,5 +201,75 @@ export const photoCredits = [
     "author": "Xiquinho Silva",
     "license": "CC BY 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Literature,_Hanoi_by_Xiquinho_Silva_02.jpg"
+  },
+  {
+    "place": "Gallery – Phố cổ Hà Nội",
+    "file": "we-photo-pho-co-do-thi.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-pho-co-do-thi.jpg"
+  },
+  {
+    "place": "Gallery – Phố Tạ Hiện",
+    "file": "we-ai-pho-ta-hien.jpg",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu",
+    "source": "/assets/images/we-ai-pho-ta-hien.jpg"
+  },
+  {
+    "place": "Gallery – Phố Hàng Bạc",
+    "file": "we-ai-nghe-kim-hoan.jpg",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu",
+    "source": "/assets/images/we-ai-nghe-kim-hoan.jpg"
+  },
+  {
+    "place": "Gallery – Ngõ phố cổ Hà Nội",
+    "file": "we-photo-ngo-pho-co.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-ngo-pho-co.jpg"
+  },
+  {
+    "place": "Gallery – Phố Hàng Đào",
+    "file": "we-ai-pho-hang-dao.jpg",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu",
+    "source": "/assets/images/we-ai-pho-hang-dao.jpg"
+  },
+  {
+    "place": "Gallery – Góc phố Hà Nội",
+    "file": "we-photo-pho-co-goc-pho.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-pho-co-goc-pho.jpg"
+  },
+  {
+    "place": "Gallery – Phố cổ về đêm",
+    "file": "we-photo-pho-ta-hien-ban-dem.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-pho-ta-hien-ban-dem.jpg"
+  },
+  {
+    "place": "Gallery – Nhịp sống phố cổ",
+    "file": "we-photo-doi-song-pho-co.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-doi-song-pho-co.jpg"
+  },
+  {
+    "place": "Gallery – Chợ phố cổ",
+    "file": "we-photo-cho-dem.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-cho-dem.jpg"
+  },
+  {
+    "place": "Gallery – Phố cổ và gánh hàng rong",
+    "file": "we-photo-nguoi-ban-hang-rong.jpg",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành",
+    "source": "/assets/images/we-photo-nguoi-ban-hang-rong.jpg"
   }
 ];

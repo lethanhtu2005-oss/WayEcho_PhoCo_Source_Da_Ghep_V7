@@ -1,84 +1,105 @@
-// 15 distinct real Wikimedia file pages, gallery removes images that cannot load.
+// 15 ảnh khác nhau: 10 ảnh local (ảnh dự án và ảnh AI minh họa, ghi rõ trong alt) + 5 ảnh Wikimedia Commons có ghi tác giả/giấy phép.
+// Ảnh không tải được sẽ tự ẩn khỏi danh sách.
 export const oldQuarterGallery = [
   {
-    "name": "Phố Tạ Hiện",
-    "file": "Phố Tạ Hiện - NKS.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ph%E1%BB%91%20T%E1%BA%A1%20Hi%E1%BB%87n%20-%20NKS.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:Ph%E1%BB%91_T%E1%BA%A1_Hi%E1%BB%87n_-_NKS.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Phố Tạ Hiện, Hà Nội",
-    "author": "NKSTTSSHNVN",
-    "license": "CC BY-SA 4.0"
-  },
-  {
-    "name": "Phố cổ Hà Nội – góc 1",
-    "file": "2024-11-03 Hanoi's Old Quarter 1.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%201.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_1.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một góc Phố cổ Hà Nội",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Phố cổ Hà Nội – góc 2",
-    "file": "2024-11-03 Hanoi's Old Quarter 2.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%202.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_2.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Đường phố trong khu Phố cổ Hà Nội",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Phố cổ Hà Nội – góc 6",
-    "file": "2024-11-03 Hanoi's Old Quarter 6.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%206.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_6.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một phố trong khu phố cổ Hà Nội",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Tạ Hiện buổi tối",
-    "file": "Tạ Hiện Street, Hanoi, Vietnam 13.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/T%E1%BA%A1%20Hi%E1%BB%87n%20Street%2C%20Hanoi%2C%20Vietnam%2013.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:T%E1%BA%A1_Hi%E1%BB%87n_Street%2C_Hanoi%2C_Vietnam_13.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một góc Tạ Hiện buổi tối",
-    "author": "Ltn12345",
-    "license": "CC BY-SA 4.0"
-  },
-  {
-    "name": "Phố cổ Hà Nội – góc 7",
-    "file": "2024-11-03 Hanoi's Old Quarter 7.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%207.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_7.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một góc phố Hà Nội",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Tạ Hiện – góc phố khác",
-    "file": "Tạ Hiện Street, Hanoi, Vietnam 14.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/T%E1%BA%A1%20Hi%E1%BB%87n%20Street%2C%20Hanoi%2C%20Vietnam%2014.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:T%E1%BA%A1_Hi%E1%BB%87n_Street%2C_Hanoi%2C_Vietnam_14.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Phố Tạ Hiện, Hà Nội trong ảnh tư liệu khác",
-    "author": "Wikimedia Commons",
-    "license": "Xem giấy phép trên trang gốc"
-  },
-  {
-    "name": "Tạ Hiện – nhịp sống",
-    "file": "Tạ Hiện Street, Hanoi, Vietnam 15.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/T%E1%BA%A1%20Hi%E1%BB%87n%20Street%2C%20Hanoi%2C%20Vietnam%2015.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:T%E1%BA%A1_Hi%E1%BB%87n_Street%2C_Hanoi%2C_Vietnam_15.jpg",
+    "name": "Phố cổ Hà Nội",
+    "file": "we-photo-pho-co-do-thi.jpg",
+    "image": "/assets/images/we-photo-pho-co-do-thi.jpg",
+    "source": "/assets/images/we-photo-pho-co-do-thi.jpg",
     "href": "/articles",
-    "alt": "Đường phố Tạ Hiện, Hà Nội",
-    "author": "Wikimedia Commons",
-    "license": "Xem giấy phép trên trang gốc"
+    "alt": "Ảnh chụp tổng quan đường phố Hà Nội",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Phố Tạ Hiện",
+    "file": "we-ai-pho-ta-hien.jpg",
+    "image": "/assets/images/we-ai-pho-ta-hien.jpg",
+    "source": "/assets/images/we-ai-pho-ta-hien.jpg",
+    "href": "/articles",
+    "alt": "Ảnh AI minh họa không gian phố Tạ Hiện",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu"
+  },
+  {
+    "name": "Phố Hàng Bạc",
+    "file": "we-ai-nghe-kim-hoan.jpg",
+    "image": "/assets/images/we-ai-nghe-kim-hoan.jpg",
+    "source": "/assets/images/we-ai-nghe-kim-hoan.jpg",
+    "href": "/destination?d=pho-co",
+    "alt": "Ảnh AI minh họa nghề kim hoàn gắn với phố Hàng Bạc",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu"
+  },
+  {
+    "name": "Ngõ phố cổ Hà Nội",
+    "file": "we-photo-ngo-pho-co.jpg",
+    "image": "/assets/images/we-photo-ngo-pho-co.jpg",
+    "source": "/assets/images/we-photo-ngo-pho-co.jpg",
+    "href": "/articles",
+    "alt": "Ảnh chụp ngõ trong khu phố cổ, không xác nhận là phố Hàng Gai",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Phố Hàng Đào",
+    "file": "we-ai-pho-hang-dao.jpg",
+    "image": "/assets/images/we-ai-pho-hang-dao.jpg",
+    "source": "/assets/images/we-ai-pho-hang-dao.jpg",
+    "href": "/articles",
+    "alt": "Ảnh AI minh họa không gian phố Hàng Đào",
+    "author": "Ảnh AI minh họa",
+    "license": "Hình AI minh họa, không phải ảnh tư liệu"
+  },
+  {
+    "name": "Góc phố Hà Nội",
+    "file": "we-photo-pho-co-goc-pho.jpg",
+    "image": "/assets/images/we-photo-pho-co-goc-pho.jpg",
+    "source": "/assets/images/we-photo-pho-co-goc-pho.jpg",
+    "href": "/articles",
+    "alt": "Ảnh chụp góc phố Hà Nội, không xác nhận là Hàng Bồ",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Phố cổ về đêm",
+    "file": "we-photo-pho-ta-hien-ban-dem.jpg",
+    "image": "/assets/images/we-photo-pho-ta-hien-ban-dem.jpg",
+    "source": "/assets/images/we-photo-pho-ta-hien-ban-dem.jpg",
+    "href": "/articles",
+    "alt": "Ảnh chụp phố cổ về đêm, không xác nhận là Tạ Hiện",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Nhịp sống phố cổ",
+    "file": "we-photo-doi-song-pho-co.jpg",
+    "image": "/assets/images/we-photo-doi-song-pho-co.jpg",
+    "source": "/assets/images/we-photo-doi-song-pho-co.jpg",
+    "href": "/articles",
+    "alt": "Ảnh chụp hoạt động giao thông và sinh hoạt ở phố cổ Hà Nội",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Chợ phố cổ",
+    "file": "we-photo-cho-dem.jpg",
+    "image": "/assets/images/we-photo-cho-dem.jpg",
+    "source": "/assets/images/we-photo-cho-dem.jpg",
+    "href": "/articles/cho-dong-xuan",
+    "alt": "Ảnh chụp chợ đêm trong khu vực phố cổ",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
+  },
+  {
+    "name": "Phố cổ và gánh hàng rong",
+    "file": "we-photo-nguoi-ban-hang-rong.jpg",
+    "image": "/assets/images/we-photo-nguoi-ban-hang-rong.jpg",
+    "source": "/assets/images/we-photo-nguoi-ban-hang-rong.jpg",
+    "href": "/articles",
+    "alt": "Ảnh chụp người bán hàng rong trên đường phố Hà Nội",
+    "author": "Ảnh dự án WayEcho",
+    "license": "Ảnh nội bộ dự án — cần rà soát quyền trước khi phát hành"
   },
   {
     "name": "Phố Hàng Đường",
@@ -127,26 +148,6 @@ export const oldQuarterGallery = [
     "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_3.jpg",
     "href": "/destination?d=pho-co",
     "alt": "Cảnh đường phố tại Hà Nội theo mô tả của tác giả",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Góc phố Hà Nội",
-    "file": "2024-11-03 Hanoi's Old Quarter 4.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%204.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_4.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một góc phố Hà Nội theo mô tả của tác giả",
-    "author": "Alexkom000",
-    "license": "CC BY 4.0"
-  },
-  {
-    "name": "Phố cổ trong ảnh",
-    "file": "2024-11-03 Hanoi's Old Quarter 5.jpg",
-    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2024-11-03%20Hanoi%27s%20Old%20Quarter%205.jpg?width=960",
-    "source": "https://commons.wikimedia.org/wiki/File:2024-11-03_Hanoi%27s_Old_Quarter_5.jpg",
-    "href": "/destination?d=pho-co",
-    "alt": "Một cảnh đường phố trong bộ ảnh Hà Nội",
     "author": "Alexkom000",
     "license": "CC BY 4.0"
   }

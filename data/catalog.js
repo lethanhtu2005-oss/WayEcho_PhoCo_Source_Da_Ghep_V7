@@ -10,8 +10,8 @@ export const CATEGORIES=[
 // Legacy internal demo IDs remain valid for booking links created before the
 // Phố cổ catalog migration. These are NOT actual bookable businesses.
 const legacyDemoItems = [
- {id:"demo-hotel",cat:"accommodation",name:"Lưu trú thử nghiệm WayEcho",area:"Hà Nội",price:"Giá mô phỏng",isDemo:true,verifiedPlace:false,image:"/assets/images/location-image-unavailable.svg",level:"Cần khảo sát"},
- {id:"demo-restaurant",cat:"restaurant",name:"Ẩm thực thử nghiệm WayEcho",area:"Hà Nội",price:"Giá mô phỏng",isDemo:true,verifiedPlace:false,image:"/assets/images/location-image-unavailable.svg",level:"Cần khảo sát"}
+ {id:"demo-hotel",cat:"accommodation",name:"Lưu trú thử nghiệm WayEcho",area:"Hà Nội",price:"Giá mô phỏng",isDemo:true,verifiedPlace:false,image:"/assets/images/we-ai-luu-tru-phong.jpg",imageFallback:"/assets/images/we-ai-luu-tru-phong.jpg",alt:"Phòng nghỉ phong cách nhà cổ Hà Nội, ảnh AI minh họa dịch vụ lưu trú demo.",level:"Cần khảo sát"},
+ {id:"demo-restaurant",cat:"restaurant",name:"Ẩm thực thử nghiệm WayEcho",area:"Hà Nội",price:"Giá mô phỏng",isDemo:true,verifiedPlace:false,image:"/assets/images/we-ai-an-uong-nha-hang.jpg",imageFallback:"/assets/images/we-ai-an-uong-nha-hang.jpg",alt:"Không gian nhà hàng kiểu Việt, ảnh AI minh họa dịch vụ ăn uống demo.",level:"Cần khảo sát"}
 ];
 
 const destinationItems=destinations.map(d=>({id:d.slug,cat:"destination",name:d.name,area:d.area,image:d.image,imageFallback:d.imageFallback,alt:d.alt,price:d.visit?.price||"Xem chi tiết",level:d.access.level,note:d.access.status,audio:d.audio,summary:d.summary,verifiedPlace:true,destinationSlug:d.slug}));

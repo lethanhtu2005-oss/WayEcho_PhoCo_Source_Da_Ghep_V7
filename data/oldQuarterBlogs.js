@@ -6,7 +6,7 @@ export const oldQuarterBlogs = [
     "title": "Nhà cổ 87 Mã Mây: Tìm hiểu một nếp sống Hà Nội qua từng gian nhà",
     "intro": "Giữa những con phố buôn bán tấp nập, ngôi nhà số 87 Mã Mây gợi mở cách các gia đình Hà Nội từng sắp xếp chỗ ở, nơi làm việc và không gian sinh hoạt trong một ngôi nhà ống.",
     "photo": "old-quarter-street.jpg",
-    "alt": "Ảnh đường phố cổ Hà Nội, chỉ minh họa bối cảnh chung; không phải ảnh xác minh nhà cổ 87 Mã Mây.",
+    "alt": "Ảnh AI minh họa kiến trúc nhà cổ Phố cổ, không xác nhận chi tiết kiến trúc số 87 Mã Mây.",
     "sections": [
       [
         "Ngôi nhà ống giữa khu phố buôn bán",
@@ -43,7 +43,7 @@ export const oldQuarterBlogs = [
     "bridge": "Từ câu chuyện về nơi ở và buôn bán của một gia đình, hành trình có thể mở rộng ra hoạt động thương mại của cả khu phố tại Chợ Đồng Xuân.",
     "next": "dong-xuan",
     "slug": "nha-co-87-ma-may",
-    "image": "/assets/images/old-quarter-street.jpg",
+    "image": "/assets/images/nha-co-87-ma-may-ai.png",
     "relatedSlugs": [
       "cho-dong-xuan",
       "o-quan-chuong",
@@ -62,7 +62,7 @@ export const oldQuarterBlogs = [
     "title": "Chợ Đồng Xuân: Đi tìm nhịp sống thương mại của Phố cổ Hà Nội",
     "intro": "Một khu chợ truyền thống không chỉ được nhận biết qua các gian hàng. Ở đó còn có tiếng trò chuyện, nhịp mua bán và những câu chuyện về cách Phố cổ vận hành mỗi ngày.",
     "photo": "wet-market.jpg",
-    "alt": "Ảnh khu hàng quán minh họa bầu không khí mua bán; chưa xác minh ảnh chụp tại Chợ Đồng Xuân.",
+    "alt": "Ảnh AI minh họa cảnh chợ Đồng Xuân, không phải ảnh chụp hiện trạng.",
     "sections": [
       [
         "Từ một khu chợ đến câu chuyện đô thị",
@@ -100,7 +100,7 @@ export const oldQuarterBlogs = [
     "bridge": "Khi đã nghe câu chuyện thương mại của Phố cổ, bạn có thể tìm hiểu một dấu tích của những cửa ngõ ra vào Hà Nội xưa tại Ô Quan Chưởng.",
     "next": "o-quan-chuong",
     "slug": "cho-dong-xuan",
-    "image": "/assets/images/wet-market.jpg",
+    "image": "/assets/images/cho-dong-xuan-ai.png",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "o-quan-chuong",
@@ -119,7 +119,7 @@ export const oldQuarterBlogs = [
     "title": "Ô Quan Chưởng: Một cửa ô cổ giữa nhịp sống Hà Nội hôm nay",
     "intro": "Giữa khu phố vẫn có người và xe qua lại, Ô Quan Chưởng lưu giữ dấu vết về những cửa ngõ của Hà Nội xưa — nơi câu chuyện kiến trúc gắn chặt với lịch sử đô thị.",
     "photo": "old-quarter-motorbikes.jpg",
-    "alt": "Ảnh phố cổ Hà Nội dùng minh họa bối cảnh đường phố; không phải ảnh xác minh Ô Quan Chưởng.",
+    "alt": "Ảnh AI minh họa cửa ô Hà Nội, không phải ảnh chụp hiện trạng Ô Quan Chưởng.",
     "sections": [
       [
         "Một dấu tích giữa phố Hàng Chiếu",
@@ -156,7 +156,7 @@ export const oldQuarterBlogs = [
     "bridge": "Từ dấu tích lịch sử của Phố cổ, câu chuyện tiếp theo đưa bạn đến Phố Hàng Mã — nơi các hoạt động mua bán gắn với mùa lễ hội.",
     "next": "hang-ma",
     "slug": "o-quan-chuong",
-    "image": "/assets/images/old-quarter-motorbikes.jpg",
+    "image": "/assets/images/o-quan-chuong-ai.png",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "cho-dong-xuan",
@@ -175,7 +175,7 @@ export const oldQuarterBlogs = [
     "title": "Phố Hàng Mã: Câu chuyện nghề thủ công và những mùa lễ hội",
     "intro": "Hàng Mã thường được nhớ đến mỗi dịp lễ Tết, nhưng đằng sau những món đồ trang trí là một phần đời sống văn hóa và truyền thống mua bán lâu đời của Phố cổ.",
     "photo": "pho-co-night.jpg",
-    "alt": "Ảnh phố cổ về đêm minh họa không khí chung; chưa xác minh là hình chụp Phố Hàng Mã.",
+    "alt": "Ảnh AI minh họa phố Hàng Mã nhiều đèn lồng, không phải ảnh chụp thực tế.",
     "sections": [
       [
         "Con phố thay đổi cùng các mùa lễ",
@@ -212,7 +212,7 @@ export const oldQuarterBlogs = [
     "bridge": "Muốn hiểu sâu hơn cách cư dân Phố cổ vừa sống vừa kinh doanh, bạn có thể quay lại câu chuyện Nhà cổ 87 Mã Mây.",
     "next": "ma-may",
     "slug": "pho-hang-ma",
-    "image": "/assets/images/pho-co-night.jpg",
+    "image": "/assets/images/pho-hang-ma-ai.png",
     "relatedSlugs": [
       "nha-co-87-ma-may",
       "cho-dong-xuan",

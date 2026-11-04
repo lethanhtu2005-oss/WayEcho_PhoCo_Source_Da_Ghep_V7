@@ -38,7 +38,9 @@
     "relatedSlugs": [
       "vi-sao-pho-co-ha-noi-co-nhung-con-pho-dan-xen-nhu-ban-co",
       "du-lich-co-trach-nhiem-o-pho-co-ha-noi-nhung-dieu-nho-tao-nen-khac-biet"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-co-toan-canh.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Khu Phố Cổ Hà Nội có từ bao giờ? Lịch sử hình thành và ranh giới cần biết. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 2,
@@ -79,7 +81,9 @@
     "relatedSlugs": [
       "dau-tich-song-nuoc-giua-long-pho-co-nhung-dong-chay-da-doi-thay",
       "khu-pho-co-ha-noi-co-tu-bao-gio-lich-su-hinh-thanh-va-ranh-gioi-can-biet"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-ho-hoan-kiem.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Vì sao Phố Cổ Hà Nội có những con phố đan xen như bàn cờ?. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 3,
@@ -120,7 +124,9 @@
     "relatedSlugs": [
       "ten-pho-bat-dau-bang-chu-hang-doc-lich-su-nghe-nghiep-qua-dia-danh",
       "vi-sao-pho-co-ha-noi-co-nhung-con-pho-dan-xen-nhu-ban-co"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-den-ngoc-son.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Dấu tích sông nước giữa lòng Phố Cổ: Những dòng chảy đã đổi thay. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 4,
@@ -161,7 +167,9 @@
     "relatedSlugs": [
       "tu-lang-nghe-den-cua-hieu-mang-luoi-kinh-te-dung-sau-pho-co",
       "dau-tich-song-nuoc-giua-long-pho-co-nhung-dong-chay-da-doi-thay"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-hang-dao.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Tên phố bắt đầu bằng chữ Hàng: Đọc lịch sử nghề nghiệp qua địa danh. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 5,
@@ -202,7 +210,9 @@
     "relatedSlugs": [
       "pho-co-ha-noi-qua-cac-thoi-ky-tu-phuong-nghe-den-trung-tam-thuong-mai-hien-dai",
       "ten-pho-bat-dau-bang-chu-hang-doc-lich-su-nghe-nghiep-qua-dia-danh"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-nghe-kim-hoan.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Từ làng nghề đến cửa hiệu: Mạng lưới kinh tế đứng sau Phố Cổ. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 6,
@@ -243,7 +253,9 @@
     "relatedSlugs": [
       "ngoai-cho-lon-nhung-khong-gian-mua-ban-nho-da-nuoi-song-pho-co",
       "tu-lang-nghe-den-cua-hieu-mang-luoi-kinh-te-dung-sau-pho-co"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-den-bach-ma.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Phố Cổ Hà Nội qua các thời kỳ: Từ phường nghề đến trung tâm thương mại hiện đại. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 7,
@@ -283,7 +295,9 @@
     "relatedSlugs": [
       "cua-o-va-ranh-gioi-thang-long-xua-nhung-loi-ra-vao-cua-do-thi",
       "pho-co-ha-noi-qua-cac-thoi-ky-tu-phuong-nghe-den-trung-tam-thuong-mai-hien-dai"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-cho-dong-xuan.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Ngoài chợ lớn: Những không gian mua bán nhỏ đã nuôi sống Phố Cổ. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 8,
@@ -324,7 +338,9 @@
     "relatedSlugs": [
       "dinh-den-va-hoi-quan-khong-gian-tin-nguong-trong-khu-pho-buon-ban",
       "ngoai-cho-lon-nhung-khong-gian-mua-ban-nho-da-nuoi-song-pho-co"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-o-quan-chuong.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Cửa ô và ranh giới Thăng Long xưa: Những lối ra vào của đô thị. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 9,
@@ -365,7 +381,9 @@
     "relatedSlugs": [
       "pho-co-noi-gap-go-cua-nhieu-cong-dong-cu-dan-va-dong-van-hoa",
       "cua-o-va-ranh-gioi-thang-long-xua-nhung-loi-ra-vao-cua-do-thi"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-dinh-kim-ngan.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Đình, đền và hội quán: Không gian tín ngưỡng trong khu phố buôn bán. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 10,
@@ -406,7 +424,9 @@
     "relatedSlugs": [
       "mot-ngay-o-pho-co-xua-nhip-sinh-hoat-cua-nguoi-buon-ban-va-cu-dan",
       "dinh-den-va-hoi-quan-khong-gian-tin-nguong-trong-khu-pho-buon-ban"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-khong-gian-hang-buom.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Phố Cổ – nơi gặp gỡ của nhiều cộng đồng cư dân và dòng văn hóa. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 11,
@@ -447,7 +467,9 @@
     "relatedSlugs": [
       "nguoi-dan-pho-co-hom-nay-giu-nghe-doi-nghe-va-thich-nghi-voi-du-lich",
       "pho-co-noi-gap-go-cua-nhieu-cong-dong-cu-dan-va-dong-van-hoa"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-nha-co-87-ma-may.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Một ngày ở Phố Cổ xưa: Nhịp sinh hoạt của người buôn bán và cư dân. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 12,
@@ -488,7 +510,9 @@
     "relatedSlugs": [
       "pho-co-trong-thoi-phap-thuoc-nhung-thay-doi-ve-duong-pho-va-ha-tang",
       "mot-ngay-o-pho-co-xua-nhip-sinh-hoat-cua-nguoi-buon-ban-va-cu-dan"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-trung-tam-dao-duy-tu.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Người dân Phố Cổ hôm nay: Giữ nghề, đổi nghề và thích nghi với du lịch. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 13,
@@ -529,7 +553,9 @@
     "relatedSlugs": [
       "tu-di-bo-xe-dien-den-phuong-tien-hien-dai-giao-thong-da-doi-thay-o-pho-co-ra-sao",
       "nguoi-dan-pho-co-hom-nay-giu-nghe-doi-nghe-va-thich-nghi-voi-du-lich"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-hang-thiec.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Phố Cổ trong thời Pháp thuộc: Những thay đổi về đường phố và hạ tầng. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 14,
@@ -570,7 +596,9 @@
     "relatedSlugs": [
       "vi-sao-pho-co-co-nhieu-ngo-nho-va-khong-gian-sinh-hoat-chung",
       "pho-co-trong-thoi-phap-thuoc-nhung-thay-doi-ve-duong-pho-va-ha-tang"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-ta-hien.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Từ đi bộ, xe điện đến phương tiện hiện đại: Giao thông đã đổi thay ở Phố Cổ ra sao?. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 15,
@@ -611,7 +639,9 @@
     "relatedSlugs": [
       "mua-le-hoi-va-lich-buon-ban-khi-nhu-cau-theo-mua-dinh-hinh-nhip-pho-co",
       "tu-di-bo-xe-dien-den-phuong-tien-hien-dai-giao-thong-da-doi-thay-o-pho-co-ra-sao"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-hang-quat.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Vì sao Phố Cổ có nhiều ngõ nhỏ và không gian sinh hoạt chung?. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 16,
@@ -652,7 +682,9 @@
     "relatedSlugs": [
       "pho-co-ha-noi-trong-hoi-hoa-tu-ky-uc-do-thi-den-nhung-net-ve",
       "vi-sao-pho-co-co-nhieu-ngo-nho-va-khong-gian-sinh-hoat-chung"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-hang-ma.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Mùa lễ hội và lịch buôn bán: Khi nhu cầu theo mùa định hình nhịp Phố Cổ. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 17,
@@ -693,7 +725,9 @@
     "relatedSlugs": [
       "len-ke-hoach-kham-pha-pho-co-ha-noi-di-the-nao-de-hieu-sau-ma-khong-voi",
       "mua-le-hoi-va-lich-buon-ban-khi-nhu-cau-theo-mua-dinh-hinh-nhip-pho-co"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-tranh-tuong-phung-hung.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Phố Cổ Hà Nội trong hội họa: Từ ký ức đô thị đến những nét vẽ. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 18,
@@ -734,7 +768,9 @@
     "relatedSlugs": [
       "bao-ton-pho-co-giu-gin-di-san-nhung-van-bao-dam-cuoc-song-cu-dan",
       "pho-co-ha-noi-trong-hoi-hoa-tu-ky-uc-do-thi-den-nhung-net-ve"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-pho-hang-ngang.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Lên kế hoạch khám phá Phố Cổ Hà Nội: Đi thế nào để hiểu sâu mà không vội?. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 19,
@@ -775,7 +811,9 @@
     "relatedSlugs": [
       "du-lich-co-trach-nhiem-o-pho-co-ha-noi-nhung-dieu-nho-tao-nen-khac-biet",
       "len-ke-hoach-kham-pha-pho-co-ha-noi-di-the-nao-de-hieu-sau-ma-khong-voi"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-dinh-dong-lac.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Bảo tồn Phố Cổ: Giữ gìn di sản nhưng vẫn bảo đảm cuộc sống cư dân. Không phải ảnh tư liệu xác minh."
   },
   {
     "id": 20,
@@ -817,6 +855,8 @@
     "relatedSlugs": [
       "khu-pho-co-ha-noi-co-tu-bao-gio-lich-su-hinh-thanh-va-ranh-gioi-can-biet",
       "bao-ton-pho-co-giu-gin-di-san-nhung-van-bao-dam-cuoc-song-cu-dan"
-    ]
+    ],
+    "imageFallback": "/assets/images/we-ai-am-thuc-pho-co.jpg",
+    "imageFallbackAlt": "Ảnh AI minh họa chủ đề Du lịch có trách nhiệm ở Phố Cổ Hà Nội: Những điều nhỏ tạo nên khác biệt. Không phải ảnh tư liệu xác minh."
   }
 ]
