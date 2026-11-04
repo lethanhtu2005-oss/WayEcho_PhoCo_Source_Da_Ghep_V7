@@ -18,6 +18,8 @@ test('V30 user dropdown is for customers only; Partner and internal login are se
   }
   assert.doesNotMatch(header, /href="\/partner\/login"/);
   assert.doesNotMatch(header, /href="\/internal\/login"/);
+  assert.doesNotMatch(header, /href="\/admin"/);
+  assert.doesNotMatch(header, /Quản trị Admin/);
   assert.match(header, /fetch\("\/api\/auth\/session"/);
   assert.match(header, /fetch\("\/api\/auth\/logout"/);
   assert.match(header, /guest/);
