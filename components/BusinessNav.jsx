@@ -34,7 +34,7 @@ export default function BusinessNav() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <SOSLink/><Link href="/" className="btn-ghost hc-border !py-2 text-sm">← Về trang Traveler</Link>
+            <SOSLink/><Link href="/partner" className="btn-ghost hc-border !py-2 text-sm">← Cổng Đối Tác Liên Thông</Link><Link href="/" className="btn-ghost hc-border !py-2 text-sm">← Về trang Traveler</Link>
           </div>
         </div>
         <nav aria-label="Điều hướng doanh nghiệp" className="mt-4 flex flex-wrap gap-2">
