@@ -39,7 +39,7 @@ export default function MapView({ points = [], route = [], center = [21.0287, 10
       />
       {route.length > 1 && <Polyline positions={route} pathOptions={{ color: "#e0692c", weight: 5, dashArray: "2 10" }} />}
       {points.map((p) => (
-        <Marker key={p.id} position={[p.lat, p.lng]} icon={dot(levelColor[p.level] || "#e0692c")}>
+        <Marker key={p.id} position={[p.lat, p.lng]} icon={dot(p.color || levelColor[p.level] || "#f8ae38")}>
           <Popup>
             <strong>{p.name}</strong>
             <br />

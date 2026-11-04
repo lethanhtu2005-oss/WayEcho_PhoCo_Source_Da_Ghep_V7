@@ -10,6 +10,7 @@ import { useA11y } from "@/components/A11yProvider";
 import VerifiedImage from "@/components/VerifiedImage";
 import DestinationCard from "@/components/DestinationCard";
 import { getDestination, destinations } from "@/data/destinations";
+import { culturalEvents } from "@/data/culturalEvents";
 import {
   SpeakerIcon, MapPinIcon, AccessibleIcon, CompassIcon, CalendarIcon, PhoneIcon,
 } from "@/components/Icons";
@@ -193,6 +194,102 @@ function DestinationContent() {
               Họa tiết hoa sen, tùng cúc chạm nổi trên bề mặt gốm Bát Tràng và xà cừ. Đầu ngón tay dễ dàng phân biệt từng đường nét đắp nổi.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Cultural Events at this Destination */}
+      {(() => {
+        const destEvents = culturalEvents.filter((ev) => ev.destinationSlug === d.slug);
+        if (destEvents.length === 0) return null;
+        return (
+          <section className="mt-10 rounded-[26px] bg-[#f0fdfa] p-6 lg:p-8 border border-[#99f6e4] shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#ccfbf1]">
+              <div>
+                <span className="inline-block rounded-full bg-[#ccfbf1] px-3 py-1 text-xs font-bold text-[#0f766e]">
+                  🎭 LỚP SỰ KIỆN VĂN HÓA LIÊN KẾT
+                </span>
+                <h2 className="mt-1 text-2xl sm:text-3xl font-bold text-[#134e4a]">
+                  Sự Kiện Diễn Ra Tại {d.name}
+                </h2>
+              </div>
+              <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[#99f6e4] text-[#0d9488]">
+                {destEvents.length} sự kiện định kỳ
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              {destEvents.map((ev) => (
+                <article key={ev.id} className="rounded-2xl bg-white p-5 border border-[#99f6e4] shadow-xs flex flex-col justify-between">
+                  <div>
+                    <span className="text-xs font-bold uppercase text-[#0d9488]">{ev.category} • {ev.date}</span>
+                    <h3 className="mt-1 text-lg font-bold text-[#134e4a]">{ev.title}</h3>
+                    <p className="mt-2 text-xs text-[#374151] leading-relaxed">{ev.summary}</p>
+                    <div className="mt-3 rounded-xl bg-[#f0fdfa] p-3 text-xs text-[#0f766e] space-y-1">
+                      <p><strong>Lịch diễn:</strong> {ev.schedule}</p>
+                      <p><strong>Giá vé:</strong> {ev.price}</p>
+                      <p><strong>Tiếp cận:</strong> {ev.accessibility.blind}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-[#f0fdfa] flex items-center justify-between">
+                    <span className="text-xs text-[#6b7280]">Nguồn: {ev.verifiedSource}</span>
+                    <Link
+                      href={`/booking?item=${ev.serviceId || d.slug}`}
+                      className="rounded-xl bg-[#0d9488] hover:bg-[#0f766e] text-white px-3.5 py-1.5 text-xs font-bold shadow-xs transition-colors"
+                    >
+                      Đặt chỗ tham gia →
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* Structured Connected Services Grid */}
+      <section className="mt-10 rounded-[26px] bg-white p-6 lg:p-8 border border-line shadow-sm">
+        <h2 className="text-2xl sm:text-3xl font-bold text-ink">Dịch Vụ Tiếp Cận Liên Quan</h2>
+        <p className="mt-1 text-sm text-ink-soft hc-muted">
+          Đặt tour, vé tham quan, xe đưa đón hoặc tìm hướng dẫn viên đồng hành có chứng chỉ WBU tại {d.name}
+        </p>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link
+            href="/explore?cat=ticket"
+            className="rounded-2xl border border-line bg-surface-alt p-4 hover:border-primary transition-all group"
+          >
+            <span className="text-2xl" aria-hidden="true">🎟️</span>
+            <h3 className="mt-2 font-bold text-base text-ink group-hover:text-[#c75c13]">Xem vé tham quan</h3>
+            <p className="mt-1 text-xs text-ink-soft">Giá vé niêm yết, chính sách miễn giảm cho người khuyết tật.</p>
+          </Link>
+
+          <Link
+            href="/explore?cat=activity"
+            className="rounded-2xl border border-line bg-surface-alt p-4 hover:border-primary transition-all group"
+          >
+            <span className="text-2xl" aria-hidden="true">🧭</span>
+            <h3 className="mt-2 font-bold text-base text-ink group-hover:text-[#c75c13]">Xem tour liên quan</h3>
+            <p className="mt-1 text-xs text-ink-soft">Hành trình trải nghiệm xúc giác & âm thanh 3D 1-1.</p>
+          </Link>
+
+          <Link
+            href="/services/guides"
+            className="rounded-2xl border border-line bg-surface-alt p-4 hover:border-primary transition-all group"
+          >
+            <span className="text-2xl" aria-hidden="true">👤</span>
+            <h3 className="mt-2 font-bold text-base text-ink group-hover:text-[#c75c13]">Tìm Guide đồng hành</h3>
+            <p className="mt-1 text-xs text-ink-soft">10 hồ sơ hướng dẫn viên đào tạo kỹ năng dẫn dắt thấu cảm.</p>
+          </Link>
+
+          <Link
+            href="/services/ride-booking"
+            className="rounded-2xl border border-line bg-surface-alt p-4 hover:border-primary transition-all group"
+          >
+            <span className="text-2xl" aria-hidden="true">🚗</span>
+            <h3 className="mt-2 font-bold text-base text-ink group-hover:text-[#c75c13]">Đặt xe đưa đón</h3>
+            <p className="mt-1 text-xs text-ink-soft">Tài xế hỗ trợ lên xuống xe và đón tại cửa điểm đến.</p>
+          </Link>
         </div>
       </section>
 
