@@ -137,13 +137,18 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link className={footerLink} href="/partners/guide">
-                    Hướng dẫn viên & TNV
+                  <Link className={footerLink} href="/guide">
+                    Cổng Hướng dẫn viên
                   </Link>
                 </li>
                 <li>
-                  <Link className={footerLink} href="/partners/business">
-                    Doanh nghiệp tiếp cận
+                  <Link className={footerLink} href="/volunteer">
+                    Cổng Tình nguyện viên
+                  </Link>
+                </li>
+                <li>
+                  <Link className={footerLink} href="/business">
+                    Cổng Doanh nghiệp
                   </Link>
                 </li>
               </ul>
