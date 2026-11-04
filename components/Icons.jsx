@@ -360,3 +360,126 @@ export function ShieldIcon({ className = "", size = 24 }) {
     </svg>
   );
 }
+
+export function RadarIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M12 2a10 10 0 1 0 10 10" />
+      <path d="M12 6a6 6 0 1 0 6 6" />
+      <circle cx="12" cy="12" r="2" />
+      <line x1="12" y1="12" x2="20" y2="4" />
+    </svg>
+  );
+}
+
+export function AlertTriangleIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+      <line x1="12" y1="9" x2="12" y2="13" />
+      <line x1="12" y1="17" x2="12.01" y2="17" />
+    </svg>
+  );
+}
+
+export function RadioTowerIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+      <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+      <circle cx="12" cy="12" r="2" />
+      <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+      <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
+    </svg>
+  );
+}
+
+export function MedicalIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+    </svg>
+  );
+}
+
+export function CarIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9C2.1 11.1 2 11.5 2 12v4c0 .6.4 1 1 1h2" />
+      <circle cx="7" cy="17" r="2" />
+      <circle cx="17" cy="17" r="2" />
+    </svg>
+  );
+}
+
+export function ConstructionIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <rect x="2" y="6" width="20" height="8" rx="1" />
+      <path d="M17 14v7" />
+      <path d="M7 14v7" />
+      <path d="M17 3v3" />
+      <path d="M7 3v3" />
+      <line x1="10" y1="6" x2="6" y2="14" />
+      <line x1="14" y1="6" x2="10" y2="14" />
+      <line x1="18" y1="6" x2="14" y2="14" />
+    </svg>
+  );
+}
+
+export function TouchIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2" />
+      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
+      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+    </svg>
+  );
+}
+
+export function EditNoteIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </svg>
+  );
+}
+
+export function LockIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+export function CloudSyncIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+    </svg>
+  );
+}
+
+export function LogOutIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <polyline points="16 17 21 12 16 7" />
+      <line x1="21" y1="12" x2="9" y2="12" />
+    </svg>
+  );
+}
+
+export function LayersIcon({ className = "", size = 24 }) {
+  return (
+    <svg {...base} width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}

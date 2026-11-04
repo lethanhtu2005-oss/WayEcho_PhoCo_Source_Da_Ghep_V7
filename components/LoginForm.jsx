@@ -31,6 +31,28 @@ export default function LoginForm({ portal = "all" }) {
 
   return (
     <form onSubmit={submit} className="mt-6 space-y-5">
+      {portal === "internal" && (
+        <button
+          type="button"
+          onClick={async () => {
+            setBusy(true); setError("");
+            try {
+              const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: "Admin Demo", password: "", requiredRole: "admin", allowedRoles: ["admin", "advisor"] })
+              });
+              const body = await res.json();
+              if (!res.ok) throw Error(body.error);
+              window.location.assign("/admin");
+            } catch (e) { setError(e.message || "Không vào được bản demo. Hãy thử lại."); } finally { setBusy(false); }
+          }}
+          disabled={busy}
+          className="w-full min-h-[48px] rounded-xl bg-[#f8ae38] font-bold text-[#212529] hover:bg-[#e09f2f] transition-all shadow-sm flex items-center justify-center gap-2"
+        >
+          <span>⚙️ Vào ngay Cổng Quản trị Admin (DEMO)</span>
+        </button>
+      )}
       <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-[#7a4c00] hc-surface hc-border">
         <p className="font-bold">Đăng nhập minh họa (DEMO)</p>
         <p className="mt-1">Không cần tài khoản hay mật khẩu. Bạn có thể nhập tên bất kỳ hoặc để trống rồi bấm vào.</p>
