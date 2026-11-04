@@ -23,7 +23,7 @@ export default function CatalogCard({ item }) {
   return (
     <article className="hc-surface hc-border group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover">
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-alt">
-        <VerifiedImage src={item.image} fallback={item.imageFallback} alt={item.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+        <VerifiedImage src={item.image} srcSet={item.imageSrcSet} fallback={item.imageFallback} alt={item.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
         <span className="absolute left-3 top-3 rounded-pill bg-white/95 px-3 py-1 text-xs font-bold text-ink">{cfg.kicker}</span>
         {item.isDemo && <span className="absolute bottom-3 left-3 rounded-pill bg-black/80 px-3 py-1 text-xs font-bold text-white">DỮ LIỆU DEMO</span>}
         <button type="button" onClick={save} aria-pressed={saved} aria-label={saved ? `Đã lưu ${item.name}` : `Lưu ${item.name}`} className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-ink shadow"><HeartIcon size={18} filled={saved} className={saved ? "text-red-500" : ""} /></button>

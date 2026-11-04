@@ -14,7 +14,7 @@ const legacyDemoItems = [
  {id:"demo-restaurant",cat:"restaurant",name:"Ẩm thực thử nghiệm WayEcho",area:"Hà Nội",price:"Giá mô phỏng",isDemo:true,verifiedPlace:false,image:"/assets/images/we-ai-an-uong-nha-hang.jpg",imageFallback:"/assets/images/we-ai-an-uong-nha-hang.jpg",alt:"Không gian nhà hàng kiểu Việt, ảnh AI minh họa dịch vụ ăn uống demo.",level:"Cần khảo sát"}
 ];
 
-const destinationItems=destinations.map(d=>({id:d.slug,cat:"destination",name:d.name,area:d.area,image:d.image,imageFallback:d.imageFallback,alt:d.alt,price:d.visit?.price||"Xem chi tiết",level:d.access.level,note:d.access.status,audio:d.audio,summary:d.summary,verifiedPlace:true,destinationSlug:d.slug}));
+const destinationItems=destinations.map(d=>({id:d.slug,cat:"destination",name:d.name,area:d.area,image:d.image,imageSrcSet:d.imageSrcSet,imageFallback:d.imageFallback,alt:d.alt,price:d.visit?.price||"Xem chi tiết",level:d.access.level,note:d.access.status,audio:d.audio,summary:d.summary,verifiedPlace:true,destinationSlug:d.slug}));
 export const catalog=[...destinationItems,...services,...legacyDemoItems];
 export const byCategory=cat=>cat?catalog.filter(it=>it.cat===cat):catalog;
 export const getItem=id=>catalog.find(it=>it.id===id)||null;
