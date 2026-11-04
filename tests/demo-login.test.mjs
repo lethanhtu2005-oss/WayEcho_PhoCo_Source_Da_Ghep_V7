@@ -31,3 +31,11 @@ test("không cho nâng quyền và có thể tắt bằng WAYECHO_DEMO_LOGIN=0",
     await assert.rejects(authenticate(reqWith(token)), (e) => [401, 503].includes(e.status));
   } finally { delete process.env.WAYECHO_DEMO_LOGIN; }
 });
+test("khi đã bật nhận dữ liệu thật (form hợp tác), phiên minh họa không vào được khu nội bộ", () => {
+  process.env.WAYECHO_INQUIRIES_ENABLED = "1";
+  try {
+    assert.throws(() => demoLogin("x", "admin"), { status: 403 });
+    assert.throws(() => demoLogin("x", "advisor"), { status: 403 });
+    assert.equal(demoLogin("x", "guide").user.role, "guide");
+  } finally { delete process.env.WAYECHO_INQUIRIES_ENABLED; }
+});

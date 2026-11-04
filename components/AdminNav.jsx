@@ -10,6 +10,7 @@ const LINKS=[
  {href:"/admin/businesses",label:"Quản lý đối tác",icon:"▣"},
  {href:"/admin/inquiries",label:"Yêu cầu hợp tác",icon:"✉"},
  {href:"/admin/moderation",label:"Kiểm duyệt thông tin",icon:"✓"},
+ {href:"/admin/escrow",label:"Ký quỹ Escrow",icon:"◎"},
  {href:"/admin/ride-demo",label:"Theo dõi xe DEMO",icon:"▤"},
 ];
 export default function AdminNav(){
