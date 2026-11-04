@@ -11,15 +11,25 @@ const photos = {
     "license": "CC BY-SA 4.0",
     "author": "Guerinf"
   },
+  "dinh-kim-ngan": {
+    "image": "/assets/images/destinations/dinh-kim-ngan.webp",
+    "imageSrcSet": "/assets/images/destinations/dinh-kim-ngan-800.webp 800w, /assets/images/destinations/dinh-kim-ngan.webp 1600w",
+    "alt": "Ảnh chụp thực tế liên quan đến Đình Kim Ngân, Hà Nội (tên ảnh gốc trên Commons: Kim Ngân Temple 3).",
+    "imageCredit": "Christophe95 · Wikimedia Commons · CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File%3AKim_Ng%C3%A2n_Temple_3.jpg",
+    "file": "Kim Ngân Temple 3.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Christophe95"
+  },
   "den-bach-ma": {
     "image": "/assets/images/destinations/den-bach-ma.webp",
     "imageSrcSet": "/assets/images/destinations/den-bach-ma-800.webp 800w, /assets/images/destinations/den-bach-ma.webp 1600w",
-    "alt": "Ảnh chụp thực tế liên quan đến Đền Bạch Mã, Hà Nội (tên ảnh gốc trên Commons: Bach Ma Temple, Hanoi (2018) 01).",
-    "imageCredit": "Donald Trung · Wikimedia Commons · CC BY-SA 4.0",
-    "imageSource": "https://commons.wikimedia.org/wiki/File%3ABach_Ma_Temple%2C_Hanoi_(2018)_01.jpg",
-    "file": "Bach Ma Temple, Hanoi (2018) 01.jpg",
+    "alt": "Ảnh chụp thực tế liên quan đến Đền Bạch Mã, Hà Nội (tên ảnh gốc trên Commons: Bạch Mã Temple 1).",
+    "imageCredit": "Christophe95 · Wikimedia Commons · CC BY-SA 4.0",
+    "imageSource": "https://commons.wikimedia.org/wiki/File%3AB%E1%BA%A1ch_M%C3%A3_Temple_1.jpg",
+    "file": "Bạch Mã Temple 1.jpg",
     "license": "CC BY-SA 4.0",
-    "author": "Donald Trung"
+    "author": "Christophe95"
   },
   "tt-22-hang-buom": {
     "image": "/assets/images/destinations/tt-22-hang-buom.webp",
@@ -30,16 +40,6 @@ const photos = {
     "file": "Hội quán Quảng Đông 22 Hàng Buồm.jpg",
     "license": "CC BY-SA 4.0",
     "author": "NKSTTSSHNVN"
-  },
-  "dinh-thanh-ha": {
-    "image": "/assets/images/destinations/dinh-thanh-ha.webp",
-    "imageSrcSet": "/assets/images/destinations/dinh-thanh-ha-800.webp 800w, /assets/images/destinations/dinh-thanh-ha.webp 1600w",
-    "alt": "Ảnh chụp thực tế liên quan đến Đình Thanh Hà, Hà Nội (tên ảnh gốc trên Commons: Khánh thành Hà Nội - Nam Định).",
-    "imageCredit": "TTXVN · Wikimedia Commons · CC BY 4.0",
-    "imageSource": "https://commons.wikimedia.org/wiki/File%3AKh%C3%A1nh_th%C3%A0nh_H%C3%A0_N%E1%BB%99i_-_Nam_%C4%90%E1%BB%8Bnh.jpg",
-    "file": "Khánh thành Hà Nội - Nam Định.jpg",
-    "license": "CC BY 4.0",
-    "author": "TTXVN"
   },
   "den-quan-de": {
     "image": "/assets/images/destinations/den-quan-de.webp",
@@ -101,16 +101,6 @@ const photos = {
     "license": "CC BY 3.0",
     "author": "trungydang"
   },
-  "pho-hang-ngang": {
-    "image": "/assets/images/destinations/pho-hang-ngang.webp",
-    "imageSrcSet": "/assets/images/destinations/pho-hang-ngang-800.webp 800w, /assets/images/destinations/pho-hang-ngang.webp 1600w",
-    "alt": "Ảnh chụp thực tế liên quan đến Phố Hàng Ngang, Hà Nội (tên ảnh gốc trên Commons: Old Quarter, Hanoi).",
-    "imageCredit": "thalling55 · Wikimedia Commons · CC BY 2.0",
-    "imageSource": "https://commons.wikimedia.org/wiki/File%3AOld_Quarter%2C_Hanoi_(1344442597).jpg",
-    "file": "Old Quarter, Hanoi (1344442597).jpg",
-    "license": "CC BY 2.0",
-    "author": "thalling55"
-  },
   "pho-hang-quat": {
     "image": "/assets/images/destinations/pho-hang-quat.webp",
     "imageSrcSet": "/assets/images/destinations/pho-hang-quat-800.webp 800w, /assets/images/destinations/pho-hang-quat.webp 1600w",
@@ -120,16 +110,6 @@ const photos = {
     "file": "Hang Quat street of Buddhist altars & statues (3695174688).jpg",
     "license": "CC BY-SA 2.0",
     "author": "Greg Willis from Denver, CO, usa"
-  },
-  "pho-lan-ong": {
-    "image": "/assets/images/destinations/pho-lan-ong.webp",
-    "imageSrcSet": "/assets/images/destinations/pho-lan-ong-800.webp 800w, /assets/images/destinations/pho-lan-ong.webp 1600w",
-    "alt": "Ảnh chụp thực tế liên quan đến Phố Lãn Ông, Hà Nội (tên ảnh gốc trên Commons: Crossing in Hanoi).",
-    "imageCredit": "Christophe95 · Wikimedia Commons · CC BY-SA 4.0",
-    "imageSource": "https://commons.wikimedia.org/wiki/File%3ACrossing_in_Hanoi.jpg",
-    "file": "Crossing in Hanoi.jpg",
-    "license": "CC BY-SA 4.0",
-    "author": "Christophe95"
   },
   "pho-ma-may": {
     "image": "/assets/images/destinations/pho-ma-may.webp",
