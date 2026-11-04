@@ -138,8 +138,8 @@ test("phiên ký: mật khẩu băm, chữ ký, hết hạn, khóa/đổi mật 
  await assert.rejects(authenticate(withToken(t2)),{status:401});
  await transaction(db=>{db.users.find(u=>u.id==="t2").passwordHash=hash;});
  assert.equal((await authenticate(withToken(t2))).id,"t2");
- const env=process.env.NODE_ENV;process.env.NODE_ENV="production";
- try{await assert.rejects(authenticate(withToken(t2)),{status:503});}finally{if(env===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=env;}
+ const env=process.env.NODE_ENV;process.env.NODE_ENV="production";process.env.WAYECHO_DEMO_LOGIN="0";
+ try{await assert.rejects(authenticate(withToken(t2)),{status:503});}finally{delete process.env.WAYECHO_DEMO_LOGIN;if(env===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=env;}
  assert.match(sessionCookie("x"),/HttpOnly; SameSite=Lax/);assert.match(sessionCookie("",true),/Max-Age=0/);
  for(const target of ["//evil.invalid","/\\\\evil.invalid","https://evil.invalid","/login"] )assert.equal(safeNext(target),"/profile");
  assert.equal(safeNext("/my-booking?x=1"),"/my-booking?x=1");

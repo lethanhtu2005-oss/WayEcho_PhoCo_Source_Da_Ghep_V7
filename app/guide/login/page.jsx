@@ -18,23 +18,18 @@ function LockIcon({ size = 20 }) {
 export default function GuideLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+    const [error, setError] = useState("");
 
   async function submit(event) {
     event.preventDefault();
-    const targetEmail = email.trim() || "guide1@demo.vn";
-    const targetPassword = password.trim() || "demo123";
-    try { await startGuideSession(targetEmail, targetPassword); } catch (e) { setError(e.message); return; }
+    try { await startGuideSession(email.trim(), ""); } catch (e) { setError(e.message); return; }
     const next = new URLSearchParams(window.location.search).get("next");
     router.refresh();
     router.push(next && next.startsWith("/guide/") && !next.startsWith("//") ? next : "/guide");
   }
 
   async function quickDemoLogin() {
-    setEmail("guide1@demo.vn");
-    setPassword("demo123");
-    try { await startGuideSession("guide1@demo.vn", "demo123"); } catch (e) { setError(e.message); return; }
+    try { await startGuideSession("", ""); } catch (e) { setError(e.message); return; }
     router.refresh();
     router.push("/guide");
   }
@@ -71,25 +66,20 @@ export default function GuideLoginPage() {
           <p className="hc-muted mt-1 text-ink-soft">Dành cho Guide / Personal Assistant</p>
 
           <form className="mt-7" onSubmit={submit} noValidate>
-            <label className="block font-semibold" htmlFor="guide-account">Email hoặc số điện thoại</label>
+            <label className="block font-semibold" htmlFor="guide-account">Tên hiển thị (không bắt buộc)</label>
             <div className="mt-2 flex items-center gap-3 rounded-xl border border-line px-4 focus-within:ring-2 focus-within:ring-[#f8ae38]">
               <MailIcon />
-              <input id="guide-account" name="account" value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="username" className="min-h-[52px] w-full bg-transparent outline-none" placeholder="Nhập email hoặc số điện thoại" />
+              <input id="guide-account" name="account" value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="username" className="min-h-[52px] w-full bg-transparent outline-none" placeholder="Nhập gì cũng được, hoặc để trống" />
             </div>
 
-            <label className="mt-5 block font-semibold" htmlFor="guide-password">Mật khẩu</label>
-            <div className="mt-2 flex items-center gap-3 rounded-xl border border-line px-4 focus-within:ring-2 focus-within:ring-[#f8ae38]">
-              <LockIcon />
-              <input id="guide-password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" autoComplete="current-password" className="min-h-[52px] w-full bg-transparent outline-none" placeholder="Nhập mật khẩu" />
-            </div>
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
               <span>Phiên tối đa 8 giờ.</span>
-              <span>Chưa có khôi phục mật khẩu tự động.</span>
+              <span>Không cần mật khẩu.</span>
             </div>
 
             <div className="mb-4 rounded-xl bg-amber-50 p-3 text-xs text-[#7a4c00] border border-amber-200">
-              <span className="font-bold">Mô phỏng (Demo):</span> Nhập bất kỳ tài khoản/mật khẩu nào, hoặc bấm nút dưới:
+              <span className="font-bold">Mô phỏng (Demo):</span> Không cần tài khoản hay mật khẩu. Nhập tên bất kỳ rồi bấm Đăng nhập, hoặc bấm nút dưới:
               <button type="button" onClick={quickDemoLogin} className="mt-2 block w-full rounded-lg bg-white py-1.5 font-bold text-xs text-[#8c5700] border border-amber-300 hover:bg-amber-100 shadow-sm">
                 🧭 Đăng nhập nhanh Guide Demo (1-chạm)
               </button>

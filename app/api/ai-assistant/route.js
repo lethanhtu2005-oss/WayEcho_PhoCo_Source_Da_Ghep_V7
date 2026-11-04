@@ -86,8 +86,8 @@ export async function POST(request) {
 
     // 3. Built-in Vietnamese accessibility scene descriptor fallback (no 503, no API key blocker)
     const localAnswer = image
-      ? "Ảnh hiện trường không gian Phố cổ Hà Nội: Vỉa hè lát gạch có bóng cây mát, phía trước có bậc tam cấp bước vào gian nhà cổ mái ngói truyền thống. Lề đường có một số xe máy đỗ ngay ngắn. Lưu ý mép thềm chênh cốt khoảng 15cm; khi di chuyển hãy dùng đầu gậy quét ngang để định vị bậc thềm, hoặc liên hệ Trạm tình nguyện viên 28 Hàng Buồm để được hỗ trợ đồng hành trực tiếp."
-      : "WayEcho đã ghi nhận yêu cầu của bạn. Trong khu vực 36 Phố Phường, các ngõ phố cổ có đặc thù vỉa hè hẹp và nhiều bậc tam cấp. Hãy chú ý lắng nghe âm thanh giao thông và sử dụng gậy dò đường an toàn.";
+      ? "[DEMO] Chưa kết nối dịch vụ AI nhận diện hình ảnh nên WayEcho chưa thể mô tả ảnh bạn vừa chụp, và sẽ không đoán nội dung để tránh sai lệch. Hãy dùng gậy dò đường, hỏi người xung quanh, hoặc nhờ người đồng hành qua mục Guide."
+      : "[DEMO] Chưa kết nối dịch vụ AI nên WayEcho chưa trả lời được câu hỏi này. Bạn có thể gửi yêu cầu cho tư vấn viên hoặc xem thông tin tiếp cận của từng điểm đến trong mục Dịch vụ.";
 
     return NextResponse.json({
       answer: localAnswer,
