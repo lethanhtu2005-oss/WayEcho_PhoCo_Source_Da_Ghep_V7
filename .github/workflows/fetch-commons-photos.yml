@@ -34,12 +34,12 @@ jobs:
       - name: Cài sharp (không ghi vào package.json)
         run: npm i --no-save --no-package-lock sharp
       - name: Tải và tối ưu ảnh
-        run: node scripts/fetch-commons-photos.mjs ${{ inputs.force && '--force' || '' }}
+        run: node scripts/fetch-commons-photos.mjs ${{ (inputs.force || github.event_name == 'push') && '--force' || '' }}
       - name: Commit kết quả
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/assets/images/destinations data/destinationPhotos.js IMAGE_REPORT_COMMONS.md
+          git add -A public/assets/images/destinations data/destinationPhotos.js IMAGE_REPORT_COMMONS.md
           if git diff --cached --quiet; then
             echo "Không có thay đổi."
           else

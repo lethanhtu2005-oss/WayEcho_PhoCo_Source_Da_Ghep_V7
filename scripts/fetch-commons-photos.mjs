@@ -83,11 +83,12 @@ async function bySearch(q) {
   return (data.query?.pages || []).map(toCandidate).filter(Boolean);
 }
 
-function pickBest(cands, cfg, exclude) {
+function pickBest(cands, cfg, exclude, context, used) {
   const must = cfg.must.map(norm);
   const scored = [];
   for (const c of cands) {
-    if (c.licenseRank == null) continue;
+    if (c.licenseRank == null || c.licenseRank === 0) continue; // ảnh tìm theo từ khóa: bỏ CC0/PD vì thường là tư liệu cũ
+    if (used.has(c.title)) continue; // không dùng một ảnh cho hai địa điểm
     if (!/^image\/(jpeg|png)$/.test(c.mime || "")) continue;
     if (exclude.test(norm(c.title))) continue;
     const ratio = c.width / c.height;
@@ -98,6 +99,7 @@ function pickBest(cands, cfg, exclude) {
     if (must.some((m) => t.includes(m))) score = 3;
     else if (must.some((m) => cats.includes(m))) score = 2;
     if (score < 2) continue; // chỉ khớp mô tả thì không đủ tin cậy
+    if (!context.test(`${t} | ${cats}`)) continue; // phải thuộc Hà Nội, tránh trùng tên phố ở thành phố khác
     scored.push({ c, score, ratioDist: Math.abs(ratio - 1.5) });
   }
   scored.sort((a, b) => b.score - a.score || a.c.licenseRank - b.c.licenseRank || Math.min(b.c.width, 3000) - Math.min(a.c.width, 3000) || a.ratioDist - b.ratioDist);
@@ -118,6 +120,8 @@ async function main() {
   const { default: sharp } = await import("sharp");
   const map = JSON.parse(await fs.readFile(path.join(ROOT, "scripts/commons-photo-map.json"), "utf8"));
   const exclude = new RegExp(map.titleExclude, "i");
+  const context = new RegExp(map.placeContext, "i");
+  const used = new Set();
   await fs.mkdir(OUT_DIR, { recursive: true });
 
   let existing = {};
@@ -146,7 +150,7 @@ async function main() {
       if (!best && cfg.queries) {
         const pool = new Map();
         for (const q of cfg.queries) for (const c of await bySearch(q)) pool.set(c.title, c);
-        const r = pickBest([...pool.values()], cfg, exclude);
+        const r = pickBest([...pool.values()], cfg, exclude, context, used);
         best = r.best; considered = r.considered; how = `tìm theo từ khóa (${pool.size} ứng viên, ${considered} đạt lọc)`;
       }
     } catch (e) {
@@ -157,6 +161,7 @@ async function main() {
       if (!report.some((r) => r.slug === slug)) report.push({ slug, cfg, status: "KHÔNG tìm được ảnh đạt điều kiện — giữ placeholder" });
       continue;
     }
+    used.add(best.title);
     const raw = await download(best.thumb);
     const img = sharp(raw, { failOn: "none" }).rotate();
     await img.clone().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 78, effort: 5 }).toFile(outFile);
@@ -165,7 +170,7 @@ async function main() {
     results[slug] = {
       image: `${base}.webp`,
       imageSrcSet: `${base}-800.webp 800w, ${base}.webp 1600w`,
-      alt: `Ảnh chụp thực tế: ${cfg.name}, Hà Nội.`,
+      alt: `Ảnh chụp thực tế liên quan đến ${cfg.name}, Hà Nội (tên ảnh gốc trên Commons: ${best.file.replace(/\.[a-z]+$/i, "").replace(/\s*\(\d{6,}\)\s*$/, "")}).`,
       imageCredit: `${best.author} · Wikimedia Commons · ${best.license}`,
       imageSource: best.page,
       file: best.file,
@@ -174,6 +179,13 @@ async function main() {
     };
     report.push({ slug, cfg, status: `đã tải (${how})`, pick: results[slug], size: `${best.width}×${best.height}` });
     console.log(`✔ ${slug}: ${best.file} [${best.license}]`);
+  }
+
+  if (!ONLY.length) {
+    for (const f of await fs.readdir(OUT_DIR)) {
+      const slug = f.replace(/(-800)?\.webp$/, "");
+      if (/\.webp$/.test(f) && !results[slug]) await fs.rm(path.join(OUT_DIR, f));
+    }
   }
 
   const body = `// TỆP SINH TỰ ĐỘNG bởi scripts/fetch-commons-photos.mjs — không sửa tay.\n// Ghi đè ảnh/credit của điểm đến trong data/destinations.js. Slug không có ở đây giữ nguyên dữ liệu cũ.\nconst photos = ${JSON.stringify(results, null, 2)};\nexport default photos;\n`;
