@@ -114,7 +114,7 @@ function NavigationContent() {
         lng: 105.8529,
         level: "Rất dễ tiếp cận",
         color: "#16a34a",
-        href: "/item?id=tour-pho-co-1",
+        href: "/item?id=pho-co-guide-tour",
         category: "Dịch vụ tour tiếp cận"
       }
     ];
