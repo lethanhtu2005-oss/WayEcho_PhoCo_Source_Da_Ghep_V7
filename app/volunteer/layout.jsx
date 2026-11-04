@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VolunteerShell from "@/components/VolunteerShell";
 
 export const metadata = {
   title: "Trạm Tình Nguyện Viên Đồng Hành Phố Cổ · WayEcho",
@@ -52,7 +53,7 @@ export default function VolunteerLayout({ children }) {
 
       {/* Main Content */}
       <main id="main-content" tabIndex={-1}>
-        {children}
+        <VolunteerShell>{children}</VolunteerShell>
       </main>
     </div>
   );
