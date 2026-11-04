@@ -49,3 +49,13 @@ test('V30 bell reads notifications for the current role rather than traveler-onl
  assert.match(page,/api\.listNotifications\(\)/);
  assert.match(api,/\["traveler","business","guide","admin","advisor"\]/);
 });
+
+
+test('Partner links in the public footer resolve to the three current partner portals', async () => {
+  const footer = await readFile(new URL('../components/Footer.jsx', import.meta.url),'utf8');
+  for (const route of ['/partner','/guide','/volunteer','/business']) {
+    assert.ok(footer.includes(`href="${route}"`), `Footer missing ${route}`);
+  }
+  assert.doesNotMatch(footer, /href="\/partners\/(guide|business)"/);
+  assert.match(footer, /href="\/admin"/);
+});
